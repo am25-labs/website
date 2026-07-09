@@ -1,4 +1,3 @@
-import PlausibleScript from "@/components/PlausibleScript";
 import "./globals.css";
 import { baseMetadata } from "@/lib/metadata";
 import { Martian_Mono } from "next/font/google";
@@ -25,13 +24,12 @@ export default function RootLayout({
         {tracking && (
           <script
             defer
-            data-domain={process.env.PLAUSIBLE_DOMAIN}
-            src="https://analytics.alemartir.com/js/script.outbound-links.tagged-events.js"
+            src="https://umami.am25.app/script.js"
+            data-website-id="9c76d1a1-a940-4d82-8f58-6f006f348f15"
           ></script>
         )}
       </head>
       <body className={`${martian.className} bg-background antialiased`}>
-        <PlausibleScript />
         {children}
       </body>
     </html>

@@ -11,11 +11,11 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://analytics.alemartir.com https://challenges.cloudflare.com https://static.cloudflareinsights.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://umami.am25.app https://challenges.cloudflare.com https://static.cloudflareinsights.com",
               "style-src 'self' 'unsafe-inline'",
               "font-src 'self' data:",
               "img-src 'self' data: blob: https://cms.am25.app https://cdn.am25.app https://d3t3ozftmdmh3i.cloudfront.net",
-              "connect-src 'self' https://cms.am25.app https://cdn.am25.app https://analytics.alemartir.com https://challenges.cloudflare.com https://cloudflareinsight https://n8n.am25.app",
+              "connect-src 'self' https://cms.am25.app https://cdn.am25.app https://umami.am25.app https://challenges.cloudflare.com https://cloudflareinsight https://n8n.am25.app",
               "media-src 'self'",
               "frame-src https://challenges.cloudflare.com https://www.youtube.com https://player.vimeo.com",
               "object-src 'none'",
