@@ -27,7 +27,7 @@ export default function ContactLinks({ email }: ContactLinksProps) {
         <ArrowUpRightIcon size={24} className="shrink-0" />
       </Link>
       <Link
-        href="https://www.instagram.com/am25std"
+        href="https://www.instagram.com/am25work"
         target="_blank"
         rel="noopener"
         className="mt-8 flex w-fit items-center text-lg text-neutral-500 hover:underline group-data-[variant=yellow]:text-black md:text-xl"
