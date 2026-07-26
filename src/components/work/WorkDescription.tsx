@@ -74,14 +74,14 @@ export default function WorkDescription({ content }: WorkDescriptionProps) {
   return (
     <div className="flex flex-col items-start gap-4">
       <ContentRenderer content={visibleContent} />
-      {trimmed.hasMore && !expanded && (
+      {trimmed.hasMore && (
         <Button
           type="button"
           variant="link"
           className="h-auto p-0 uppercase"
-          onClick={() => setExpanded(true)}
+          onClick={() => setExpanded((value) => !value)}
         >
-          Ver más
+          {expanded ? "View less" : "View more"}
         </Button>
       )}
     </div>
