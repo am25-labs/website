@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { baseMetadata } from "@/lib/metadata";
 import { getSingleWork, getWorks } from "@/lib/plank/fetch";
+import WorkBackLink from "@/components/work/WorkBackLink";
 import WorkGallery from "@/components/work/WorkGallery";
 import WorkHeader from "@/components/work/WorkHeader";
 import WorkMeta from "@/components/work/WorkMeta";
@@ -108,6 +109,7 @@ export default async function CaseDetailPage({ params }: PageProps) {
 
       <WorkGallery images={images_before} />
       <WorkGallery quote={quote} images={images_after} />
+      <WorkBackLink />
     </>
   );
 }

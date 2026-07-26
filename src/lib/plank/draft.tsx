@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import PageShell from "@/components/PageShell";
 import PreviewAutoRefresh from "@/components/PreviewAutoRefresh";
 import LocalizedNoteTabs from "@/components/notes/LocalizedNoteTabs";
+import WorkBackLink from "@/components/work/WorkBackLink";
 import WorkGallery from "@/components/work/WorkGallery";
 import WorkHeader from "@/components/work/WorkHeader";
 import WorkMeta from "@/components/work/WorkMeta";
@@ -44,6 +45,7 @@ async function renderWorkDraftPreview(slug: string) {
 
       <WorkGallery images={work.images_before} />
       <WorkGallery quote={work.quote} images={work.images_after} />
+      <WorkBackLink />
     </PageShell>
   );
 }
