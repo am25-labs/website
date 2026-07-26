@@ -1,8 +1,8 @@
 import Image from "next/image";
 import type { Work } from "@/types/domain";
-import ContentRenderer from "@/components/ContentRenderer";
 import GridContainer from "@/components/grids/GridContainer";
 import GridFour from "@/components/grids/GridFour";
+import WorkDescription from "@/components/work/WorkDescription";
 
 interface WorkHeaderProps {
   title: Work["title"];
@@ -38,7 +38,7 @@ export default function WorkHeader({
 
       <GridFour className="mt-4">
         <div className="col-span-full">
-          {description && <ContentRenderer content={description} />}
+          {description && <WorkDescription content={description} />}
         </div>
       </GridFour>
     </GridContainer>

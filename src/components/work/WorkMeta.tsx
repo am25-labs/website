@@ -74,10 +74,10 @@ export default function WorkMeta({
                   key={item.label}
                   className="group-data-[variant=yellow]:hover:bg-muted/10 group-data-[variant=light]:hover:bg-muted/10"
                 >
-                  <TableCell className="font-bold uppercase">
+                  <TableCell className="py-4 font-bold uppercase">
                     {item.label}
                   </TableCell>
-                  <TableCell>{item.value}</TableCell>
+                  <TableCell className="py-4">{item.value}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
