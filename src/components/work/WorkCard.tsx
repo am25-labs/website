@@ -20,7 +20,7 @@ export default function WorkCard({
       title={title}
       className="group/card"
     >
-      <Card className="aspect-square overflow-hidden p-0">
+      <Card className="aspect-4/5 overflow-hidden p-0">
         {cover ? (
           <img src={cover} alt={title} className="h-full w-full object-cover" />
         ) : (
