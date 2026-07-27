@@ -21,8 +21,8 @@ export default function WorkGallery({
   return (
     <GridContainer className="mb-2">
       {quote && (
-        <div className="col-span-full py-16">
-          <blockquote className="text-lg md:text-xl text-center italic max-w-4xl mx-auto">
+        <div className="col-span-full py-32">
+          <blockquote className="text-lg md:text-3xl text-center italic max-w-4xl mx-auto">
             "{quote}"
           </blockquote>
         </div>
