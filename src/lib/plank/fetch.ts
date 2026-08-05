@@ -139,20 +139,29 @@ export async function getAbout(): Promise<About> {
 }
 
 // Legals
-export async function getPrivacy() {
+export async function getPrivacy({ locale }: LocaleOptions = {}) {
   return plank
     .single<LegalPage>("privacy")
-    .find(undefined, CACHE_GENERAL_OPTIONS);
+    .find(
+      locale ? { locale, fallback: "en" } : undefined,
+      CACHE_GENERAL_OPTIONS,
+    );
 }
 
-export async function getTerms() {
-  return plank.single<LegalPage>("terms").find(undefined, CACHE_GENERAL_OPTIONS);
+export async function getTerms({ locale }: LocaleOptions = {}) {
+  return plank.single<LegalPage>("terms").find(
+    locale ? { locale, fallback: "en" } : undefined,
+    CACHE_GENERAL_OPTIONS,
+  );
 }
 
-export async function getCopyright() {
+export async function getCopyright({ locale }: LocaleOptions = {}) {
   return plank
     .single<LegalPage>("copyright")
-    .find(undefined, CACHE_GENERAL_OPTIONS);
+    .find(
+      locale ? { locale, fallback: "en" } : undefined,
+      CACHE_GENERAL_OPTIONS,
+    );
 }
 
 export async function getFooter() {

@@ -1,12 +1,8 @@
-import ContentRenderer from "@/components/ContentRenderer";
 import { baseMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
-import { RefreshCwIcon } from "lucide-react";
-import GridContainer from "@/components/grids/GridContainer";
-import GridTwo from "@/components/grids/GridTwo";
-import GridFour from "@/components/grids/GridFour";
+import LocalizedLegalTabs from "@/components/legal/LocalizedLegalTabs";
 import { getPrivacy } from "@/lib/plank/fetch";
-import { formatDate } from "@/lib/utils";
+import PageContainer from "@/components/PageContainer";
 
 const baseUrl = process.env.BASE_URL;
 const pageTitle = "Privacy";
@@ -28,34 +24,14 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function PrivacyPage() {
-  const privacy = await getPrivacy();
-  const { date, content } = privacy;
-  const formattedDate = date ? formatDate(date) : null;
+  const [enPage, esPage] = await Promise.all([
+    getPrivacy(),
+    getPrivacy({ locale: "es" }),
+  ]);
 
   return (
-    <GridContainer className="mb-16">
-      <GridTwo className="mb-8">
-        <div className="col-span-full">
-          <h1 className="text-3xl md:text-4xl font-bold uppercase">
-            {pageTitle}
-          </h1>
-          {formattedDate && (
-            <span
-              className="mt-6 flex items-center gap-2 text-sm text-muted-foreground"
-              title="Updated At"
-            >
-              <RefreshCwIcon size={16} />
-              {formattedDate}
-            </span>
-          )}
-        </div>
-      </GridTwo>
-
-      <GridFour>
-        <div className="col-span-full">
-          {content && <ContentRenderer content={content} />}
-        </div>
-      </GridFour>
-    </GridContainer>
+    <PageContainer>
+      <LocalizedLegalTabs title={pageTitle} enPage={enPage} esPage={esPage} />
+    </PageContainer>
   );
 }
