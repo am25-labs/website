@@ -1,0 +1,108 @@
+import { baseMetadata } from "@/lib/metadata";
+import { getContentHub } from "@/lib/plank/fetch";
+import type { Metadata } from "next";
+import GridContainer from "@/components/grids/GridContainer";
+import GridSix from "@/components/grids/GridSix";
+import GridFour from "@/components/grids/GridFour";
+import GridTwo from "@/components/grids/GridTwo";
+import { Separator } from "@/components/ui/separator";
+import { Card } from "@/components/ui/card";
+import AccessDialog from "@/components/content/AccessDialog";
+
+const baseUrl = process.env.BASE_URL;
+const pageTitle = "Content Hub";
+
+export function generateMetadata(): Metadata {
+  return {
+    ...baseMetadata,
+    title: `${pageTitle} - AM25`,
+    description: "A single source of truth for the content behind your work.",
+    openGraph: {
+      ...baseMetadata.openGraph,
+      title: `${pageTitle} - AM25`,
+      description: "A single source of truth for the content behind your work.",
+      url: `${baseUrl}/content`,
+    },
+    twitter: {
+      ...baseMetadata.twitter,
+      title: `${pageTitle} - AM25`,
+      description: "A single source of truth for the content behind your work.",
+    },
+  };
+}
+
+export default async function ContentHubPage() {
+  const entry = await getContentHub();
+
+  return (
+    <GridContainer>
+      <GridSix>
+        <div className="col-span-full space-y-8">
+          <h2 className="whitespace-pre-line text-6xl md:text-9xl 2xl:text-[10rem] font-bold uppercase">
+            {entry.hero_title}
+          </h2>
+        </div>
+      </GridSix>
+
+      <GridFour className="mt-8">
+        <div className="col-span-full">
+          <p className="text-lg text-muted-foreground">
+            {entry.hero_description}
+          </p>
+        </div>
+      </GridFour>
+
+      <GridFour className="mt-8">
+        <div className="col-span-full">
+          <div className="flex justify-end">
+            <AccessDialog />
+          </div>
+        </div>
+      </GridFour>
+
+      <Separator className="col-span-full my-8" />
+
+      <div className="col-span-full">
+        <h2 className="mb-8 text-lg font-bold uppercase">Why it exists</h2>
+
+        <div className="grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-3">
+          {(entry.features ?? []).map((item) => (
+            <Card
+              key={item.label}
+              className="min-h-48 gap-0 rounded-none border-0 py-6 text-sm ring-0 bg-black"
+            >
+              <div className="flex flex-col gap-4 px-6 py-4">
+                <span className="text-3xl font-bold uppercase">
+                  {item.label}
+                </span>
+                <span className="text-muted-foreground">
+                  {item.description}
+                </span>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+
+      <Separator className="col-span-full my-8" />
+
+      <GridSix>
+        <div className="col-span-full space-y-8">
+          <h2 className="whitespace-pre-line text-6xl md:text-9xl 2xl:text-[10rem] font-bold uppercase">
+            {entry.end_title}
+          </h2>
+        </div>
+      </GridSix>
+
+      <GridTwo className="self-end">
+        <div className="col-span-full">
+          <div className="flex flex-col gap-8">
+            <p className="text-muted-foreground">{entry.end_description}</p>
+
+            <AccessDialog className="w-fit" />
+          </div>
+        </div>
+      </GridTwo>
+    </GridContainer>
+  );
+}

@@ -16,6 +16,8 @@ export interface ServicesContactPayload extends ContactBasePayload {
   service: string;
 }
 
+export type ContentContactPayload = Omit<ContactBasePayload, "message">;
+
 export interface TurnstileVerificationResponse {
   success: boolean;
 }

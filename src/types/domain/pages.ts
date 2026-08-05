@@ -25,3 +25,12 @@ export interface LegalPage {
   content: string;
   date?: string;
 }
+
+// Content Hub
+export interface ContentHub {
+  hero_title?: string;
+  hero_description?: string;
+  features: FaqItem[];
+  end_title?: string;
+  end_description?: string;
+}

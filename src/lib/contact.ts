@@ -1,4 +1,5 @@
 import type {
+  ContentContactPayload,
   GeneralContactPayload,
   ServicesContactPayload,
   TurnstileVerificationResponse,
@@ -56,6 +57,27 @@ export function parseServicesContactPayload(
   }
 
   return { name, email, language, service, message, token };
+}
+
+export function parseContentContactPayload(
+  value: unknown,
+): ContentContactPayload | null {
+  if (!isRecord(value)) {
+    return null;
+  }
+
+  const { name, email, language, token } = value;
+
+  if (
+    !isNonEmptyString(name) ||
+    !isNonEmptyString(email) ||
+    !isNonEmptyString(language) ||
+    !isNonEmptyString(token)
+  ) {
+    return null;
+  }
+
+  return { name, email, language, token };
 }
 
 export async function verifyTurnstile(token: string): Promise<boolean> {

@@ -6,6 +6,7 @@ import type {
   Home,
   About,
   LegalPage,
+  ContentHub,
   Footer,
 } from "@/types/domain";
 
@@ -112,10 +113,9 @@ export async function getPreviewNote(
 
 // ST: Navigation
 async function getNavigation() {
-  return plank.single<Navigation>("navigation").find(
-    undefined,
-    CACHE_GENERAL_OPTIONS,
-  );
+  return plank
+    .single<Navigation>("navigation")
+    .find(undefined, CACHE_GENERAL_OPTIONS);
 }
 
 export async function getMainNav() {
@@ -149,10 +149,12 @@ export async function getPrivacy({ locale }: LocaleOptions = {}) {
 }
 
 export async function getTerms({ locale }: LocaleOptions = {}) {
-  return plank.single<LegalPage>("terms").find(
-    locale ? { locale, fallback: "en" } : undefined,
-    CACHE_GENERAL_OPTIONS,
-  );
+  return plank
+    .single<LegalPage>("terms")
+    .find(
+      locale ? { locale, fallback: "en" } : undefined,
+      CACHE_GENERAL_OPTIONS,
+    );
 }
 
 export async function getCopyright({ locale }: LocaleOptions = {}) {
@@ -166,4 +168,11 @@ export async function getCopyright({ locale }: LocaleOptions = {}) {
 
 export async function getFooter() {
   return plank.single<Footer>("footer").find(undefined, CACHE_GENERAL_OPTIONS);
+}
+
+// Content Hub
+export async function getContentHub(): Promise<ContentHub> {
+  return plank
+    .single<ContentHub>("content-hub")
+    .find(undefined, CACHE_GENERAL_OPTIONS);
 }
