@@ -1,21 +1,33 @@
 import Link from "next/link";
-import { ArrowLeftIcon } from "lucide-react";
+import { ChevronLeftIcon } from "lucide-react";
 import GridContainer from "@/components/grids/GridContainer";
+import { BannerPoweredBy } from "@/components/PoweredBy";
+import { Separator } from "@/components/ui/separator";
 
 export default function WorkBackLink() {
   return (
-    <GridContainer className="pt-8 pb-16">
+    <GridContainer>
       <div className="col-span-full">
-        <Link
-          href="/cases"
-          className="inline-flex items-center gap-2 uppercase hover:font-bold"
-        >
-          <ArrowLeftIcon
-            size={20}
-            className="text-am-y group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black shrink-0"
+        <div className="flex flex-col items-center py-16">
+          <Separator />
+          <Link
+            href="/cases"
+            className="mt-8 flex items-center gap-2 text-center font-bold uppercase hover:underline"
+          >
+            <ChevronLeftIcon size={21} />
+            Back to works
+          </Link>
+        </div>
+
+        <div className="mx-auto max-w-2xl">
+          <BannerPoweredBy
+            logoSrc="/plank-logo-w.svg"
+            logoAlt="Plank CMS"
+            label="Powered by Plank CMS"
+            link="https://plank-cms.com"
+            mode="dark"
           />
-          Back to works
-        </Link>
+        </div>
       </div>
     </GridContainer>
   );
