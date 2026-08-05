@@ -54,7 +54,7 @@ export default async function ContentHubPage() {
 
       <GridFour className="mt-8">
         <div className="col-span-full">
-          <div className="flex justify-end">
+          <div className="flex md:justify-end">
             <AccessDialog />
           </div>
         </div>
