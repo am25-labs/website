@@ -4,6 +4,7 @@ import RecentEntries from "@/components/home/RecentEntries";
 import Services from "@/components/home/Services";
 import { getHome } from "@/lib/plank/fetch";
 import { AuditBanner } from "@/components/audit/AuditBanner";
+import { Separator } from "@/components/ui/separator";
 
 export default async function HomePage() {
   const { heading, description, services } = await getHome();
@@ -11,6 +12,8 @@ export default async function HomePage() {
   return (
     <>
       <Hero heading={heading} description={description} />
+      <Separator className="col-span-full mb-8" />
+
       <FeaturedWork />
       <Services services={services} />
       <AuditBanner />

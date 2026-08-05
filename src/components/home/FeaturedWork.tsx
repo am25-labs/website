@@ -10,7 +10,7 @@ export default async function FeaturedWork() {
 
   return (
     <>
-      <GridContainer className="pb-4">
+      <GridContainer>
         <div className="col-span-full">
           <div className="flex items-center justify-between">
             <h2 className="text-sm font-bold uppercase text-muted-foreground group-data-[variant=yellow]:text-black">
@@ -34,7 +34,9 @@ export default async function FeaturedWork() {
               cover={work.cover?.url ?? null}
               title={work.title}
               href={`/cases/${work.slug}`}
-              category={work.disciplines.map((discipline) => discipline.title).join(", ")}
+              category={work.disciplines
+                .map((discipline) => discipline.title)
+                .join(", ")}
             />
           </div>
         ))}
