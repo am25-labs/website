@@ -237,7 +237,7 @@ export function AuditForm({ onClose, resetKey }: AuditFormProps) {
           <Button
             type="submit"
             disabled={isLoading || !captchaToken}
-            className="w-full rounded-full font-bold uppercase"
+            className="w-full font-bold uppercase"
           >
             <ScanSearchIcon />
             {isLoading ? "Auditing..." : "Start Audit"}

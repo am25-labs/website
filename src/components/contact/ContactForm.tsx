@@ -320,7 +320,7 @@ export default function ContactForm({ mode }: ContactFormProps) {
           <Button
             type="submit"
             size="lg"
-            className="rounded-full font-bold uppercase"
+            className="font-bold uppercase"
             disabled={isSubmitting}
           >
             <SendIcon />
@@ -330,7 +330,7 @@ export default function ContactForm({ mode }: ContactFormProps) {
             type="button"
             variant="outline"
             size="lg"
-            className="rounded-full font-bold uppercase"
+            className="font-bold uppercase"
             onClick={resetForm}
             disabled={isSubmitting}
           >

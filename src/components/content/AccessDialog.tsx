@@ -136,7 +136,7 @@ export default function AccessDialog({ className }: Props) {
         <Button
           type="button"
           size="lg"
-          className={cn("rounded-none font-bold uppercase", className)}
+          className={cn("font-bold uppercase", className)}
         >
           <SendIcon />
           Request Early Access
@@ -218,7 +218,7 @@ export default function AccessDialog({ className }: Props) {
           <div className="flex items-center gap-3">
             <Button
               type="submit"
-              className="rounded-none font-bold uppercase"
+              className="font-bold uppercase"
               disabled={isSubmitting}
             >
               <SendIcon />

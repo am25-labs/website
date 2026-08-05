@@ -35,7 +35,7 @@ export function AuditBanner() {
               type="submit"
               onClick={() => setIsOpen(true)}
               size="lg"
-              className="rounded-full font-bold uppercase"
+              className="font-bold uppercase"
             >
               <ScanSearchIcon />
               <span>Start Now</span>

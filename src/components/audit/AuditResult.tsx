@@ -69,7 +69,7 @@ export function AuditResult({ result, form }: AuditResultProps) {
           type="button"
           onClick={requestAudit}
           disabled={!form || status === "loading" || status === "sent"}
-          className="mt-4 w-full rounded-full font-bold uppercase"
+          className="mt-4 w-full font-bold uppercase"
         >
           {status === "sent" ? <CheckIcon /> : <SendIcon />}
           {status === "loading"
