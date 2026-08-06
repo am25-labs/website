@@ -20,7 +20,7 @@ export default async function FeaturedWork() {
               href="/brand"
               className="flex items-center text-sm font-bold uppercase text-muted-foreground hover:underline group-data-[variant=yellow]:text-black"
             >
-              OUR BRANDING
+              OUR BRAND
               <ArrowRightIcon size={16} className="shrink-0" />
             </Link>
           </div>
