@@ -8,6 +8,7 @@ import GridTwo from "@/components/grids/GridTwo";
 import { Separator } from "@/components/ui/separator";
 import { Card } from "@/components/ui/card";
 import AccessDialog from "@/components/content/AccessDialog";
+import FeaturesCarousel from "@/components/content/FeaturesCarousel";
 
 const baseUrl = process.env.BASE_URL;
 const pageTitle = "Content Hub";
@@ -30,6 +31,25 @@ export function generateMetadata(): Metadata {
     },
   };
 }
+
+const slides = [
+  {
+    src: "https://cdn.am25.app/plank/media/fda43d8c-d24f-4cf8-bdc7-d196866a67db/49c183003edf3eea6ae4b1ae8994840e.webp",
+    alt: "Assets grid",
+  },
+  {
+    src: "https://cdn.am25.app/plank/media/fda43d8c-d24f-4cf8-bdc7-d196866a67db/eb7bbb4cddf65ae910e792d46ed6c221.webp",
+    alt: "Paths grid",
+  },
+  {
+    src: "https://cdn.am25.app/plank/media/fda43d8c-d24f-4cf8-bdc7-d196866a67db/cfbd01d5494e7e07888a9614e0e5b40e.webp",
+    alt: "File sharing",
+  },
+  {
+    src: "https://cdn.am25.app/plank/media/fda43d8c-d24f-4cf8-bdc7-d196866a67db/261c57fcd8405e4ae7a5ca601fb90db3.webp",
+    alt: "Asset detail view",
+  },
+];
 
 export default async function ContentHubPage() {
   const entry = await getContentHub();
@@ -66,6 +86,8 @@ export default async function ContentHubPage() {
 
       <GridContainer>
         <div className="col-span-full">
+          <FeaturesCarousel slides={slides} />
+
           <h2 className="my-8 text-lg font-bold uppercase">Why it exists</h2>
 
           <div className="grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-3">
