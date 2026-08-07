@@ -77,15 +77,15 @@ export default function LocalizedNoteTabs({
       </section>
 
       <section className="col-span-2 md:col-span-4">
-        {/* <div className="relative mb-4 aspect-square">
+        <div className="relative mb-4 aspect-square md:aspect-5/4">
           {activeNote.cover ? (
             <img
               src={activeNote.cover.url}
               alt={activeNote.cover.alt ?? activeNote.title}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover border"
             />
           ) : null}
-        </div> */}
+        </div>
 
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           <Tabs
