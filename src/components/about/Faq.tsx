@@ -8,14 +8,14 @@ interface FaqProps {
   items: FaqItem[];
 }
 
-export default function Faq({ items }: FaqProps) {
+export default function AboutFaq({ items }: FaqProps) {
   const accordionItems = items.map((item) => ({
     label: item.label,
     content: item.description,
   }));
 
   return (
-    <GridContainer className="mt-4 pb-16">
+    <GridContainer className="mt-4">
       <GridTwo>
         <span className="col-span-full">
           <h2 className="font-bold uppercase text-muted-foreground group-data-[variant=yellow]:text-black">

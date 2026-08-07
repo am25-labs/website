@@ -32,14 +32,16 @@ export default function CasesFilter({ works }: CasesFilterProps) {
       }
     >
       {(filteredWorks) => (
-        <GridContainer className="mt-4 pb-8">
+        <GridContainer className="mt-4">
           {filteredWorks.map((work) => (
             <div key={work.id} className="col-span-2">
               <WorkCard
                 cover={work.cover?.url ?? null}
                 title={work.title}
                 href={`/cases/${work.slug}`}
-                category={work.disciplines.map((discipline) => discipline.title).join(", ")}
+                category={work.disciplines
+                  .map((discipline) => discipline.title)
+                  .join(", ")}
               />
             </div>
           ))}

@@ -29,7 +29,7 @@ export function generateMetadata(): Metadata {
 
 export default function ContactPage() {
   return (
-    <GridContainer className="mb-16">
+    <GridContainer>
       <GridTwo className="mb-8">
         <div className="col-span-full">
           <h1 className="text-3xl font-bold uppercase md:text-4xl">

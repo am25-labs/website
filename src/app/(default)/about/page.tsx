@@ -1,5 +1,5 @@
 import ContentRenderer from "@/components/ContentRenderer";
-import Faq from "@/components/about/Faq";
+import AboutFaq from "@/components/about/Faq";
 import GenericContent from "@/components/GenericContent";
 import { AlertWrap } from "@/components/ui/custom/AlertWrap";
 import { baseMetadata } from "@/lib/metadata";
@@ -50,7 +50,7 @@ export default async function AboutPage() {
 
       <Separator />
 
-      <Faq items={entry.faq} />
+      <AboutFaq items={entry.faq} />
     </>
   );
 }

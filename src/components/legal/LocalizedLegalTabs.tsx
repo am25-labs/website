@@ -38,7 +38,7 @@ export default function LocalizedLegalTabs({ title, enPage, esPage }: Props) {
     : null;
 
   return (
-    <div className="mb-16 grid grid-cols-2 gap-4 px-4 md:grid-cols-8">
+    <div className="mb-8 grid grid-cols-2 gap-4 px-4 md:grid-cols-8">
       <section className="col-span-2 mb-8">
         <div className="grid grid-cols-2 gap-4">
           <div className="col-span-full">
