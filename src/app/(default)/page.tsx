@@ -3,7 +3,6 @@ import FeaturedWork from "@/components/home/FeaturedWork";
 import RecentEntries from "@/components/home/RecentEntries";
 import Services from "@/components/home/Services";
 import { getHome } from "@/lib/plank/fetch";
-import { AuditBanner } from "@/components/audit/AuditBanner";
 import { Separator } from "@/components/ui/separator";
 
 export default async function HomePage() {
@@ -15,8 +14,9 @@ export default async function HomePage() {
       <Separator className="col-span-full mb-8" />
 
       <FeaturedWork />
+
       <Services services={services} />
-      <AuditBanner />
+
       <RecentEntries />
     </>
   );

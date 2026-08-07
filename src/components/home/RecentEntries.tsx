@@ -35,7 +35,7 @@ export default async function RecentEntries() {
         </div>
       </GridContainer>
 
-      <GridContainer className="mt-4 pb-24">
+      <GridContainer className="mt-4">
         {entries.map((entry) => (
           <div key={entry.id} className="col-span-2">
             <NoteCard

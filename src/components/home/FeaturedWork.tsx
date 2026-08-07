@@ -27,7 +27,7 @@ export default async function FeaturedWork() {
         </div>
       </GridContainer>
 
-      <GridContainer className="pb-24">
+      <GridContainer>
         {works.map((work) => (
           <div key={work.id} className="col-span-2">
             <WorkCard
