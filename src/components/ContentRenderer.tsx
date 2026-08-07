@@ -7,11 +7,11 @@ const components: NodeComponents = {
     const Tag = `h${level}` as "h1" | "h2" | "h3";
     const className =
       level === 1
-        ? "text-3xl uppercase pt-6"
+        ? "!text-4xl uppercase pt-6"
         : level === 2
-          ? "text-2xl uppercase pt-6"
+          ? "!text-3xl uppercase pt-6"
           : level === 3
-            ? "text-xl uppercase pt-4"
+            ? "uppercase pt-4"
             : undefined;
     return <Tag className={className}>{children}</Tag>;
   },
