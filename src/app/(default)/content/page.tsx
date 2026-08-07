@@ -8,7 +8,7 @@ import GridTwo from "@/components/grids/GridTwo";
 import { Separator } from "@/components/ui/separator";
 import { Card } from "@/components/ui/card";
 import AccessDialog from "@/components/content/AccessDialog";
-import FeaturesCarousel from "@/components/content/FeaturesCarousel";
+import FeaturedCarousel from "@/components/content/FeaturedCarousel";
 
 const baseUrl = process.env.BASE_URL;
 const pageTitle = "Content Hub";
@@ -85,8 +85,8 @@ export default async function ContentHubPage() {
       <Separator className="col-span-full" />
 
       <GridContainer>
-        <div className="col-span-full">
-          <FeaturesCarousel slides={slides} />
+        <div className="col-span-full mt-4">
+          <FeaturedCarousel slides={slides} />
 
           <h2 className="my-8 text-lg font-bold uppercase">Why it exists</h2>
 

@@ -16,11 +16,11 @@ export type CarouselSlide = {
   alt: string;
 };
 
-type FeaturesCarouselProps = {
+type FeaturedCarouselProps = {
   slides: CarouselSlide[];
 };
 
-export default function FeaturesCarousel({ slides }: FeaturesCarouselProps) {
+export default function FeaturedCarousel({ slides }: FeaturedCarouselProps) {
   const plugin = useRef(
     Autoplay({
       delay: 3000,
