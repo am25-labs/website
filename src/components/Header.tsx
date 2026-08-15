@@ -4,9 +4,12 @@ import BrandIcon from "@/components/BrandIcon";
 import { getMainNav } from "@/lib/plank/fetch";
 import { headerSocialItems } from "@/lib/navigation/header-social-items";
 import MobileMenu from "@/components/MobileMenu";
+import LocaleSwitch from "@/components/LocaleSwitch";
+import { getLocale } from "@/lib/i18n-server";
 
 export default async function Header() {
-  const mainNav = await getMainNav();
+  const locale = await getLocale();
+  const mainNav = await getMainNav({ locale });
 
   return (
     <>
@@ -58,11 +61,12 @@ export default async function Header() {
                 </li>
               );
             })}
+            <li><LocaleSwitch locale={locale} /></li>
           </ul>
         </nav>
 
         <div className="md:hidden">
-          <MobileMenu items={mainNav} socialItems={headerSocialItems} />
+          <MobileMenu items={mainNav} socialItems={headerSocialItems} locale={locale} />
         </div>
       </header>
 

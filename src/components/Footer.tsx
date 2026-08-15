@@ -2,10 +2,14 @@ import Link from "next/link";
 import { ArrowUpRightIcon } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { getFooter, getFooterNav } from "@/lib/plank/fetch";
+import { getLocale } from "@/lib/i18n-server";
 
 export default async function Footer() {
-  const nav = await getFooterNav();
-  const footer = await getFooter();
+  const locale = await getLocale();
+  const [nav, footer] = await Promise.all([
+    getFooterNav({ locale }),
+    getFooter({ locale }),
+  ]);
 
   return (
     <>

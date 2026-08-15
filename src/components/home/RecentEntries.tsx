@@ -3,9 +3,13 @@ import { ArrowRightIcon } from "lucide-react";
 import GridContainer from "@/components/grids/GridContainer";
 import { getNotes } from "@/lib/plank/fetch";
 import NoteCard from "@/components/notes/NoteCard";
+import { getCopy } from "@/lib/i18n";
+import { getLocale } from "@/lib/i18n-server";
 
 export default async function RecentEntries() {
-  const { data: notes } = await getNotes();
+  const locale = await getLocale();
+  const copy = getCopy(locale);
+  const { data: notes } = await getNotes({ locale });
   const entries = (notes ?? []).slice(0, 4).map((note) => ({
     id: note.id,
     title: note.title,
@@ -22,13 +26,13 @@ export default async function RecentEntries() {
         <div className="col-span-full">
           <div className="flex items-center justify-between">
             <h2 className="text-sm font-bold uppercase text-muted-foreground group-data-[variant=yellow]:text-black">
-              Recent entries
+              {copy.recentEntries}
             </h2>
             <Link
               href="/notes"
               className="flex items-center text-sm font-bold uppercase text-muted-foreground hover:underline group-data-[variant=yellow]:text-black"
             >
-              View all
+              {copy.viewAll}
               <ArrowRightIcon size={16} className="shrink-0" />
             </Link>
           </div>
@@ -47,6 +51,7 @@ export default async function RecentEntries() {
                 .join(", ")}
               publishedAt={entry.publishedAt}
               author={entry.author}
+              locale={locale}
             />
           </div>
         ))}

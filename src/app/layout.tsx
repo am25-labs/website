@@ -1,6 +1,7 @@
 import "./globals.css";
-import { baseMetadata } from "@/lib/metadata";
+import { getBaseMetadata } from "@/lib/metadata";
 import { Martian_Mono } from "next/font/google";
+import { getLocale } from "@/lib/i18n-server";
 
 const martian = Martian_Mono({
   variable: "--font-martian",
@@ -11,15 +12,19 @@ const martian = Martian_Mono({
 
 const tracking = process.env.DEPLOY_ENV === "production";
 
-export const metadata = baseMetadata;
+export async function generateMetadata() {
+  return getBaseMetadata(await getLocale());
+}
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const locale = await getLocale();
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <head>
         {tracking && (
           <script

@@ -22,6 +22,7 @@ interface ContentFilterProps<T> {
   items: T[];
   matches: (item: T, activeValue: string | null) => boolean;
   children: (filteredItems: T[]) => React.ReactNode;
+  allLabel?: string;
 }
 
 export default function ContentFilter<T>({
@@ -30,13 +31,14 @@ export default function ContentFilter<T>({
   items,
   matches,
   children,
+  allLabel = "All",
 }: ContentFilterProps<T>) {
   const [active, setActive] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
 
   const filteredItems = items.filter((item) => matches(item, active));
   const activeLabel =
-    options.find((option) => option.value === active)?.label ?? "All";
+    options.find((option) => option.value === active)?.label ?? allLabel;
 
   const handleSelect = (value: string | null) => {
     setActive(value);
@@ -67,7 +69,7 @@ export default function ContentFilter<T>({
                 active === null ? "font-bold" : "text-muted-foreground",
               )}
             >
-              All
+              {allLabel}
             </button>
             {options.map((option) => (
               <button
@@ -97,7 +99,7 @@ export default function ContentFilter<T>({
                   : "text-muted-foreground hover:text-foreground",
               )}
             >
-              All
+              {allLabel}
             </button>
             {options.map((option) => (
               <button

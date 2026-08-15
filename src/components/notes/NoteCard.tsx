@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import type { NoteCardProps } from "@/types/domain";
 import { formatDate } from "@/lib/utils";
+import { dateLocale, type Locale } from "@/lib/i18n";
 
 export default function NoteCard({
   cover,
@@ -14,6 +15,7 @@ export default function NoteCard({
   category,
   publishedAt,
   author,
+  locale = "en",
 }: NoteCardProps) {
   const isExternal = href.startsWith("https");
   const authorName = author
@@ -51,7 +53,7 @@ export default function NoteCard({
               <span className="text-xs text-muted-foreground">{category}</span>
               {publishedAt ? (
                 <span className="text-xs text-muted-foreground">
-                  {formatDate(publishedAt)}
+                  {formatDate(publishedAt, { locale: dateLocale(locale) })}
                 </span>
               ) : null}
             </div>
@@ -77,7 +79,7 @@ export default function NoteCard({
                 </div>
                 {author.job_title ? (
                   <div className="text-xs text-muted-foreground">
-                    {author.job_title} at {author.organization}
+                    {author.job_title} {locale === "es" ? "en" : "at"} {author.organization}
                   </div>
                 ) : null}
               </div>

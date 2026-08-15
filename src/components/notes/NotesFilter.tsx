@@ -5,6 +5,7 @@ import ContentFilter from "@/components/ContentFilter";
 import GridContainer from "@/components/grids/GridContainer";
 import type { Author, Category } from "@/types/domain";
 import NoteCard from "./NoteCard";
+import type { Locale } from "@/lib/i18n";
 
 type Entry = {
   id: string;
@@ -19,9 +20,10 @@ type Entry = {
 interface NotesFilterProps {
   entries: Entry[];
   baseHref: string;
+  locale: Locale;
 }
 
-export default function NotesFilter({ entries, baseHref }: NotesFilterProps) {
+export default function NotesFilter({ entries, baseHref, locale }: NotesFilterProps) {
   const categories = useMemo(
     () =>
       Array.from(
@@ -42,6 +44,7 @@ export default function NotesFilter({ entries, baseHref }: NotesFilterProps) {
         value: category.slug,
       }))}
       items={entries}
+      allLabel={locale === "es" ? "Todo" : "All"}
       matches={(entry, active) =>
         active === null ||
         entry.categories.some((category) => category.slug === active)
@@ -60,6 +63,7 @@ export default function NotesFilter({ entries, baseHref }: NotesFilterProps) {
                   .join(", ")}
                 publishedAt={entry.publishedAt}
                 author={entry.author}
+                locale={locale}
               />
             </div>
           ))}

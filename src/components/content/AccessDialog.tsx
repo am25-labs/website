@@ -28,9 +28,11 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import { emailRegex, nameRegex } from "@/lib/validation";
+import type { Locale } from "@/lib/i18n";
 
 interface Props {
   className?: string;
+  locale: Locale;
 }
 
 interface FormState {
@@ -49,7 +51,7 @@ function getInitialState(): FormState {
   };
 }
 
-export default function AccessDialog({ className }: Props) {
+export default function AccessDialog({ className, locale }: Props) {
   const [form, setForm] = useState<FormState>(getInitialState);
   const [captchaToken, setCaptchaToken] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -57,6 +59,11 @@ export default function AccessDialog({ className }: Props) {
     type: "success" | "error";
     text: string;
   } | null>(null);
+  const text = locale === "es" ? {
+    request: "Solicitar acceso anticipado", description: "Únete al grupo de acceso anticipado de AM25 Content Hub", fullName: "Nombre completo", language: "Idioma", sending: "Enviando...", send: "Enviar solicitud",
+  } : {
+    request: "Request Early Access", description: "Join the early access group for AM25 Content Hub", fullName: "Full Name", language: "Language", sending: "Sending...", send: "Send Request",
+  };
 
   function updateField<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((current) => ({ ...current, [key]: value }));
@@ -139,14 +146,14 @@ export default function AccessDialog({ className }: Props) {
           className={cn("font-bold uppercase", className)}
         >
           <SendIcon />
-          Request Early Access
+          {text.request}
         </Button>
       </DialogTrigger>
       <DialogContent className="rounded-none sm:max-w-xl">
         <DialogHeader>
-          <DialogTitle>Request Early Access</DialogTitle>
+          <DialogTitle>{text.request}</DialogTitle>
           <DialogDescription>
-            Join the early access group for AM25 Content Hub
+            {text.description}
           </DialogDescription>
         </DialogHeader>
 
@@ -157,7 +164,7 @@ export default function AccessDialog({ className }: Props) {
                 <Input
                   id="content-name"
                   name="name"
-                  placeholder="Full Name"
+                  placeholder={text.fullName}
                   className="rounded-none"
                   autoComplete="name"
                   value={form.name}
@@ -186,7 +193,7 @@ export default function AccessDialog({ className }: Props) {
                   onValueChange={(value) => updateField("language", value)}
                 >
                   <SelectTrigger className="w-full rounded-none">
-                    <SelectValue placeholder="Language" />
+                    <SelectValue placeholder={text.language} />
                   </SelectTrigger>
                   <SelectContent>
                     {LANGUAGE_OPTIONS.map((option) => (
@@ -222,7 +229,7 @@ export default function AccessDialog({ className }: Props) {
               disabled={isSubmitting}
             >
               <SendIcon />
-              <span>{isSubmitting ? "Sending..." : "Send Request"}</span>
+              <span>{isSubmitting ? text.sending : text.send}</span>
             </Button>
           </div>
         </form>

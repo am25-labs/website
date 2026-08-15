@@ -3,8 +3,11 @@ import { ChevronLeftIcon } from "lucide-react";
 import GridContainer from "@/components/grids/GridContainer";
 import { BannerPoweredBy } from "@/components/PoweredBy";
 import { Separator } from "@/components/ui/separator";
+import { getCopy } from "@/lib/i18n";
+import { getLocale } from "@/lib/i18n-server";
 
-export default function WorkBackLink() {
+export default async function WorkBackLink() {
+  const copy = getCopy(await getLocale());
   return (
     <GridContainer>
       <div className="col-span-full">
@@ -15,7 +18,7 @@ export default function WorkBackLink() {
             className="mt-8 flex items-center gap-2 text-center font-bold uppercase hover:underline"
           >
             <ChevronLeftIcon size={21} />
-            Back to works
+            {copy.backToWorks}
           </Link>
         </div>
 
@@ -23,7 +26,7 @@ export default function WorkBackLink() {
           <BannerPoweredBy
             logoSrc="/plank-logo-w.svg"
             logoAlt="Plank CMS"
-            label="Powered by Plank CMS"
+            label={copy.poweredByPlank}
             link="https://plank-cms.com"
             mode="dark"
           />

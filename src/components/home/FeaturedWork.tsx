@@ -3,9 +3,13 @@ import { ArrowRightIcon } from "lucide-react";
 import GridContainer from "@/components/grids/GridContainer";
 import { getWorks } from "@/lib/plank/fetch";
 import WorkCard from "@/components/work/WorkCard";
+import { getCopy } from "@/lib/i18n";
+import { getLocale } from "@/lib/i18n-server";
 
 export default async function FeaturedWork() {
-  const { data } = await getWorks({ onlyFeatured: true });
+  const locale = await getLocale();
+  const copy = getCopy(locale);
+  const { data } = await getWorks({ onlyFeatured: true, locale });
   const works = data.slice(0, 4);
 
   return (
@@ -14,13 +18,13 @@ export default async function FeaturedWork() {
         <div className="col-span-full">
           <div className="flex items-center justify-between">
             <h2 className="text-sm font-bold uppercase text-muted-foreground group-data-[variant=yellow]:text-black">
-              Featured work
+              {copy.featuredWork}
             </h2>
             <Link
               href="/brand"
               className="flex items-center text-sm font-bold uppercase text-muted-foreground hover:underline group-data-[variant=yellow]:text-black"
             >
-              OUR BRAND
+              {copy.ourBrand}
               <ArrowRightIcon size={16} className="shrink-0" />
             </Link>
           </div>

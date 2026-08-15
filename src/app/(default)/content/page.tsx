@@ -1,4 +1,4 @@
-import { baseMetadata } from "@/lib/metadata";
+import { getPageMetadata } from "@/lib/metadata";
 import { getContentHub } from "@/lib/plank/fetch";
 import type { Metadata } from "next";
 import GridContainer from "@/components/grids/GridContainer";
@@ -9,27 +9,18 @@ import { Separator } from "@/components/ui/separator";
 import { Card } from "@/components/ui/card";
 import AccessDialog from "@/components/content/AccessDialog";
 import FeaturedCarousel from "@/components/content/FeaturedCarousel";
+import { getCopy } from "@/lib/i18n";
+import { getLocale } from "@/lib/i18n-server";
 
 const baseUrl = process.env.BASE_URL;
 const pageTitle = "Content Hub";
 
-export function generateMetadata(): Metadata {
-  return {
-    ...baseMetadata,
-    title: `${pageTitle} - AM25`,
-    description: "A single source of truth for the content behind your work.",
-    openGraph: {
-      ...baseMetadata.openGraph,
-      title: `${pageTitle} - AM25`,
-      description: "A single source of truth for the content behind your work.",
-      url: `${baseUrl}/content`,
-    },
-    twitter: {
-      ...baseMetadata.twitter,
-      title: `${pageTitle} - AM25`,
-      description: "A single source of truth for the content behind your work.",
-    },
-  };
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const description = locale === "es"
+    ? "Una fuente única de verdad para el contenido detrás de tu trabajo."
+    : "A single source of truth for the content behind your work.";
+  return getPageMetadata(locale, pageTitle, "/content", description);
 }
 
 const slides = [
@@ -52,7 +43,9 @@ const slides = [
 ];
 
 export default async function ContentHubPage() {
-  const entry = await getContentHub();
+  const locale = await getLocale();
+  const entry = await getContentHub({ locale });
+  const copy = getCopy(locale);
 
   return (
     <>
@@ -76,7 +69,7 @@ export default async function ContentHubPage() {
         <GridFour>
           <div className="col-span-full mt-4 mb-8 md:my-0">
             <div className="flex md:justify-end">
-              <AccessDialog />
+              <AccessDialog locale={locale} />
             </div>
           </div>
         </GridFour>
@@ -88,7 +81,7 @@ export default async function ContentHubPage() {
         <div className="col-span-full mt-4">
           <FeaturedCarousel slides={slides} />
 
-          <h2 className="my-8 text-lg font-bold uppercase">Why it exists</h2>
+          <h2 className="my-8 text-lg font-bold uppercase">{copy.whyItExists}</h2>
 
           <div className="grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-3">
             {(entry.features ?? []).map((item) => (
@@ -126,7 +119,7 @@ export default async function ContentHubPage() {
             <div className="flex flex-col gap-8">
               <p className="text-muted-foreground">{entry.end_description}</p>
 
-              <AccessDialog className="w-fit" />
+              <AccessDialog className="w-fit" locale={locale} />
             </div>
           </div>
         </GridTwo>

@@ -1,39 +1,19 @@
-"use client";
-
-import { useMemo, useState } from "react";
 import ContentRenderer from "@/components/ContentRenderer";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { formatDate } from "@/lib/utils";
 import { RefreshCwIcon } from "lucide-react";
+import { dateLocale, type Locale } from "@/lib/i18n";
 import type { LegalPage } from "@/types/domain";
 
 interface Props {
   title: string;
-  enPage: LegalPage | null;
-  esPage: LegalPage | null;
+  page: LegalPage;
+  locale: Locale;
 }
 
-type Locale = "en" | "es";
-
-export default function LocalizedLegalTabs({ title, enPage, esPage }: Props) {
-  const initialLocale: Locale = enPage ? "en" : "es";
-  const [locale, setLocale] = useState<Locale>(initialLocale);
-
-  const activePage = useMemo(() => {
-    if (locale === "en") {
-      return enPage ?? esPage;
-    }
-
-    return esPage ?? enPage;
-  }, [locale, enPage, esPage]);
-
-  if (!activePage) {
-    return null;
-  }
-
-  const date = activePage.date
-    ? formatDate(activePage.date, {
-        locale: locale === "es" ? "es-SV" : "en-US",
+export default function LocalizedLegalTabs({ title, page, locale }: Props) {
+  const date = page.date
+    ? formatDate(page.date, {
+        locale: dateLocale(locale),
       })
     : null;
 
@@ -58,23 +38,9 @@ export default function LocalizedLegalTabs({ title, enPage, esPage }: Props) {
 
       <section className="col-span-2 md:col-span-4">
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          <Tabs
-            value={locale}
-            onValueChange={(next) => setLocale(next as Locale)}
-          >
-            <TabsList>
-              <TabsTrigger value="en" disabled={!enPage}>
-                EN
-              </TabsTrigger>
-              <TabsTrigger value="es" disabled={!esPage}>
-                ES
-              </TabsTrigger>
-            </TabsList>
-          </Tabs>
-
           <div className="col-span-full">
-            {activePage.content && (
-              <ContentRenderer content={activePage.content} />
+            {page.content && (
+              <ContentRenderer content={page.content} />
             )}
           </div>
         </div>

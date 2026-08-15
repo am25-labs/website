@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
-import { baseMetadata } from "@/lib/metadata";
+import { getBaseMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import LocalizedNoteTabs from "@/components/notes/LocalizedNoteTabs";
 import { getNotes, getSingleNote } from "@/lib/plank/fetch";
 import PageContainer from "@/components/PageContainer";
+import { getLocale } from "@/lib/i18n-server";
 
 const baseUrl = process.env.BASE_URL;
 
@@ -12,7 +13,7 @@ interface NotePageProps {
 }
 
 export async function generateStaticParams() {
-  const { data: notes } = await getNotes();
+  const { data: notes } = await getNotes({ locale: "en" });
   return notes.map((note) => ({ slug: note.slug }));
 }
 
@@ -20,12 +21,9 @@ export async function generateMetadata({
   params,
 }: NotePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const [enNote, esNote] = await Promise.all([
-    getSingleNote(slug),
-    getSingleNote(slug, { locale: "es" }),
-  ]);
-
-  const noteForMeta = enNote ?? esNote;
+  const locale = await getLocale();
+  const baseMetadata = getBaseMetadata(locale);
+  const noteForMeta = await getSingleNote(slug, { locale });
 
   if (!noteForMeta) {
     return baseMetadata;
@@ -54,18 +52,16 @@ export async function generateMetadata({
 
 export default async function NotePage({ params }: NotePageProps) {
   const { slug } = await params;
-  const [enNote, esNote] = await Promise.all([
-    getSingleNote(slug),
-    getSingleNote(slug, { locale: "es" }),
-  ]);
+  const locale = await getLocale();
+  const note = await getSingleNote(slug, { locale });
 
-  if (!enNote && !esNote) {
+  if (!note) {
     notFound();
   }
 
   return (
     <PageContainer>
-      <LocalizedNoteTabs enNote={enNote} esNote={esNote} />
+      <LocalizedNoteTabs note={note} locale={locale} />
     </PageContainer>
   );
 }

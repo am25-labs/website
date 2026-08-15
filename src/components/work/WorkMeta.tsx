@@ -2,6 +2,7 @@ import type { Work } from "@/types/domain";
 import GridContainer from "@/components/grids/GridContainer";
 import GridFour from "@/components/grids/GridFour";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { getLocale } from "@/lib/i18n-server";
 
 interface WorkMetaProps {
   client?: Work["client"];
@@ -20,7 +21,7 @@ interface WorkMetaProps {
   disciplines?: Work["disciplines"] | string | null;
 }
 
-export default function WorkMeta({
+export default async function WorkMeta({
   client,
   campaign,
   country,
@@ -36,22 +37,26 @@ export default function WorkMeta({
   work_team,
   disciplines,
 }: WorkMetaProps) {
+  const locale = await getLocale();
+  const labels = locale === "es"
+    ? ["Cliente", "Campaña", "País", "Creatividad", "Estrategia", "Liderazgo", "Diseño", "Copy", "Ilustración", "Animación", "Foto", "Desarrollo", "Equipo", "Disciplinas"]
+    : ["Client", "Campaign", "Country", "Creative", "Strategy", "Lead", "Design", "Copy", "Illustration", "Animation", "Photo", "Develop", "Team", "Disciplines"];
   const items = [
-    { label: "Client", value: client },
-    { label: "Campaign", value: campaign },
-    { label: "Country", value: country },
-    { label: "Creative", value: creative },
-    { label: "Strategy", value: strategy },
-    { label: "Lead", value: lead_design },
-    { label: "Design", value: design },
-    { label: "Copy", value: copy },
-    { label: "Illustration", value: illustration },
-    { label: "Animation", value: animation },
-    { label: "Photo", value: photo },
-    { label: "Develop", value: develop },
-    { label: "Team", value: work_team },
+    { label: labels[0], value: client },
+    { label: labels[1], value: campaign },
+    { label: labels[2], value: country },
+    { label: labels[3], value: creative },
+    { label: labels[4], value: strategy },
+    { label: labels[5], value: lead_design },
+    { label: labels[6], value: design },
+    { label: labels[7], value: copy },
+    { label: labels[8], value: illustration },
+    { label: labels[9], value: animation },
+    { label: labels[10], value: photo },
+    { label: labels[11], value: develop },
+    { label: labels[12], value: work_team },
     {
-      label: "Disciplines",
+      label: labels[13],
       value: Array.isArray(disciplines)
         ? disciplines.map((d) => d.title).join(", ")
         : disciplines,

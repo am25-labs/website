@@ -4,9 +4,11 @@ import RecentEntries from "@/components/home/RecentEntries";
 import Services from "@/components/home/Services";
 import { getHome } from "@/lib/plank/fetch";
 import { Separator } from "@/components/ui/separator";
+import { getLocale } from "@/lib/i18n-server";
 
 export default async function HomePage() {
-  const { heading, description, services } = await getHome();
+  const locale = await getLocale();
+  const { heading, description, services } = await getHome({ locale });
 
   return (
     <>
@@ -15,7 +17,7 @@ export default async function HomePage() {
 
       <FeaturedWork />
 
-      <Services services={services} />
+      <Services services={services} locale={locale} />
 
       <RecentEntries />
     </>

@@ -1,11 +1,12 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { baseMetadata } from "@/lib/metadata";
+import { getBaseMetadata } from "@/lib/metadata";
 import { getSingleWork, getWorks } from "@/lib/plank/fetch";
 import WorkBackLink from "@/components/work/WorkBackLink";
 import WorkGallery from "@/components/work/WorkGallery";
 import WorkHeader from "@/components/work/WorkHeader";
 import WorkMeta from "@/components/work/WorkMeta";
+import { getLocale } from "@/lib/i18n-server";
 
 const baseUrl = process.env.BASE_URL;
 
@@ -14,7 +15,7 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  const { data: works } = await getWorks();
+  const { data: works } = await getWorks({ locale: "en" });
   return works.map((work) => ({ slug: work.slug }));
 }
 
@@ -22,7 +23,9 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const work = await getSingleWork(slug);
+  const locale = await getLocale();
+  const baseMetadata = getBaseMetadata(locale);
+  const work = await getSingleWork(slug, { locale });
 
   if (!work) {
     return baseMetadata;

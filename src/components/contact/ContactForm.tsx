@@ -27,6 +27,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { emailRegex, nameRegex } from "@/lib/validation";
 import type { ContactFormMode } from "@/types/domain";
+import type { Locale } from "@/lib/i18n";
 
 const LANGUAGE_OPTIONS = ["Spanish", "English"];
 const SUBJECT_OPTIONS = [
@@ -44,6 +45,7 @@ const SERVICE_OPTIONS = [
 
 interface ContactFormProps {
   mode: ContactFormMode;
+  locale: Locale;
 }
 
 interface FormState {
@@ -66,7 +68,7 @@ function getInitialState(): FormState {
   };
 }
 
-export default function ContactForm({ mode }: ContactFormProps) {
+export default function ContactForm({ mode, locale }: ContactFormProps) {
   const [form, setForm] = useState<FormState>(getInitialState);
   const [captchaToken, setCaptchaToken] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -77,12 +79,19 @@ export default function ContactForm({ mode }: ContactFormProps) {
 
   const isGeneral = mode === "general";
   const endpoint = isGeneral ? "/api/contact/general" : "/api/contact/services";
-  const title = isGeneral ? "Choose a subject" : "Choose a service";
+  const text = locale === "es" ? {
+    contact: "¿Cómo puedo contactarte?", contactDescription: "Para responder tus preguntas necesitamos poder contactarte", fullName: "Nombre completo", language: "Idioma", chooseSubject: "Elige un asunto", chooseService: "Elige un servicio", subjectDescription: "El motivo principal de tu mensaje:", serviceDescription: "El servicio principal que te interesa:", subject: "Asunto", service: "Servicio", message: "Escribe tu mensaje aquí", privacy: "He leído y acepto la", privacyLink: "Política de privacidad", sending: "Enviando...", send: "Enviar", cancel: "Cancelar",
+  } : {
+    contact: "How can I contact you?", contactDescription: "To answer your questions, we need to be able to contact you", fullName: "Full Name", language: "Language", chooseSubject: "Choose a subject", chooseService: "Choose a service", subjectDescription: "The main reason for your message:", serviceDescription: "The main service that interests you:", subject: "Subject", service: "Service", message: "Type your message here", privacy: "I have read and agree to the", privacyLink: "Privacy Policy", sending: "Sending...", send: "Send", cancel: "Cancel",
+  };
+  const title = isGeneral ? text.chooseSubject : text.chooseService;
   const description = isGeneral
-    ? "The main reason for your message:"
-    : "The main service that interests you:";
-  const placeholder = isGeneral ? "Subject" : "Service";
-  const options = isGeneral ? SUBJECT_OPTIONS : SERVICE_OPTIONS;
+    ? text.subjectDescription
+    : text.serviceDescription;
+  const placeholder = isGeneral ? text.subject : text.service;
+  const options = isGeneral
+    ? locale === "es" ? ["Consulta general", "Soporte técnico", "Colaboración", "Otro mensaje"] : SUBJECT_OPTIONS
+    : locale === "es" ? ["Diseño gráfico", "Web/Desarrollo", "Multimedia", "Fuera de nuestro alcance"] : SERVICE_OPTIONS;
 
   function updateField<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((current) => ({ ...current, [key]: value }));
@@ -183,10 +192,10 @@ export default function ContactForm({ mode }: ContactFormProps) {
           <FieldSet>
             <div className="flex flex-col gap-2">
               <FieldLegend className="mb-0 font-bold uppercase">
-                How can I contact you?
+                {text.contact}
               </FieldLegend>
               <FieldDescription>
-                To answer your questions, we need to be able to contact:
+                {text.contactDescription}
               </FieldDescription>
             </div>
 
@@ -194,7 +203,7 @@ export default function ContactForm({ mode }: ContactFormProps) {
               <Field className="-mb-3">
                 <Input
                   name="name"
-                  placeholder="Full Name"
+                  placeholder={text.fullName}
                   className="rounded-none group-data-[variant=yellow]:bg-input/10 group-data-[variant=yellow]:text-black group-data-[variant=yellow]:placeholder:text-black"
                   autoComplete="name"
                   value={form.name}
@@ -221,7 +230,7 @@ export default function ContactForm({ mode }: ContactFormProps) {
                     onValueChange={(value) => updateField("language", value)}
                   >
                     <SelectTrigger className="w-full rounded-none group-data-[variant=yellow]:bg-input/10 group-data-[variant=yellow]:text-black group-data-[variant=yellow]:data-placeholder:text-black">
-                      <SelectValue placeholder="Language" />
+                    <SelectValue placeholder={text.language} />
                     </SelectTrigger>
                     <SelectContent className="group-data-[variant=yellow]:[--popover:oklch(0.145_0_0)] group-data-[variant=yellow]:[--popover-foreground:oklch(0.985_0_0)] group-data-[variant=yellow]:[--accent:oklch(0.269_0_0)] group-data-[variant=yellow]:[--accent-foreground:oklch(0.985_0_0)]">
                       {LANGUAGE_OPTIONS.map((option) => (
@@ -268,7 +277,7 @@ export default function ContactForm({ mode }: ContactFormProps) {
               <Field>
                 <Textarea
                   name="message"
-                  placeholder="Type your message here"
+                  placeholder={text.message}
                   className="rounded-none group-data-[variant=yellow]:bg-input/10 group-data-[variant=yellow]:text-black group-data-[variant=yellow]:placeholder:text-black"
                   value={form.message}
                   onChange={(event) => updateField("message", event.target.value)}
@@ -285,14 +294,14 @@ export default function ContactForm({ mode }: ContactFormProps) {
                   }
                 />
                 <FieldLabel className="flex-wrap gap-1.5 text-xs group-data-[variant=yellow]:text-black">
-                  I have read and agree to the
+                  {text.privacy}
                   <Link
                     href="/privacy"
                     target="_blank"
                     rel="noopener"
                     className="inline-flex items-center hover:font-bold"
                   >
-                    Privacy Policy
+                    {text.privacyLink}
                     <ArrowUpRightIcon size={16} className="shrink-0" />
                   </Link>
                 </FieldLabel>
@@ -324,7 +333,7 @@ export default function ContactForm({ mode }: ContactFormProps) {
             disabled={isSubmitting}
           >
             <SendIcon />
-            <span>{isSubmitting ? "Sending..." : "Send"}</span>
+            <span>{isSubmitting ? text.sending : text.send}</span>
           </Button>
           <Button
             type="button"
@@ -334,7 +343,7 @@ export default function ContactForm({ mode }: ContactFormProps) {
             onClick={resetForm}
             disabled={isSubmitting}
           >
-            Cancel
+            {text.cancel}
           </Button>
         </div>
       </Card>

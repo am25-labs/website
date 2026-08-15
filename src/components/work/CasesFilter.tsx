@@ -4,12 +4,14 @@ import ContentFilter from "@/components/ContentFilter";
 import GridContainer from "@/components/grids/GridContainer";
 import type { Discipline, Work } from "@/types/domain";
 import WorkCard from "./WorkCard";
+import type { Locale } from "@/lib/i18n";
 
 interface CasesFilterProps {
   works: Work[];
+  locale: Locale;
 }
 
-export default function CasesFilter({ works }: CasesFilterProps) {
+export default function CasesFilter({ works, locale }: CasesFilterProps) {
   const disciplines: Discipline[] = Array.from(
     new Map(
       works
@@ -26,6 +28,7 @@ export default function CasesFilter({ works }: CasesFilterProps) {
         value: discipline.slug,
       }))}
       items={works}
+      allLabel={locale === "es" ? "Todo" : "All"}
       matches={(work, active) =>
         active === null ||
         work.disciplines.some((discipline) => discipline.slug === active)

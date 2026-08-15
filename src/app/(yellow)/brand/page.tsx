@@ -3,8 +3,10 @@ import GridFour from "@/components/grids/GridFour";
 import GridSix from "@/components/grids/GridSix";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { baseMetadata } from "@/lib/metadata";
+import { getPageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
+import { getCopy } from "@/lib/i18n";
+import { getLocale } from "@/lib/i18n-server";
 
 const baseUrl = process.env.BASE_URL;
 const pageTitle = "Our brand";
@@ -32,20 +34,9 @@ const rules = [
   },
 ] as const;
 
-export function generateMetadata(): Metadata {
-  return {
-    ...baseMetadata,
-    title: `${pageTitle} - AM25`,
-    openGraph: {
-      ...baseMetadata.openGraph,
-      title: `${pageTitle} - AM25`,
-      url: `${baseUrl}/brand`,
-    },
-    twitter: {
-      ...baseMetadata.twitter,
-      title: `${pageTitle} - AM25`,
-    },
-  };
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  return getPageMetadata(locale, getCopy(locale).ourBrandPage, "/brand");
 }
 
 export default function BrandPage() {

@@ -7,13 +7,16 @@ import BrandIcon from "@/components/BrandIcon";
 import type { HeaderSocialItem } from "@/lib/navigation/header-social-items";
 import type { NavigationItem } from "@/types/domain";
 import { cn } from "@/lib/utils";
+import LocaleSwitch from "@/components/LocaleSwitch";
+import type { Locale } from "@/lib/i18n";
 
 interface MobileMenuProps {
   items: NavigationItem[];
   socialItems: HeaderSocialItem[];
+  locale: Locale;
 }
 
-export default function MobileMenu({ items, socialItems }: MobileMenuProps) {
+export default function MobileMenu({ items, socialItems, locale }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -88,6 +91,10 @@ export default function MobileMenu({ items, socialItems }: MobileMenuProps) {
             );
           })}
         </ul>
+
+        <div className="-mx-1 mt-1 border-t px-3 py-2">
+          <LocaleSwitch locale={locale} />
+        </div>
       </div>
     </div>
   );

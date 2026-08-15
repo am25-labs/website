@@ -1,6 +1,7 @@
 import type { SimpleIcon } from "simple-icons";
 import type { Author } from "./index";
 import type { CustomIcon } from "@/icons/custom";
+import type { Locale } from "@/lib/i18n";
 
 export type BrandIconData = SimpleIcon | CustomIcon;
 
@@ -43,6 +44,7 @@ export interface NoteCardProps {
   category: string;
   publishedAt?: string;
   author?: Author | null;
+  locale?: Locale;
 }
 
 // Tiles
