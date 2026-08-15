@@ -12,8 +12,8 @@ export default async function Footer() {
       <Separator />
 
       <footer className="mx-auto w-full max-w-8xl px-4 pt-32 pb-8">
-        <div className="flex flex-col items-center gap-12">
-          <h2 className="text-center text-3xl font-bold uppercase">
+        <div className="flex flex-col md:items-center gap-12">
+          <h2 className="md:text-center text-3xl font-bold uppercase">
             {footer.claim}
           </h2>
 
