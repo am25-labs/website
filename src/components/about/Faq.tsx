@@ -3,15 +3,14 @@ import GridFour from "@/components/grids/GridFour";
 import GridTwo from "@/components/grids/GridTwo";
 import { AccordionWrap } from "@/components/ui/custom/Accordion";
 import type { FaqItem } from "@/types/domain";
-import { getCopy } from "@/lib/i18n";
-import { getLocale } from "@/lib/i18n-server";
+import { getCopy, type Locale } from "@/lib/i18n";
 
 interface FaqProps {
   items: FaqItem[];
 }
 
-export default async function AboutFaq({ items }: FaqProps) {
-  const copy = getCopy(await getLocale());
+export default function AboutFaq({ items, locale }: FaqProps & { locale: Locale }) {
+  const copy = getCopy(locale);
   const accordionItems = items.map((item) => ({
     label: item.label,
     content: item.description,

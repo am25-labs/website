@@ -5,16 +5,15 @@ import { getMainNav } from "@/lib/plank/fetch";
 import { headerSocialItems } from "@/lib/navigation/header-social-items";
 import MobileMenu from "@/components/MobileMenu";
 import LocaleSwitch from "@/components/LocaleSwitch";
-import { getLocale } from "@/lib/i18n-server";
+import { withLocale, type Locale } from "@/lib/i18n";
 
-export default async function Header() {
-  const locale = await getLocale();
+export default async function Header({ locale }: { locale: Locale }) {
   const mainNav = await getMainNav({ locale });
 
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50 mx-auto flex w-full max-w-8xl items-center justify-between bg-black p-4 group-data-[variant=yellow]:bg-am-y group-data-[variant=light]:bg-white">
-        <Link href="/">
+        <Link href={withLocale(locale, "/")}>
           <img
             src="/am25-logo.svg"
             alt="AM25 Logo"
@@ -35,7 +34,7 @@ export default async function Header() {
               return (
                 <li key={item.href}>
                   <Link
-                    href={item.href}
+                    href={withLocale(locale, item.href)}
                     target={isExternal ? "_blank" : undefined}
                     rel={isExternal ? "noopener" : undefined}
                     className="flex items-center uppercase hover:underline"

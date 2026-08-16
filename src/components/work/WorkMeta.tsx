@@ -2,7 +2,7 @@ import type { Work } from "@/types/domain";
 import GridContainer from "@/components/grids/GridContainer";
 import GridFour from "@/components/grids/GridFour";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
-import { getLocale } from "@/lib/i18n-server";
+import type { Locale } from "@/lib/i18n";
 
 interface WorkMetaProps {
   client?: Work["client"];
@@ -21,7 +21,7 @@ interface WorkMetaProps {
   disciplines?: Work["disciplines"] | string | null;
 }
 
-export default async function WorkMeta({
+export default function WorkMeta({
   client,
   campaign,
   country,
@@ -36,8 +36,8 @@ export default async function WorkMeta({
   develop,
   work_team,
   disciplines,
-}: WorkMetaProps) {
-  const locale = await getLocale();
+  locale,
+}: WorkMetaProps & { locale: Locale }) {
   const labels = locale === "es"
     ? ["Cliente", "Campaña", "País", "Creatividad", "Estrategia", "Liderazgo", "Diseño", "Copy", "Ilustración", "Animación", "Foto", "Desarrollo", "Equipo", "Disciplinas"]
     : ["Client", "Campaign", "Country", "Creative", "Strategy", "Lead", "Design", "Copy", "Illustration", "Animation", "Photo", "Develop", "Team", "Disciplines"];

@@ -27,7 +27,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { emailRegex, nameRegex } from "@/lib/validation";
 import type { ContactFormMode } from "@/types/domain";
-import type { Locale } from "@/lib/i18n";
+import { withLocale, type Locale } from "@/lib/i18n";
 
 const LANGUAGE_OPTIONS = ["Spanish", "English"];
 const SUBJECT_OPTIONS = [
@@ -296,7 +296,7 @@ export default function ContactForm({ mode, locale }: ContactFormProps) {
                 <FieldLabel className="flex-wrap gap-1.5 text-xs group-data-[variant=yellow]:text-black">
                   {text.privacy}
                   <Link
-                    href="/privacy"
+                    href={withLocale(locale, "/privacy")}
                     target="_blank"
                     rel="noopener"
                     className="inline-flex items-center hover:font-bold"

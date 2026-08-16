@@ -3,11 +3,9 @@ import { ArrowRightIcon } from "lucide-react";
 import GridContainer from "@/components/grids/GridContainer";
 import { getWorks } from "@/lib/plank/fetch";
 import WorkCard from "@/components/work/WorkCard";
-import { getCopy } from "@/lib/i18n";
-import { getLocale } from "@/lib/i18n-server";
+import { getCopy, withLocale, type Locale } from "@/lib/i18n";
 
-export default async function FeaturedWork() {
-  const locale = await getLocale();
+export default async function FeaturedWork({ locale }: { locale: Locale }) {
   const copy = getCopy(locale);
   const { data } = await getWorks({ onlyFeatured: true, locale });
   const works = data.slice(0, 4);
@@ -21,7 +19,7 @@ export default async function FeaturedWork() {
               {copy.featuredWork}
             </h2>
             <Link
-              href="/brand"
+              href={withLocale(locale, "/brand")}
               className="flex items-center text-sm font-bold uppercase text-muted-foreground hover:underline group-data-[variant=yellow]:text-black"
             >
               {copy.ourBrand}
@@ -37,7 +35,7 @@ export default async function FeaturedWork() {
             <WorkCard
               cover={work.cover?.url ?? null}
               title={work.title}
-              href={`/cases/${work.slug}`}
+              href={withLocale(locale, `/cases/${work.slug}`)}
               category={work.disciplines
                 .map((discipline) => discipline.title)
                 .join(", ")}

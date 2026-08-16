@@ -1,7 +1,7 @@
 "use client";
 
-import { useTransition } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import type { Locale } from "@/lib/i18n";
 
 interface Props {
@@ -9,30 +9,17 @@ interface Props {
 }
 
 export default function LocaleSwitch({ locale }: Props) {
-  const router = useRouter();
-  const [pending, startTransition] = useTransition();
+  const pathname = usePathname();
   const next = locale === "en" ? "es" : "en";
-
-  function change() {
-    startTransition(async () => {
-      await fetch("/api/locale", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ locale: next }),
-      });
-      router.refresh();
-    });
-  }
+  const href = pathname.replace(/^\/(en|es)(?=\/|$)/, `/${next}`);
 
   return (
-    <button
-      type="button"
-      onClick={change}
-      disabled={pending}
-      className="text-sm uppercase hover:underline disabled:opacity-50"
+    <Link
+      href={href}
+      className="text-sm uppercase hover:underline"
       aria-label={locale === "en" ? "Cambiar a español" : "Switch to English"}
     >
       {next.toUpperCase()}
-    </button>
+    </Link>
   );
 }

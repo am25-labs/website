@@ -3,18 +3,17 @@ import { ChevronLeftIcon } from "lucide-react";
 import GridContainer from "@/components/grids/GridContainer";
 import { BannerPoweredBy } from "@/components/PoweredBy";
 import { Separator } from "@/components/ui/separator";
-import { getCopy } from "@/lib/i18n";
-import { getLocale } from "@/lib/i18n-server";
+import { getCopy, withLocale, type Locale } from "@/lib/i18n";
 
-export default async function WorkBackLink() {
-  const copy = getCopy(await getLocale());
+export default function WorkBackLink({ locale }: { locale: Locale }) {
+  const copy = getCopy(locale);
   return (
     <GridContainer>
       <div className="col-span-full">
         <div className="flex flex-col items-center py-16">
           <Separator />
           <Link
-            href="/cases"
+            href={withLocale(locale, "/cases")}
             className="mt-8 flex items-center gap-2 text-center font-bold uppercase hover:underline"
           >
             <ChevronLeftIcon size={21} />

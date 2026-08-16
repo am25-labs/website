@@ -17,6 +17,22 @@ export function pageTitle(title: string) {
   return `${title} - AM25`;
 }
 
+export function withLocale(locale: Locale, href: string) {
+  if (href.startsWith("http")) {
+    return href;
+  }
+
+  const path = href.startsWith("/") ? href : `/${href}`;
+  return path === "/" ? `/${locale}` : `/${locale}${path}`;
+}
+
+export async function getRouteLocale(
+  params: Promise<{ locale: string }>,
+): Promise<Locale> {
+  const { locale } = await params;
+  return isLocale(locale) ? locale : defaultLocale;
+}
+
 const copy = {
   en: {
     all: "All",

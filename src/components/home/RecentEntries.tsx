@@ -3,11 +3,9 @@ import { ArrowRightIcon } from "lucide-react";
 import GridContainer from "@/components/grids/GridContainer";
 import { getNotes } from "@/lib/plank/fetch";
 import NoteCard from "@/components/notes/NoteCard";
-import { getCopy } from "@/lib/i18n";
-import { getLocale } from "@/lib/i18n-server";
+import { getCopy, withLocale, type Locale } from "@/lib/i18n";
 
-export default async function RecentEntries() {
-  const locale = await getLocale();
+export default async function RecentEntries({ locale }: { locale: Locale }) {
   const copy = getCopy(locale);
   const { data: notes } = await getNotes({ locale });
   const entries = (notes ?? []).slice(0, 4).map((note) => ({
@@ -29,7 +27,7 @@ export default async function RecentEntries() {
               {copy.recentEntries}
             </h2>
             <Link
-              href="/notes"
+              href={withLocale(locale, "/notes")}
               className="flex items-center text-sm font-bold uppercase text-muted-foreground hover:underline group-data-[variant=yellow]:text-black"
             >
               {copy.viewAll}
@@ -45,7 +43,7 @@ export default async function RecentEntries() {
             <NoteCard
               cover={entry.cover}
               title={entry.title}
-              href={`/notes/${entry.slug}`}
+              href={withLocale(locale, `/notes/${entry.slug}`)}
               category={entry.categories
                 .map((category) => category.title)
                 .join(", ")}

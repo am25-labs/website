@@ -2,10 +2,9 @@ import Link from "next/link";
 import { ArrowUpRightIcon } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { getFooter, getFooterNav } from "@/lib/plank/fetch";
-import { getLocale } from "@/lib/i18n-server";
+import { withLocale, type Locale } from "@/lib/i18n";
 
-export default async function Footer() {
-  const locale = await getLocale();
+export default async function Footer({ locale }: { locale: Locale }) {
   const [nav, footer] = await Promise.all([
     getFooterNav({ locale }),
     getFooter({ locale }),
@@ -29,7 +28,7 @@ export default async function Footer() {
                 return (
                   <li key={item.href}>
                     <Link
-                      href={item.href}
+                      href={withLocale(locale, item.href)}
                       target={isExternal ? "_blank" : undefined}
                       rel={isExternal ? "noopener" : undefined}
                       className="flex items-center text-sm uppercase hover:underline md:text-base"
@@ -45,7 +44,7 @@ export default async function Footer() {
             </ul>
           </nav>
 
-          <Link href="/">
+          <Link href={withLocale(locale, "/")}>
             <img
               src="/am25-logo.svg"
               alt="AM25 Logo"

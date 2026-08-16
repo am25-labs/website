@@ -4,7 +4,7 @@ import ContentRenderer from "@/components/ContentRenderer";
 import { BannerPoweredBy } from "@/components/PoweredBy";
 import { Separator } from "@/components/ui/separator";
 import { formatDate } from "@/lib/utils";
-import { dateLocale, getCopy, type Locale } from "@/lib/i18n";
+import { dateLocale, getCopy, withLocale, type Locale } from "@/lib/i18n";
 import type { Note } from "@/types/domain";
 
 interface LocalizedNoteTabsProps {
@@ -75,7 +75,7 @@ export default function LocalizedNoteTabs({
             <div className="flex flex-col items-center py-16">
               <Separator />
               <Link
-                href="/notes"
+                href={withLocale(locale, "/notes")}
                 className="mt-8 flex items-center gap-2 text-center font-bold uppercase hover:underline"
               >
                 <ChevronLeftIcon size={21} />

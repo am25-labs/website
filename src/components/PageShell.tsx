@@ -1,17 +1,20 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import type { Locale } from "@/lib/i18n";
 
 type Variant = "default" | "yellow" | "light";
 
 interface PageShellProps {
   children: React.ReactNode;
   variant?: Variant;
+  locale: Locale;
 }
 
 export default function PageShell({
   children,
   variant = "default",
+  locale,
 }: PageShellProps) {
   return (
     <TooltipProvider>
@@ -19,9 +22,9 @@ export default function PageShell({
         data-variant={variant}
         className="group min-h-screen flex flex-col bg-background text-foreground"
       >
-        <Header />
+        <Header locale={locale} />
         <main className="w-full flex-1">{children}</main>
-        <Footer />
+        <Footer locale={locale} />
       </div>
     </TooltipProvider>
   );

@@ -7,7 +7,7 @@ import WorkGallery from "@/components/work/WorkGallery";
 import WorkHeader from "@/components/work/WorkHeader";
 import WorkMeta from "@/components/work/WorkMeta";
 import { getPreviewNote, getPreviewWork } from "./fetch";
-import { getLocale } from "@/lib/i18n-server";
+import { defaultLocale } from "@/lib/i18n";
 
 async function renderWorkDraftPreview(slug: string) {
   const result = await getPreviewWork(slug).catch(() => null);
@@ -18,7 +18,7 @@ async function renderWorkDraftPreview(slug: string) {
   }
 
   return (
-    <PageShell>
+    <PageShell locale={defaultLocale}>
       <PreviewAutoRefresh contentType="works" slug={slug} />
 
       <WorkHeader
@@ -27,7 +27,7 @@ async function renderWorkDraftPreview(slug: string) {
         description={work.description}
       />
 
-      <WorkMeta
+      <WorkMeta locale={defaultLocale}
         client={work.client}
         campaign={work.campaign}
         country={work.country}
@@ -46,13 +46,13 @@ async function renderWorkDraftPreview(slug: string) {
 
       <WorkGallery images={work.images_before} />
       <WorkGallery quote={work.quote} images={work.images_after} />
-      <WorkBackLink />
+      <WorkBackLink locale={defaultLocale} />
     </PageShell>
   );
 }
 
 async function renderNoteDraftPreview(slug: string) {
-  const locale = await getLocale();
+  const locale = defaultLocale;
   const note = await getPreviewNote(slug, { locale })
     .then((result) => result.data[0] ?? null)
     .catch(() => null);
@@ -62,7 +62,7 @@ async function renderNoteDraftPreview(slug: string) {
   }
 
   return (
-    <PageShell>
+    <PageShell locale={locale}>
       <PreviewAutoRefresh contentType="notes" slug={slug} />
       <LocalizedNoteTabs note={note} locale={locale} />
     </PageShell>

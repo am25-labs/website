@@ -7,6 +7,7 @@ import BrandIcon from "@/components/BrandIcon";
 import type { HeaderSocialItem } from "@/lib/navigation/header-social-items";
 import type { NavigationItem } from "@/types/domain";
 import { cn } from "@/lib/utils";
+import { withLocale } from "@/lib/i18n";
 import LocaleSwitch from "@/components/LocaleSwitch";
 import type { Locale } from "@/lib/i18n";
 
@@ -59,7 +60,7 @@ export default function MobileMenu({ items, socialItems, locale }: MobileMenuPro
             return (
               <li key={item.href}>
                 <Link
-                  href={item.href}
+                  href={withLocale(locale, item.href)}
                   target={isExternal ? "_blank" : undefined}
                   rel={isExternal ? "noopener" : undefined}
                   className="flex items-center gap-2 px-3 py-2 text-base uppercase hover:bg-accent hover:text-accent-foreground"
