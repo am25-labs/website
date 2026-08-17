@@ -12,7 +12,7 @@ export default function ContactLinks({ email }: ContactLinksProps) {
         href="https://wa.me/message/ZW5NRUU3HCGUO1"
         target="_blank"
         rel="noopener"
-        className="flex w-fit items-center text-lg text-neutral-500 hover:underline group-data-[variant=yellow]:text-black md:text-xl"
+        className="flex w-fit items-center text-lg text-neutral-400 hover:underline group-data-[variant=yellow]:text-black md:text-xl"
       >
         WhatsApp
         <ArrowUpRightIcon size={24} className="shrink-0" />
@@ -21,7 +21,7 @@ export default function ContactLinks({ email }: ContactLinksProps) {
         href={`mailto:${email}`}
         target="_blank"
         rel="noopener"
-        className="flex w-fit items-center text-lg text-neutral-500 hover:underline group-data-[variant=yellow]:text-black md:text-xl"
+        className="flex w-fit items-center text-lg text-neutral-400 hover:underline group-data-[variant=yellow]:text-black md:text-xl"
       >
         Email
         <ArrowUpRightIcon size={24} className="shrink-0" />
@@ -30,7 +30,7 @@ export default function ContactLinks({ email }: ContactLinksProps) {
         href="https://www.instagram.com/am25work"
         target="_blank"
         rel="noopener"
-        className="mt-8 flex w-fit items-center text-lg text-neutral-500 hover:underline group-data-[variant=yellow]:text-black md:text-xl"
+        className="mt-8 flex w-fit items-center text-lg text-neutral-400 hover:underline group-data-[variant=yellow]:text-black md:text-xl"
       >
         Instagram
         <ArrowUpRightIcon size={24} className="shrink-0" />
