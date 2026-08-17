@@ -23,7 +23,11 @@ interface NotesFilterProps {
   locale: Locale;
 }
 
-export default function NotesFilter({ entries, baseHref, locale }: NotesFilterProps) {
+export default function NotesFilter({
+  entries,
+  baseHref,
+  locale,
+}: NotesFilterProps) {
   const categories = useMemo(
     () =>
       Array.from(

@@ -79,7 +79,8 @@ export default function NoteCard({
                 </div>
                 {author.job_title ? (
                   <div className="text-xs text-muted-foreground">
-                    {author.job_title} {locale === "es" ? "en" : "at"} {author.organization}
+                    {author.job_title} {locale === "es" ? "en" : "at"}{" "}
+                    {author.organization}
                   </div>
                 ) : null}
               </div>

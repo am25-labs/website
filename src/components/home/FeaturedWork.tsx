@@ -15,15 +15,15 @@ export default async function FeaturedWork({ locale }: { locale: Locale }) {
       <GridContainer>
         <div className="col-span-full">
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-bold uppercase text-muted-foreground group-data-[variant=yellow]:text-black">
+            <h2 className="font-bold uppercase text-muted-foreground group-data-[variant=yellow]:text-black">
               {copy.featuredWork}
             </h2>
             <Link
               href={withLocale(locale, "/brand")}
-              className="flex items-center text-sm font-bold uppercase text-muted-foreground hover:underline group-data-[variant=yellow]:text-black"
+              className="flex items-center font-bold uppercase text-muted-foreground hover:underline group-data-[variant=yellow]:text-black"
             >
               {copy.ourBrand}
-              <ArrowRightIcon size={16} className="shrink-0" />
+              <ArrowRightIcon size={20} className="shrink-0" />
             </Link>
           </div>
         </div>

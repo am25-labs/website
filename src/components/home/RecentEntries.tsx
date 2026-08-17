@@ -23,15 +23,15 @@ export default async function RecentEntries({ locale }: { locale: Locale }) {
       <GridContainer className="mb-0">
         <div className="col-span-full">
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-bold uppercase text-muted-foreground group-data-[variant=yellow]:text-black">
+            <h2 className="font-bold uppercase text-muted-foreground group-data-[variant=yellow]:text-black">
               {copy.recentEntries}
             </h2>
             <Link
               href={withLocale(locale, "/notes")}
-              className="flex items-center text-sm font-bold uppercase text-muted-foreground hover:underline group-data-[variant=yellow]:text-black"
+              className="flex items-center font-bold uppercase text-muted-foreground hover:underline group-data-[variant=yellow]:text-black"
             >
               {copy.viewAll}
-              <ArrowRightIcon size={16} className="shrink-0" />
+              <ArrowRightIcon size={20} className="shrink-0" />
             </Link>
           </div>
         </div>

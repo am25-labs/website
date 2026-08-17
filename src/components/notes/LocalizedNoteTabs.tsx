@@ -48,7 +48,8 @@ export default function LocalizedNoteTabs({
                     {note.author.first_name} {note.author.last_name}
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    {note.author.job_title} {locale === "es" ? "en" : "at"} {note.author.organization}
+                    {note.author.job_title} {locale === "es" ? "en" : "at"}{" "}
+                    {note.author.organization}
                   </p>
                 </div>
               </div>
