@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { SendIcon } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRightIcon, SendIcon } from "lucide-react";
 import TurnstileWrap from "@/components/contact/Turnstile";
 import { AlertWrap } from "@/components/ui/custom/AlertWrap";
 import { Button } from "@/components/ui/button";
@@ -13,11 +14,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-  Field,
-  FieldGroup,
-  FieldSet,
-} from "@/components/ui/field";
+import { Field, FieldLabel, FieldGroup, FieldSet } from "@/components/ui/field";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -28,7 +26,7 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import { emailRegex, nameRegex } from "@/lib/validation";
-import type { Locale } from "@/lib/i18n";
+import { withLocale, type Locale } from "@/lib/i18n";
 
 interface Props {
   className?: string;
@@ -39,6 +37,7 @@ interface FormState {
   name: string;
   email: string;
   language: string;
+  acceptedPrivacy: boolean;
 }
 
 const LANGUAGE_OPTIONS = ["Spanish", "English"];
@@ -48,6 +47,7 @@ function getInitialState(): FormState {
     name: "",
     email: "",
     language: "",
+    acceptedPrivacy: true,
   };
 }
 
@@ -59,11 +59,30 @@ export default function AccessDialog({ className, locale }: Props) {
     type: "success" | "error";
     text: string;
   } | null>(null);
-  const text = locale === "es" ? {
-    request: "Solicitar acceso anticipado", description: "Únete al grupo de acceso anticipado de AM25 Content Hub", fullName: "Nombre completo", language: "Idioma", sending: "Enviando...", send: "Enviar solicitud",
-  } : {
-    request: "Request Early Access", description: "Join the early access group for AM25 Content Hub", fullName: "Full Name", language: "Language", sending: "Sending...", send: "Send Request",
-  };
+  const text =
+    locale === "es"
+      ? {
+          request: "Solicitar acceso",
+          description:
+            "Solicita acceso y descubre si AM25 Content Hub encaja con tu flujo de trabajo",
+          fullName: "Nombre completo",
+          language: "Idioma",
+          privacy: "He leído y acepto la",
+          privacyLink: "Política de privacidad",
+          sending: "Enviando...",
+          send: "Enviar solicitud",
+        }
+      : {
+          request: "Request Access",
+          description:
+            "Request access and discover if AM25 Content Hub fits your workflow",
+          fullName: "Full Name",
+          language: "Language",
+          privacy: "I have read and agree to the",
+          privacyLink: "Privacy Policy",
+          sending: "Sending...",
+          send: "Send Request",
+        };
 
   function updateField<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((current) => ({ ...current, [key]: value }));
@@ -85,6 +104,10 @@ export default function AccessDialog({ className, locale }: Props) {
 
     if (!form.language) {
       return "Selecciona un idioma.";
+    }
+
+    if (!form.acceptedPrivacy) {
+      return "Debes aceptar la política de privacidad.";
     }
 
     if (!captchaToken) {
@@ -152,15 +175,13 @@ export default function AccessDialog({ className, locale }: Props) {
       <DialogContent className="rounded-none sm:max-w-xl">
         <DialogHeader>
           <DialogTitle>{text.request}</DialogTitle>
-          <DialogDescription>
-            {text.description}
-          </DialogDescription>
+          <DialogDescription>{text.description}</DialogDescription>
         </DialogHeader>
 
         <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
           <FieldSet>
             <FieldGroup>
-              <Field>
+              <Field className="-mb-3">
                 <Input
                   id="content-name"
                   name="name"
@@ -172,7 +193,7 @@ export default function AccessDialog({ className, locale }: Props) {
                 />
               </Field>
 
-              <Field>
+              <Field className="-mb-3">
                 <Input
                   id="content-email"
                   name="email"
@@ -181,9 +202,7 @@ export default function AccessDialog({ className, locale }: Props) {
                   className="rounded-none"
                   autoComplete="email"
                   value={form.email}
-                  onChange={(event) =>
-                    updateField("email", event.target.value)
-                  }
+                  onChange={(event) => updateField("email", event.target.value)}
                 />
               </Field>
 
@@ -204,7 +223,32 @@ export default function AccessDialog({ className, locale }: Props) {
                   </SelectContent>
                 </Select>
               </Field>
+            </FieldGroup>
 
+            <FieldGroup>
+              <Field orientation="horizontal">
+                <Checkbox
+                  checked={form.acceptedPrivacy}
+                  onCheckedChange={(checked) =>
+                    updateField("acceptedPrivacy", checked === true)
+                  }
+                />
+                <FieldLabel className="flex-wrap gap-1.5 text-xs group-data-[variant=yellow]:text-black">
+                  {text.privacy}
+                  <Link
+                    href={withLocale(locale, "/privacy")}
+                    target="_blank"
+                    rel="noopener"
+                    className="inline-flex items-center hover:font-bold"
+                  >
+                    {text.privacyLink}
+                    <ArrowUpRightIcon size={16} className="shrink-0" />
+                  </Link>
+                </FieldLabel>
+              </Field>
+            </FieldGroup>
+
+            <FieldGroup>
               <Field>
                 <TurnstileWrap
                   onVerify={(token) => setCaptchaToken(token)}
