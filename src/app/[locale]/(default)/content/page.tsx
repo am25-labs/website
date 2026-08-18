@@ -10,6 +10,8 @@ import { Separator } from "@/components/ui/separator";
 import { Card } from "@/components/ui/card";
 import AccessDialog from "@/components/content/AccessDialog";
 import FeaturedCarousel from "@/components/content/FeaturedCarousel";
+import ContentFaq from "@/components/content/Faq";
+import ContentPricing from "@/components/content/Pricing";
 import { getCopy, getRouteLocale } from "@/lib/i18n";
 
 const baseUrl = process.env.BASE_URL;
@@ -18,9 +20,10 @@ const pageTitle = "Content Hub";
 type Props = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = await getRouteLocale(params);
-  const description = locale === "es"
-    ? "Una fuente única de verdad para el contenido detrás de tu trabajo."
-    : "A single source of truth for the content behind your work.";
+  const description =
+    locale === "es"
+      ? "Una fuente única de verdad para el contenido detrás de tu trabajo."
+      : "A single source of truth for the content behind your work.";
   return getPageMetadata(locale, pageTitle, "/content", description);
 }
 
@@ -85,7 +88,9 @@ export default async function ContentHubPage({ params }: Props) {
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-            <h2 className="my-8 text-lg font-bold uppercase">{copy.whyItExists}</h2>
+            <h2 className="my-8 text-lg font-bold uppercase">
+              {copy.whyItExists}
+            </h2>
           </ScrollReveal>
 
           <div className="grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-3">
@@ -105,6 +110,19 @@ export default async function ContentHubPage({ params }: Props) {
             ))}
           </div>
         </div>
+      </GridContainer>
+
+      <Separator className="col-span-full" />
+
+      <GridContainer className="my-8">
+        <ScrollReveal className="col-span-full">
+          <h2 className="whitespace-pre-line text-4xl md:text-5xl 2xl:text-6xl font-bold uppercase">
+            {entry.pricing_title}
+          </h2>
+        </ScrollReveal>
+
+        <ContentPricing locale={locale} />
+        <ContentFaq items={entry.faq} locale={locale} />
       </GridContainer>
 
       <Separator className="col-span-full" />

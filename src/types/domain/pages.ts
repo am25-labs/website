@@ -33,4 +33,6 @@ export interface ContentHub {
   features: FaqItem[];
   end_title?: string;
   end_description?: string;
+  pricing_title?: string;
+  faq: FaqItem[];
 }
