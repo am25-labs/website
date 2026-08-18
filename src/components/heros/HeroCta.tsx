@@ -13,7 +13,7 @@ export default function HeroCTA({ heading, description }: HeroProps) {
     <GridContainer className="md:min-h-dvh mt-4 md:-mt-32 mb-0 md:items-center">
       <GridSix>
         <ScrollReveal className="col-span-full md:pt-28" direction="down">
-          <h2 className="whitespace-pre-line text-6xl md:text-9xl 2xl:text-[10rem] font-bold uppercase">
+          <h2 className="whitespace-pre-line text-6xl md:text-9xl 2xl:text-[10rem] font-bold uppercase leading-[1.07]">
             {heading}
           </h2>
         </ScrollReveal>

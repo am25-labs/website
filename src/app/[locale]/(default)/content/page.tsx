@@ -55,7 +55,7 @@ export default async function ContentHubPage({ params }: Props) {
       <GridContainer className="md:min-h-dvh mt-4 md:-mt-32 mb-0 md:items-center">
         <GridSix>
           <ScrollReveal className="col-span-full md:pt-28" direction="down">
-            <h2 className="whitespace-pre-line text-6xl md:text-9xl 2xl:text-[10rem] font-bold uppercase">
+            <h2 className="whitespace-pre-line text-6xl md:text-9xl 2xl:text-[10rem] font-bold uppercase leading-[1.07]">
               {entry.hero_title}
             </h2>
           </ScrollReveal>
@@ -123,7 +123,7 @@ export default async function ContentHubPage({ params }: Props) {
       <GridContainer>
         <GridSix>
           <ScrollReveal className="col-span-full mt-8">
-            <h2 className="whitespace-pre-line text-6xl md:text-9xl 2xl:text-[10rem] font-bold uppercase">
+            <h2 className="whitespace-pre-line text-6xl md:text-9xl 2xl:text-[10rem] font-bold uppercase leading-[1.07]">
               {entry.end_title}
             </h2>
           </ScrollReveal>
