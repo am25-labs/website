@@ -25,6 +25,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import ScrollReveal from "@/components/ScrollReveal";
 import { emailRegex, nameRegex } from "@/lib/validation";
 import type { ContactFormMode } from "@/types/domain";
 import { withLocale, type Locale } from "@/lib/i18n";
@@ -187,7 +188,8 @@ export default function ContactForm({ mode, locale }: ContactFormProps) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Card className="gap-6 overflow-hidden rounded-2xl border-foreground/10 bg-card py-6 text-sm text-card-foreground shadow-none ring-0 group-data-[variant=yellow]:bg-am-y group-data-[variant=yellow]:text-black">
+      <ScrollReveal>
+        <Card className="gap-6 overflow-hidden rounded-2xl border-foreground/10 bg-card py-6 text-sm text-card-foreground shadow-none ring-0 group-data-[variant=yellow]:bg-am-y group-data-[variant=yellow]:text-black">
         <div className="px-6">
           <FieldSet>
             <div className="flex flex-col gap-2">
@@ -346,7 +348,8 @@ export default function ContactForm({ mode, locale }: ContactFormProps) {
             {text.cancel}
           </Button>
         </div>
-      </Card>
+        </Card>
+      </ScrollReveal>
     </form>
   );
 }

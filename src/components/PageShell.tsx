@@ -23,7 +23,7 @@ export default function PageShell({
         className="group min-h-screen flex flex-col bg-background text-foreground"
       >
         <Header locale={locale} />
-        <main className="w-full flex-1">{children}</main>
+        <main className="w-full flex-1 overflow-x-clip">{children}</main>
         <Footer locale={locale} />
       </div>
     </TooltipProvider>

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import GridContainer from "@/components/grids/GridContainer";
 import GridFour from "@/components/grids/GridFour";
 import GridTwo from "@/components/grids/GridTwo";
+import ScrollReveal from "@/components/ScrollReveal";
 import ContactForm from "@/components/contact/ContactForm";
 import ContactLinks from "@/components/contact/ContactLinks";
 import { AlertWrap } from "@/components/ui/custom/AlertWrap";
@@ -27,12 +28,12 @@ export default async function ContactPage({ params }: Props) {
   return (
     <GridContainer>
       <GridTwo className="mb-8">
-        <div className="col-span-full">
+        <ScrollReveal className="col-span-full" direction="down">
           <h1 className="text-3xl font-bold uppercase md:text-4xl">
             {copy.projectInquiries}
           </h1>
           <ContactLinks email="projects@am25.work" />
-        </div>
+        </ScrollReveal>
       </GridTwo>
 
       <GridFour>

@@ -1,6 +1,7 @@
 import GridContainer from "@/components/grids/GridContainer";
 import GridFour from "@/components/grids/GridFour";
 import GridTwo from "@/components/grids/GridTwo";
+import ScrollReveal from "@/components/ScrollReveal";
 import { RefreshCwIcon } from "lucide-react";
 
 interface GenericContentProps {
@@ -19,7 +20,7 @@ export default function GenericContent({
   return (
     <GridContainer className="mb-16">
       <GridTwo className="mb-8">
-        <div className="col-span-full">
+        <ScrollReveal className="col-span-full" direction="down">
           <h1 className="text-3xl font-bold uppercase md:text-4xl">{title}</h1>
 
           {updated && (
@@ -31,14 +32,18 @@ export default function GenericContent({
               {updated}
             </span>
           )}
-        </div>
+        </ScrollReveal>
       </GridTwo>
 
       <GridFour>
-        <div className="col-span-full">
-          {quote && <p className="mb-8 text-2xl">{quote}</p>}
+        {quote ? (
+          <ScrollReveal className="col-span-full mb-4" delay={0.15}>
+            <p className="text-2xl">{quote}</p>
+          </ScrollReveal>
+        ) : null}
+        <ScrollReveal className="col-span-full" delay={quote ? 0.35 : 0.15}>
           {children}
-        </div>
+        </ScrollReveal>
       </GridFour>
     </GridContainer>
   );

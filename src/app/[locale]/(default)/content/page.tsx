@@ -5,6 +5,7 @@ import GridContainer from "@/components/grids/GridContainer";
 import GridSix from "@/components/grids/GridSix";
 import GridFour from "@/components/grids/GridFour";
 import GridTwo from "@/components/grids/GridTwo";
+import ScrollReveal from "@/components/ScrollReveal";
 import { Separator } from "@/components/ui/separator";
 import { Card } from "@/components/ui/card";
 import AccessDialog from "@/components/content/AccessDialog";
@@ -51,27 +52,27 @@ export default async function ContentHubPage({ params }: Props) {
     <>
       <GridContainer className="md:min-h-dvh mt-4 md:-mt-32 mb-0 md:items-center">
         <GridSix>
-          <div className="col-span-full md:pt-28">
+          <ScrollReveal className="col-span-full md:pt-28" direction="down">
             <h2 className="whitespace-pre-line text-6xl md:text-9xl 2xl:text-[10rem] font-bold uppercase">
               {entry.hero_title}
             </h2>
-          </div>
+          </ScrollReveal>
         </GridSix>
 
         <GridFour>
-          <div className="col-span-full">
+          <ScrollReveal className="col-span-full" delay={0.2}>
             <p className="text-lg text-muted-foreground">
               {entry.hero_description}
             </p>
-          </div>
+          </ScrollReveal>
         </GridFour>
 
         <GridFour>
-          <div className="col-span-full mt-4 mb-8 md:my-0">
+          <ScrollReveal className="col-span-full mt-4 mb-8 md:my-0" delay={0.3}>
             <div className="flex md:justify-end">
               <AccessDialog locale={locale} />
             </div>
-          </div>
+          </ScrollReveal>
         </GridFour>
       </GridContainer>
 
@@ -79,25 +80,28 @@ export default async function ContentHubPage({ params }: Props) {
 
       <GridContainer>
         <div className="col-span-full mt-4">
-          <FeaturedCarousel slides={slides} />
+          <ScrollReveal>
+            <FeaturedCarousel slides={slides} />
+          </ScrollReveal>
 
-          <h2 className="my-8 text-lg font-bold uppercase">{copy.whyItExists}</h2>
+          <ScrollReveal delay={0.1}>
+            <h2 className="my-8 text-lg font-bold uppercase">{copy.whyItExists}</h2>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-3">
-            {(entry.features ?? []).map((item) => (
-              <Card
-                key={item.label}
-                className="min-h-48 gap-0 rounded-none border-0 py-6 text-sm ring-0 bg-black"
-              >
-                <div className="flex flex-col gap-4 px-6 py-4">
-                  <span className="text-3xl font-bold uppercase">
-                    {item.label}
-                  </span>
-                  <span className="text-muted-foreground">
-                    {item.description}
-                  </span>
-                </div>
-              </Card>
+            {(entry.features ?? []).map((item, index) => (
+              <ScrollReveal delay={index * 0.1} key={item.label}>
+                <Card className="min-h-48 gap-0 rounded-none border-0 bg-black py-6 text-sm ring-0">
+                  <div className="flex flex-col gap-4 px-6 py-4">
+                    <span className="text-3xl font-bold uppercase">
+                      {item.label}
+                    </span>
+                    <span className="text-muted-foreground">
+                      {item.description}
+                    </span>
+                  </div>
+                </Card>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -107,21 +111,21 @@ export default async function ContentHubPage({ params }: Props) {
 
       <GridContainer>
         <GridSix>
-          <div className="col-span-full mt-8">
+          <ScrollReveal className="col-span-full mt-8">
             <h2 className="whitespace-pre-line text-6xl md:text-9xl 2xl:text-[10rem] font-bold uppercase">
               {entry.end_title}
             </h2>
-          </div>
+          </ScrollReveal>
         </GridSix>
 
         <GridTwo className="self-end">
-          <div className="col-span-full">
+          <ScrollReveal className="col-span-full" delay={0.2}>
             <div className="flex flex-col gap-8">
               <p className="text-muted-foreground">{entry.end_description}</p>
 
               <AccessDialog className="w-fit" locale={locale} />
             </div>
-          </div>
+          </ScrollReveal>
         </GridTwo>
       </GridContainer>
     </>

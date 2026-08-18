@@ -116,7 +116,7 @@ body {
     box-shadow: none !important;
   }
   [style*="drop-shadow"],
-  [style*="filter:"] {
+  [style*="filter:"]:not([data-slot="scroll-reveal"]) {
     filter: none !important;
   }
 

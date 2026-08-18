@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRightIcon } from "lucide-react";
 import GridContainer from "@/components/grids/GridContainer";
+import ScrollReveal from "@/components/ScrollReveal";
 import { getWorks } from "@/lib/plank/fetch";
 import WorkCard from "@/components/work/WorkCard";
 import { getCopy, withLocale, type Locale } from "@/lib/i18n";
@@ -13,7 +14,7 @@ export default async function FeaturedWork({ locale }: { locale: Locale }) {
   return (
     <>
       <GridContainer>
-        <div className="col-span-full">
+        <ScrollReveal className="col-span-full">
           <div className="flex items-center justify-between">
             <h2 className="font-bold uppercase text-muted-foreground group-data-[variant=yellow]:text-black">
               {copy.featuredWork}
@@ -26,12 +27,17 @@ export default async function FeaturedWork({ locale }: { locale: Locale }) {
               <ArrowRightIcon size={20} className="shrink-0" />
             </Link>
           </div>
-        </div>
+        </ScrollReveal>
       </GridContainer>
 
       <GridContainer>
-        {works.map((work) => (
-          <div key={work.id} className="col-span-2">
+        {works.map((work, index) => (
+          <ScrollReveal
+            className="col-span-2"
+            delay={index * 0.12}
+            direction={index % 2 === 0 ? "left" : "right"}
+            key={work.id}
+          >
             <WorkCard
               cover={work.cover?.url ?? null}
               title={work.title}
@@ -40,7 +46,7 @@ export default async function FeaturedWork({ locale }: { locale: Locale }) {
                 .map((discipline) => discipline.title)
                 .join(", ")}
             />
-          </div>
+          </ScrollReveal>
         ))}
       </GridContainer>
     </>

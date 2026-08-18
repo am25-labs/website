@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ChevronLeftIcon } from "lucide-react";
 import ContentRenderer from "@/components/ContentRenderer";
+import ScrollReveal from "@/components/ScrollReveal";
 import { BannerPoweredBy } from "@/components/PoweredBy";
 import { Separator } from "@/components/ui/separator";
 import { formatDate } from "@/lib/utils";
@@ -21,7 +22,7 @@ export default function LocalizedNoteTabs({
   return (
     <div className="mb-8 grid grid-cols-2 gap-4 px-4 md:grid-cols-8">
       <section className="col-span-2 mb-8">
-        <div className="grid grid-cols-2 gap-4">
+        <ScrollReveal className="grid grid-cols-2 gap-4" direction="down">
           <div className="col-span-full">
             <h1 className="text-3xl font-bold uppercase md:text-4xl">
               {note.title}
@@ -55,7 +56,7 @@ export default function LocalizedNoteTabs({
               </div>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section className="col-span-2 md:col-span-4">
@@ -69,7 +70,7 @@ export default function LocalizedNoteTabs({
           ) : null}
         </div>
 
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+        <ScrollReveal className="grid grid-cols-2 gap-4 md:grid-cols-4" delay={0.15}>
           <div className="col-span-full">
             <ContentRenderer content={note.content} />
 
@@ -92,7 +93,7 @@ export default function LocalizedNoteTabs({
               mode="dark"
             />
           </div>
-        </div>
+        </ScrollReveal>
       </section>
     </div>
   );

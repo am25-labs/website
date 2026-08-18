@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRightIcon } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import ScrollReveal from "@/components/ScrollReveal";
 import { getFooter, getFooterNav } from "@/lib/plank/fetch";
 import { withLocale, type Locale } from "@/lib/i18n";
 
@@ -15,7 +16,7 @@ export default async function Footer({ locale }: { locale: Locale }) {
       <Separator />
 
       <footer className="mx-auto w-full max-w-8xl px-4 pt-32 pb-8">
-        <div className="flex flex-col md:items-center gap-12">
+        <ScrollReveal className="flex flex-col gap-12 md:items-center">
           <h2 className="md:text-center text-3xl font-bold uppercase">
             {footer.claim}
           </h2>
@@ -57,7 +58,7 @@ export default async function Footer({ locale }: { locale: Locale }) {
           <p className="text-muted-foreground text-xs pt-16">
             &copy; 2026 AM25
           </p>
-        </div>
+        </ScrollReveal>
       </footer>
     </>
   );

@@ -1,6 +1,7 @@
 import { baseMetadata, getPageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import PageContainer from "@/components/PageContainer";
+import ScrollReveal from "@/components/ScrollReveal";
 import NotesFilter from "@/components/notes/NotesFilter";
 import { getNotes } from "@/lib/plank/fetch";
 import { getCopy, getRouteLocale, withLocale } from "@/lib/i18n";
@@ -32,11 +33,11 @@ export default async function NotesPage({ params }: Props) {
   return (
     <>
       <PageContainer>
-        <div className="col-span-full mb-16 px-4">
+        <ScrollReveal className="col-span-full mb-16 px-4" direction="down">
           <h1 className="text-6xl font-bold uppercase md:text-9xl">
             {title}
           </h1>
-        </div>
+        </ScrollReveal>
       </PageContainer>
 
       {entries.length > 0 ? (

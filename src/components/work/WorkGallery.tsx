@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { PlankMediaGallery, Work } from "@/types/domain";
 import GridContainer from "@/components/grids/GridContainer";
+import ScrollReveal from "@/components/ScrollReveal";
 
 interface WorkGalleryProps {
   images?: PlankMediaGallery | null;
@@ -21,11 +22,11 @@ export default function WorkGallery({
   return (
     <GridContainer className="mb-2">
       {quote && (
-        <div className="col-span-full py-32">
+        <ScrollReveal className="col-span-full py-32">
           <blockquote className="text-lg md:text-3xl text-center italic max-w-4xl mx-auto">
             "{quote}"
           </blockquote>
-        </div>
+        </ScrollReveal>
       )}
 
       {groups.map((group, groupIndex) => {
@@ -37,7 +38,11 @@ export default function WorkGallery({
         }
 
         return (
-          <div key={groupIndex} className="col-span-full">
+          <ScrollReveal
+            className="col-span-full"
+            delay={groupIndex * 0.1}
+            key={groupIndex}
+          >
             <Image
               src={firstImage.url}
               alt={firstImage.alt ?? ""}
@@ -62,7 +67,7 @@ export default function WorkGallery({
                 ))}
               </div>
             )}
-          </div>
+          </ScrollReveal>
         );
       })}
     </GridContainer>

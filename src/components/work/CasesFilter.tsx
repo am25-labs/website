@@ -2,6 +2,7 @@
 
 import ContentFilter from "@/components/ContentFilter";
 import GridContainer from "@/components/grids/GridContainer";
+import ScrollReveal from "@/components/ScrollReveal";
 import type { Discipline, Work } from "@/types/domain";
 import WorkCard from "./WorkCard";
 import type { Locale } from "@/lib/i18n";
@@ -36,8 +37,13 @@ export default function CasesFilter({ works, locale }: CasesFilterProps) {
     >
       {(filteredWorks) => (
         <GridContainer className="mt-4">
-          {filteredWorks.map((work) => (
-            <div key={work.id} className="col-span-2">
+          {filteredWorks.map((work, index) => (
+            <ScrollReveal
+              className="col-span-2"
+              delay={index * 0.1}
+              direction={index % 2 === 0 ? "left" : "right"}
+              key={work.id}
+            >
               <WorkCard
                 cover={work.cover?.url ?? null}
                 title={work.title}
@@ -46,7 +52,7 @@ export default function CasesFilter({ works, locale }: CasesFilterProps) {
                   .map((discipline) => discipline.title)
                   .join(", ")}
               />
-            </div>
+            </ScrollReveal>
           ))}
         </GridContainer>
       )}

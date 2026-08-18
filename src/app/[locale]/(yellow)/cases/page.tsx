@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { baseMetadata, getPageMetadata } from "@/lib/metadata";
 import PageContainer from "@/components/PageContainer";
+import ScrollReveal from "@/components/ScrollReveal";
 import CasesFilter from "@/components/work/CasesFilter";
 import { getWorks } from "@/lib/plank/fetch";
 import { getCopy, getRouteLocale } from "@/lib/i18n";
@@ -23,11 +24,11 @@ export default async function CasesPage({ params }: Props) {
   return (
     <>
       <PageContainer>
-        <div className="col-span-full mb-16 px-4">
+        <ScrollReveal className="col-span-full mb-16 px-4" direction="down">
           <h1 className="text-6xl font-bold uppercase md:text-9xl">
             {title}
           </h1>
-        </div>
+        </ScrollReveal>
       </PageContainer>
 
       {works.length > 0 ? <CasesFilter works={works} locale={locale} /> : null}

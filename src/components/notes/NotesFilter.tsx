@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import ContentFilter from "@/components/ContentFilter";
 import GridContainer from "@/components/grids/GridContainer";
+import ScrollReveal from "@/components/ScrollReveal";
 import type { Author, Category } from "@/types/domain";
 import NoteCard from "./NoteCard";
 import type { Locale } from "@/lib/i18n";
@@ -56,8 +57,13 @@ export default function NotesFilter({
     >
       {(filteredEntries) => (
         <GridContainer className="pt-4">
-          {filteredEntries.map((entry) => (
-            <div key={entry.id} className="col-span-2">
+          {filteredEntries.map((entry, index) => (
+            <ScrollReveal
+              className="col-span-2"
+              delay={index * 0.1}
+              direction={index % 2 === 0 ? "left" : "right"}
+              key={entry.id}
+            >
               <NoteCard
                 cover={entry.cover}
                 title={entry.title}
@@ -69,7 +75,7 @@ export default function NotesFilter({
                 author={entry.author}
                 locale={locale}
               />
-            </div>
+            </ScrollReveal>
           ))}
         </GridContainer>
       )}

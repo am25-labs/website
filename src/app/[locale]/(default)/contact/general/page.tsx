@@ -3,6 +3,7 @@ import ContactLinks from "@/components/contact/ContactLinks";
 import GridContainer from "@/components/grids/GridContainer";
 import GridFour from "@/components/grids/GridFour";
 import GridTwo from "@/components/grids/GridTwo";
+import ScrollReveal from "@/components/ScrollReveal";
 import { getPageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { getCopy, getRouteLocale } from "@/lib/i18n";
@@ -22,12 +23,12 @@ export default async function GeneralContactPage({ params }: Props) {
   return (
     <GridContainer>
       <GridTwo className="mb-8">
-        <div className="col-span-full">
+        <ScrollReveal className="col-span-full" direction="down">
           <h1 className="text-3xl font-bold uppercase md:text-4xl">
             {copy.generalInquiries}
           </h1>
           <ContactLinks email="hi@am25.work" />
-        </div>
+        </ScrollReveal>
       </GridTwo>
 
       <GridFour>

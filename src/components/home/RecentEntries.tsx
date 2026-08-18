@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRightIcon } from "lucide-react";
 import GridContainer from "@/components/grids/GridContainer";
+import ScrollReveal from "@/components/ScrollReveal";
 import { getNotes } from "@/lib/plank/fetch";
 import NoteCard from "@/components/notes/NoteCard";
 import { getCopy, withLocale, type Locale } from "@/lib/i18n";
@@ -21,7 +22,7 @@ export default async function RecentEntries({ locale }: { locale: Locale }) {
   return (
     <>
       <GridContainer className="mb-0">
-        <div className="col-span-full">
+        <ScrollReveal className="col-span-full">
           <div className="flex items-center justify-between">
             <h2 className="font-bold uppercase text-muted-foreground group-data-[variant=yellow]:text-black">
               {copy.recentEntries}
@@ -34,12 +35,17 @@ export default async function RecentEntries({ locale }: { locale: Locale }) {
               <ArrowRightIcon size={20} className="shrink-0" />
             </Link>
           </div>
-        </div>
+        </ScrollReveal>
       </GridContainer>
 
       <GridContainer className="mt-4">
-        {entries.map((entry) => (
-          <div key={entry.id} className="col-span-2">
+        {entries.map((entry, index) => (
+          <ScrollReveal
+            className="col-span-2"
+            delay={index * 0.12}
+            direction={index % 2 === 0 ? "left" : "right"}
+            key={entry.id}
+          >
             <NoteCard
               cover={entry.cover}
               title={entry.title}
@@ -51,7 +57,7 @@ export default async function RecentEntries({ locale }: { locale: Locale }) {
               author={entry.author}
               locale={locale}
             />
-          </div>
+          </ScrollReveal>
         ))}
       </GridContainer>
     </>

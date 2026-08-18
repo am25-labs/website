@@ -1,4 +1,5 @@
 import ContentRenderer from "@/components/ContentRenderer";
+import ScrollReveal from "@/components/ScrollReveal";
 import { formatDate } from "@/lib/utils";
 import { RefreshCwIcon } from "lucide-react";
 import { dateLocale, type Locale } from "@/lib/i18n";
@@ -20,7 +21,7 @@ export default function LocalizedLegalTabs({ title, page, locale }: Props) {
   return (
     <div className="mb-8 grid grid-cols-2 gap-4 px-4 md:grid-cols-8">
       <section className="col-span-2 mb-8">
-        <div className="grid grid-cols-2 gap-4">
+        <ScrollReveal className="grid grid-cols-2 gap-4" direction="down">
           <div className="col-span-full">
             <h1 className="text-3xl md:text-4xl font-bold uppercase">
               {title}
@@ -33,17 +34,17 @@ export default function LocalizedLegalTabs({ title, page, locale }: Props) {
               </p>
             )}
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section className="col-span-2 md:col-span-4">
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+        <ScrollReveal className="grid grid-cols-2 gap-4 md:grid-cols-4" delay={0.15}>
           <div className="col-span-full">
             {page.content && (
               <ContentRenderer content={page.content} />
             )}
           </div>
-        </div>
+        </ScrollReveal>
       </section>
     </div>
   );

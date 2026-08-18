@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Work } from "@/types/domain";
 import GridContainer from "@/components/grids/GridContainer";
 import GridFour from "@/components/grids/GridFour";
+import ScrollReveal from "@/components/ScrollReveal";
 import WorkDescription from "@/components/work/WorkDescription";
 
 interface WorkHeaderProps {
@@ -17,7 +18,7 @@ export default function WorkHeader({
 }: WorkHeaderProps) {
   return (
     <GridContainer>
-      <div className="col-span-full">
+      <ScrollReveal className="col-span-full">
         <div className="aspect-square relative md:aspect-video">
           {cover && (
             <Image
@@ -28,18 +29,18 @@ export default function WorkHeader({
             />
           )}
         </div>
-      </div>
+      </ScrollReveal>
 
       <GridFour className="mt-4">
-        <div className="col-span-full">
+        <ScrollReveal className="col-span-full" delay={0.15}>
           <h1 className="text-3xl md:text-4xl font-bold uppercase">{title}</h1>
-        </div>
+        </ScrollReveal>
       </GridFour>
 
       <GridFour className="mt-4">
-        <div className="col-span-full">
+        <ScrollReveal className="col-span-full" delay={0.25}>
           {description && <WorkDescription content={description} />}
-        </div>
+        </ScrollReveal>
       </GridFour>
     </GridContainer>
   );

@@ -1,6 +1,7 @@
 import type { Work } from "@/types/domain";
 import GridContainer from "@/components/grids/GridContainer";
 import GridFour from "@/components/grids/GridFour";
+import ScrollReveal from "@/components/ScrollReveal";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import type { Locale } from "@/lib/i18n";
 
@@ -71,7 +72,7 @@ export default function WorkMeta({
     <GridContainer className="my-0">
       <GridFour />
       <GridFour>
-        <div className="col-span-full mt-4 mb-8">
+        <ScrollReveal className="col-span-full mt-4 mb-8">
           <Table>
             <TableBody>
               {items.map((item) => (
@@ -87,7 +88,7 @@ export default function WorkMeta({
               ))}
             </TableBody>
           </Table>
-        </div>
+        </ScrollReveal>
       </GridFour>
     </GridContainer>
   );

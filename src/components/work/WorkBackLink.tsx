@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ChevronLeftIcon } from "lucide-react";
 import GridContainer from "@/components/grids/GridContainer";
+import ScrollReveal from "@/components/ScrollReveal";
 import { BannerPoweredBy } from "@/components/PoweredBy";
 import { Separator } from "@/components/ui/separator";
 import { getCopy, withLocale, type Locale } from "@/lib/i18n";
@@ -9,7 +10,7 @@ export default function WorkBackLink({ locale }: { locale: Locale }) {
   const copy = getCopy(locale);
   return (
     <GridContainer>
-      <div className="col-span-full">
+      <ScrollReveal className="col-span-full">
         <div className="flex flex-col items-center py-16">
           <Separator />
           <Link
@@ -30,7 +31,7 @@ export default function WorkBackLink({ locale }: { locale: Locale }) {
             mode="dark"
           />
         </div>
-      </div>
+      </ScrollReveal>
     </GridContainer>
   );
 }
