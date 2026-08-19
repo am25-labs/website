@@ -12,7 +12,7 @@ interface CasesFilterProps {
   locale: Locale;
 }
 
-export default function CasesFilter({ works, locale }: CasesFilterProps) {
+export default function WorkFilter({ works, locale }: CasesFilterProps) {
   const disciplines: Discipline[] = Array.from(
     new Map(
       works
@@ -47,7 +47,7 @@ export default function CasesFilter({ works, locale }: CasesFilterProps) {
               <WorkCard
                 cover={work.cover?.url ?? null}
                 title={work.title}
-                href={`/cases/${work.slug}`}
+                href={`/work/${work.slug}`}
                 category={work.disciplines
                   .map((discipline) => discipline.title)
                   .join(", ")}

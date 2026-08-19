@@ -14,7 +14,7 @@ export default function WorkBackLink({ locale }: { locale: Locale }) {
         <div className="flex flex-col items-center py-16">
           <Separator />
           <Link
-            href={withLocale(locale, "/cases")}
+            href={withLocale(locale, "/work")}
             className="mt-8 flex items-center gap-2 text-center font-bold uppercase hover:underline"
           >
             <ChevronLeftIcon size={21} />

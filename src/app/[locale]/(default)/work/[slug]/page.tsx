@@ -16,7 +16,9 @@ interface PageProps {
 
 export async function generateStaticParams() {
   const { data: works } = await getWorks({ locale: "en" });
-  return ["es", "en"].flatMap((locale) => works.map((work) => ({ locale, slug: work.slug })));
+  return ["es", "en"].flatMap((locale) =>
+    works.map((work) => ({ locale, slug: work.slug })),
+  );
 }
 
 export async function generateMetadata({
@@ -47,7 +49,7 @@ export async function generateMetadata({
     openGraph: {
       ...baseMetadata.openGraph,
       title: `${title} - AM25`,
-      url: `${baseUrl}/cases/${slug}`,
+      url: `${baseUrl}/work/${slug}`,
       images: imageObj ? [imageObj] : baseMetadata.openGraph?.images,
     },
     twitter: {
@@ -94,7 +96,8 @@ export default async function CaseDetailPage({ params }: PageProps) {
     <>
       <WorkHeader title={title} cover={cover} description={description} />
 
-      <WorkMeta locale={locale}
+      <WorkMeta
+        locale={locale}
         client={client}
         campaign={campaign}
         country={country}

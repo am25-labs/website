@@ -41,7 +41,7 @@ export default async function FeaturedWork({ locale }: { locale: Locale }) {
             <WorkCard
               cover={work.cover?.url ?? null}
               title={work.title}
-              href={withLocale(locale, `/cases/${work.slug}`)}
+              href={withLocale(locale, `/work/${work.slug}`)}
               category={work.disciplines
                 .map((discipline) => discipline.title)
                 .join(", ")}
