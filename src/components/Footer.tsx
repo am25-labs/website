@@ -55,7 +55,7 @@ export default async function Footer({ locale }: { locale: Locale }) {
                         href={withLocale(locale, item.href)}
                         target={isExternal ? "_blank" : undefined}
                         rel={isExternal ? "noopener" : undefined}
-                        className="flex items-center uppercase hover:underline md:text-xl"
+                        className="w-fit flex items-center uppercase hover:underline md:text-xl"
                       >
                         {item.label}
                         {isExternal ? (
