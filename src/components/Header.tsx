@@ -27,7 +27,7 @@ export default async function Header({ locale }: { locale: Locale }) {
           aria-label="Main and social navigation (desktop)"
           className="hidden md:block"
         >
-          <ul className="flex items-center gap-6">
+          <ul className="flex items-center gap-8">
             {mainNav.map((item) => {
               const isExternal = item.href.startsWith("https");
 
@@ -37,7 +37,7 @@ export default async function Header({ locale }: { locale: Locale }) {
                     href={withLocale(locale, item.href)}
                     target={isExternal ? "_blank" : undefined}
                     rel={isExternal ? "noopener" : undefined}
-                    className="flex items-center uppercase hover:underline"
+                    className="flex items-center text-xl uppercase hover:underline"
                   >
                     {item.label}
                     {isExternal ? (
@@ -60,12 +60,18 @@ export default async function Header({ locale }: { locale: Locale }) {
                 </li>
               );
             })}
-            <li><LocaleSwitch locale={locale} /></li>
+            <li>
+              <LocaleSwitch locale={locale} />
+            </li>
           </ul>
         </nav>
 
         <div className="md:hidden">
-          <MobileMenu items={mainNav} socialItems={headerSocialItems} locale={locale} />
+          <MobileMenu
+            items={mainNav}
+            socialItems={headerSocialItems}
+            locale={locale}
+          />
         </div>
       </header>
 

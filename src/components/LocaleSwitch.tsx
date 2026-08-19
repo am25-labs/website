@@ -16,7 +16,7 @@ export default function LocaleSwitch({ locale }: Props) {
   return (
     <Link
       href={href}
-      className="text-sm uppercase hover:underline"
+      className="text-sm uppercase border p-2 hover:bg-accent"
       aria-label={locale === "en" ? "Cambiar a español" : "Switch to English"}
     >
       {next.toUpperCase()}
