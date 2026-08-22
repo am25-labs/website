@@ -1,7 +1,7 @@
-import GridContainer from "@/components/grids/GridContainer";
-import GridSix from "@/components/grids/GridSix";
-import GridFour from "@/components/grids/GridFour";
-import ScrollReveal from "@/components/ScrollReveal";
+import GridContainer from "@/components/grids/grid-container";
+import GridSix from "@/components/grids/grid-six";
+import GridFour from "@/components/grids/grid-four";
+import ScrollReveal from "@/components/scroll-reveal";
 
 interface HeroProps {
   heading: string;

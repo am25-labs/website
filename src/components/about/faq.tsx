@@ -1,8 +1,8 @@
-import GridContainer from "@/components/grids/GridContainer";
-import GridFour from "@/components/grids/GridFour";
-import GridTwo from "@/components/grids/GridTwo";
-import ScrollReveal from "@/components/ScrollReveal";
-import { AccordionWrap } from "@/components/ui/custom/Accordion";
+import GridContainer from "@/components/grids/grid-container";
+import GridFour from "@/components/grids/grid-four";
+import GridTwo from "@/components/grids/grid-two";
+import ScrollReveal from "@/components/scroll-reveal";
+import { AccordionWrap } from "@/components/ui/custom/accordion";
 import type { FaqItem } from "@/types/domain";
 import { getCopy, type Locale } from "@/lib/i18n";
 

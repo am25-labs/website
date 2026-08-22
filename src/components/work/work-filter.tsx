@@ -1,10 +1,10 @@
 "use client";
 
-import ContentFilter from "@/components/ContentFilter";
-import GridContainer from "@/components/grids/GridContainer";
-import ScrollReveal from "@/components/ScrollReveal";
+import ContentFilter from "@/components/content-filter";
+import GridContainer from "@/components/grids/grid-container";
+import ScrollReveal from "@/components/scroll-reveal";
 import type { Discipline, Work } from "@/types/domain";
-import WorkCard from "./WorkCard";
+import WorkCard from "./work-card";
 import type { Locale } from "@/lib/i18n";
 
 interface CasesFilterProps {

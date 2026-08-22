@@ -1,5 +1,5 @@
-import ContentRenderer from "@/components/ContentRenderer";
-import ScrollReveal from "@/components/ScrollReveal";
+import ContentRenderer from "@/components/content-renderer";
+import ScrollReveal from "@/components/scroll-reveal";
 import { formatDate } from "@/lib/utils";
 import { RefreshCwIcon } from "lucide-react";
 import { dateLocale, type Locale } from "@/lib/i18n";

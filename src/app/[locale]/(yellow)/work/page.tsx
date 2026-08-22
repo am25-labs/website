@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { baseMetadata, getPageMetadata } from "@/lib/metadata";
-import PageContainer from "@/components/PageContainer";
-import ScrollReveal from "@/components/ScrollReveal";
-import WorkFilter from "@/components/work/WorkFilter";
+import PageContainer from "@/components/page-container";
+import ScrollReveal from "@/components/scroll-reveal";
+import WorkFilter from "@/components/work/work-filter";
 import { getWorks } from "@/lib/plank/fetch";
 import { getCopy, getRouteLocale } from "@/lib/i18n";
 

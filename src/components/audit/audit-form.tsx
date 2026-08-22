@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AuditResult } from "./AuditResult";
-import TurnstileWrap from "@/components/contact/Turnstile";
+import { AuditResult } from "./audit-result";
+import TurnstileWrap from "@/components/contact/turnstile";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {

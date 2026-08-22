@@ -65,7 +65,7 @@
 
 ## Forms, Mail, and Turnstile
 
-- Use `src/components/contact/Turnstile.tsx` for Cloudflare Turnstile widgets.
+- Use `src/components/contact/turnstile.tsx` for Cloudflare Turnstile widgets.
 - Verify Turnstile tokens server-side with `verifyTurnstile` from `src/lib/contact.ts`.
 - Send email only through `sendMail` from `src/lib/mailer.ts`.
 - Keep contact payload parsing and lightweight validation helpers in `src/lib/contact.ts`.

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Dialog } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ScanSearchIcon } from "lucide-react";
-import { AuditForm } from "./AuditForm";
+import { AuditForm } from "./audit-form";
 
 export function AuditBanner() {
   const [isOpen, setIsOpen] = useState(false);

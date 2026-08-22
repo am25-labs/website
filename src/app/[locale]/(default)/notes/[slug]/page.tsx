@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
 import { getBaseMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
-import LocalizedNoteTabs from "@/components/notes/LocalizedNoteTabs";
+import LocalizedNoteTabs from "@/components/notes/localized-note-tabs";
 import { getNotes, getSingleNote } from "@/lib/plank/fetch";
-import PageContainer from "@/components/PageContainer";
+import PageContainer from "@/components/page-container";
 import { getRouteLocale } from "@/lib/i18n";
 
 const baseUrl = process.env.BASE_URL;

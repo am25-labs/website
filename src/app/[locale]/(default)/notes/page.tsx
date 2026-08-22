@@ -1,8 +1,8 @@
 import { baseMetadata, getPageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
-import PageContainer from "@/components/PageContainer";
-import ScrollReveal from "@/components/ScrollReveal";
-import NotesFilter from "@/components/notes/NotesFilter";
+import PageContainer from "@/components/page-container";
+import ScrollReveal from "@/components/scroll-reveal";
+import NotesFilter from "@/components/notes/notes-filter";
 import { getNotes } from "@/lib/plank/fetch";
 import { getCopy, getRouteLocale, withLocale } from "@/lib/i18n";
 

@@ -1,7 +1,7 @@
-import Hero from "@/components/heros/Hero";
-import FeaturedWork from "@/components/home/FeaturedWork";
-import RecentEntries from "@/components/home/RecentEntries";
-import Services from "@/components/home/Services";
+import Hero from "@/components/heros/hero";
+import FeaturedWork from "@/components/home/featured-work";
+import RecentEntries from "@/components/home/recent-entries";
+import Services from "@/components/home/services";
 import { getHome } from "@/lib/plank/fetch";
 import { Separator } from "@/components/ui/separator";
 import { isLocale, type Locale } from "@/lib/i18n";

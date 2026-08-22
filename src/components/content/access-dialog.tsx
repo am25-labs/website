@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRightIcon, SendIcon } from "lucide-react";
-import TurnstileWrap from "@/components/contact/Turnstile";
-import { AlertWrap } from "@/components/ui/custom/AlertWrap";
+import TurnstileWrap from "@/components/contact/turnstile";
+import { AlertWrap } from "@/components/ui/custom/alert-wrap";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,

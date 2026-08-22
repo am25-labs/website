@@ -1,5 +1,5 @@
-import GridSix from "@/components/grids/GridSix";
-import ScrollReveal from "@/components/ScrollReveal";
+import GridSix from "@/components/grids/grid-six";
+import ScrollReveal from "@/components/scroll-reveal";
 import { Card } from "@/components/ui/card";
 import type { Locale } from "@/lib/i18n";
 

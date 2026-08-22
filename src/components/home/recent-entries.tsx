@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { ArrowRightIcon } from "lucide-react";
-import GridContainer from "@/components/grids/GridContainer";
-import ScrollReveal from "@/components/ScrollReveal";
+import GridContainer from "@/components/grids/grid-container";
+import ScrollReveal from "@/components/scroll-reveal";
 import { getNotes } from "@/lib/plank/fetch";
-import NoteCard from "@/components/notes/NoteCard";
+import NoteCard from "@/components/notes/note-card";
 import { getCopy, withLocale, type Locale } from "@/lib/i18n";
 
 export default async function RecentEntries({ locale }: { locale: Locale }) {

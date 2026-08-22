@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { TiptapDoc } from "@plank-cms/react-renderer";
-import ContentRenderer from "@/components/ContentRenderer";
+import ContentRenderer from "@/components/content-renderer";
 import { Button } from "@/components/ui/button";
 
 interface WorkDescriptionProps {

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { PlankMediaGallery, Work } from "@/types/domain";
-import GridContainer from "@/components/grids/GridContainer";
-import ScrollReveal from "@/components/ScrollReveal";
+import GridContainer from "@/components/grids/grid-container";
+import ScrollReveal from "@/components/scroll-reveal";
 
 interface WorkGalleryProps {
   images?: PlankMediaGallery | null;

@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { ArrowUpRightIcon } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import ScrollReveal from "@/components/ScrollReveal";
+import ScrollReveal from "@/components/scroll-reveal";
 import { getFooter, getFooterNav } from "@/lib/plank/fetch";
 import { withLocale, type Locale } from "@/lib/i18n";
-import GridTwo from "./grids/GridTwo";
+import GridTwo from "./grids/grid-two";
 
 export default async function Footer({ locale }: { locale: Locale }) {
   const [nav, footer] = await Promise.all([

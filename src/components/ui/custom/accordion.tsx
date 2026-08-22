@@ -1,4 +1,4 @@
-import ContentRenderer from "@/components/ContentRenderer";
+import ContentRenderer from "@/components/content-renderer";
 import {
   Accordion,
   AccordionItem,

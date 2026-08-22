@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRightIcon, SendIcon } from "lucide-react";
-import TurnstileWrap from "@/components/contact/Turnstile";
-import { AlertWrap } from "@/components/ui/custom/AlertWrap";
+import TurnstileWrap from "@/components/contact/turnstile";
+import { AlertWrap } from "@/components/ui/custom/alert-wrap";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -25,7 +25,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import ScrollReveal from "@/components/ScrollReveal";
+import ScrollReveal from "@/components/scroll-reveal";
 import { emailRegex, nameRegex } from "@/lib/validation";
 import type { ContactFormMode } from "@/types/domain";
 import { withLocale, type Locale } from "@/lib/i18n";

@@ -1,4 +1,4 @@
-import PageShell from "@/components/PageShell";
+import PageShell from "@/components/page-shell";
 import { isLocale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 

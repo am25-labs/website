@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { ChevronLeftIcon } from "lucide-react";
-import GridContainer from "@/components/grids/GridContainer";
-import ScrollReveal from "@/components/ScrollReveal";
-import { BannerPoweredBy } from "@/components/PoweredBy";
+import GridContainer from "@/components/grids/grid-container";
+import ScrollReveal from "@/components/scroll-reveal";
+import { BannerPoweredBy } from "@/components/powered-by";
 import { Separator } from "@/components/ui/separator";
 import { getCopy, withLocale, type Locale } from "@/lib/i18n";
 

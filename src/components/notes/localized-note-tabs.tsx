@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { ChevronLeftIcon } from "lucide-react";
-import ContentRenderer from "@/components/ContentRenderer";
-import ScrollReveal from "@/components/ScrollReveal";
-import { BannerPoweredBy } from "@/components/PoweredBy";
+import ContentRenderer from "@/components/content-renderer";
+import ScrollReveal from "@/components/scroll-reveal";
+import { BannerPoweredBy } from "@/components/powered-by";
 import { Separator } from "@/components/ui/separator";
 import { formatDate } from "@/lib/utils";
 import { dateLocale, getCopy, withLocale, type Locale } from "@/lib/i18n";

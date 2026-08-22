@@ -1,8 +1,8 @@
 import { baseMetadata, getPageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
-import LocalizedLegalTabs from "@/components/legal/LocalizedLegalTabs";
+import LocalizedLegalTabs from "@/components/legal/localized-legal-tabs";
 import { getCopyright } from "@/lib/plank/fetch";
-import PageContainer from "@/components/PageContainer";
+import PageContainer from "@/components/page-container";
 import { getCopy, getRouteLocale } from "@/lib/i18n";
 
 const baseUrl = process.env.BASE_URL;

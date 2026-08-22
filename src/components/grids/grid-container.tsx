@@ -1,4 +1,4 @@
-import PageContainer from "@/components/PageContainer";
+import PageContainer from "@/components/page-container";
 import { cn } from "@/lib/utils";
 import type { GridProps } from "@/types/domain";
 

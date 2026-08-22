@@ -1,6 +1,6 @@
-import GridContainer from "@/components/grids/GridContainer";
-import GridFour from "@/components/grids/GridFour";
-import GridSix from "@/components/grids/GridSix";
+import GridContainer from "@/components/grids/grid-container";
+import GridFour from "@/components/grids/grid-four";
+import GridSix from "@/components/grids/grid-six";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { getPageMetadata } from "@/lib/metadata";

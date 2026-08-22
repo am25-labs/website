@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { ArrowUpRightIcon } from "lucide-react";
-import BrandIcon from "@/components/BrandIcon";
+import BrandIcon from "@/components/brand-icon";
 import { getMainNav } from "@/lib/plank/fetch";
 import { headerSocialItems } from "@/lib/navigation/header-social-items";
-import MobileMenu from "@/components/MobileMenu";
-import LocaleSwitch from "@/components/LocaleSwitch";
+import MobileMenu from "@/components/mobile-menu";
+import LocaleSwitch from "@/components/locale-switch";
 import { withLocale, type Locale } from "@/lib/i18n";
 
 export default async function Header({ locale }: { locale: Locale }) {

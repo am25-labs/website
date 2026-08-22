@@ -1,12 +1,12 @@
 import { getPageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
-import GridContainer from "@/components/grids/GridContainer";
-import GridFour from "@/components/grids/GridFour";
-import GridTwo from "@/components/grids/GridTwo";
-import ScrollReveal from "@/components/ScrollReveal";
-import ContactForm from "@/components/contact/ContactForm";
-import ContactLinks from "@/components/contact/ContactLinks";
-import { AlertWrap } from "@/components/ui/custom/AlertWrap";
+import GridContainer from "@/components/grids/grid-container";
+import GridFour from "@/components/grids/grid-four";
+import GridTwo from "@/components/grids/grid-two";
+import ScrollReveal from "@/components/scroll-reveal";
+import ContactForm from "@/components/contact/contact-form";
+import ContactLinks from "@/components/contact/contact-links";
+import { AlertWrap } from "@/components/ui/custom/alert-wrap";
 import Link from "next/link";
 import { getCopy, getRouteLocale, withLocale } from "@/lib/i18n";
 

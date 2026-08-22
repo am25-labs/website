@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation";
-import PageShell from "@/components/PageShell";
-import PreviewAutoRefresh from "@/components/PreviewAutoRefresh";
-import LocalizedNoteTabs from "@/components/notes/LocalizedNoteTabs";
-import WorkBackLink from "@/components/work/WorkBackLink";
-import WorkGallery from "@/components/work/WorkGallery";
-import WorkHeader from "@/components/work/WorkHeader";
-import WorkMeta from "@/components/work/WorkMeta";
+import PageShell from "@/components/page-shell";
+import PreviewAutoRefresh from "@/components/preview-auto-refresh";
+import LocalizedNoteTabs from "@/components/notes/localized-note-tabs";
+import WorkBackLink from "@/components/work/work-back-link";
+import WorkGallery from "@/components/work/work-gallery";
+import WorkHeader from "@/components/work/work-header";
+import WorkMeta from "@/components/work/work-meta";
 import { getPreviewNote, getPreviewWork } from "./fetch";
 import { defaultLocale } from "@/lib/i18n";
 

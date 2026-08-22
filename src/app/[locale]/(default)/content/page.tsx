@@ -1,17 +1,17 @@
 import { getPageMetadata } from "@/lib/metadata";
 import { getContentHub } from "@/lib/plank/fetch";
 import type { Metadata } from "next";
-import GridContainer from "@/components/grids/GridContainer";
-import GridSix from "@/components/grids/GridSix";
-import GridFour from "@/components/grids/GridFour";
-import GridTwo from "@/components/grids/GridTwo";
-import ScrollReveal from "@/components/ScrollReveal";
+import GridContainer from "@/components/grids/grid-container";
+import GridSix from "@/components/grids/grid-six";
+import GridFour from "@/components/grids/grid-four";
+import GridTwo from "@/components/grids/grid-two";
+import ScrollReveal from "@/components/scroll-reveal";
 import { Separator } from "@/components/ui/separator";
 import { Card } from "@/components/ui/card";
-import AccessDialog from "@/components/content/AccessDialog";
-import FeaturedCarousel from "@/components/content/FeaturedCarousel";
-import ContentFaq from "@/components/content/Faq";
-import ContentPricing from "@/components/content/Pricing";
+import AccessDialog from "@/components/content/access-dialog";
+import FeaturedCarousel from "@/components/content/featured-carousel";
+import ContentFaq from "@/components/content/faq";
+import ContentPricing from "@/components/content/pricing";
 import { getRouteLocale } from "@/lib/i18n";
 
 const baseUrl = process.env.BASE_URL;

@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { ArrowRightIcon } from "lucide-react";
-import GridContainer from "@/components/grids/GridContainer";
-import ScrollReveal from "@/components/ScrollReveal";
+import GridContainer from "@/components/grids/grid-container";
+import ScrollReveal from "@/components/scroll-reveal";
 import { getWorks } from "@/lib/plank/fetch";
-import WorkCard from "@/components/work/WorkCard";
+import WorkCard from "@/components/work/work-card";
 import { getCopy, withLocale, type Locale } from "@/lib/i18n";
 
 export default async function FeaturedWork({ locale }: { locale: Locale }) {

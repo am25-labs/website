@@ -3,12 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRightIcon, MenuIcon, XIcon } from "lucide-react";
-import BrandIcon from "@/components/BrandIcon";
+import BrandIcon from "@/components/brand-icon";
 import type { HeaderSocialItem } from "@/lib/navigation/header-social-items";
 import type { NavigationItem } from "@/types/domain";
 import { cn } from "@/lib/utils";
 import { withLocale } from "@/lib/i18n";
-import LocaleSwitch from "@/components/LocaleSwitch";
+import LocaleSwitch from "@/components/locale-switch";
 import type { Locale } from "@/lib/i18n";
 
 interface MobileMenuProps {

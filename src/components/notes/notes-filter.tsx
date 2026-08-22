@@ -1,11 +1,11 @@
 "use client";
 
 import { useMemo } from "react";
-import ContentFilter from "@/components/ContentFilter";
-import GridContainer from "@/components/grids/GridContainer";
-import ScrollReveal from "@/components/ScrollReveal";
+import ContentFilter from "@/components/content-filter";
+import GridContainer from "@/components/grids/grid-container";
+import ScrollReveal from "@/components/scroll-reveal";
 import type { Author, Category } from "@/types/domain";
-import NoteCard from "./NoteCard";
+import NoteCard from "./note-card";
 import type { Locale } from "@/lib/i18n";
 
 type Entry = {

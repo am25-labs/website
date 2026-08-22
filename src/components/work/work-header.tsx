@@ -1,9 +1,9 @@
 import Image from "next/image";
 import type { Work } from "@/types/domain";
-import GridContainer from "@/components/grids/GridContainer";
-import GridFour from "@/components/grids/GridFour";
-import ScrollReveal from "@/components/ScrollReveal";
-import WorkDescription from "@/components/work/WorkDescription";
+import GridContainer from "@/components/grids/grid-container";
+import GridFour from "@/components/grids/grid-four";
+import ScrollReveal from "@/components/scroll-reveal";
+import WorkDescription from "@/components/work/work-description";
 
 interface WorkHeaderProps {
   title: Work["title"];

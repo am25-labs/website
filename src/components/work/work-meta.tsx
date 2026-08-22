@@ -1,7 +1,7 @@
 import type { Work } from "@/types/domain";
-import GridContainer from "@/components/grids/GridContainer";
-import GridFour from "@/components/grids/GridFour";
-import ScrollReveal from "@/components/ScrollReveal";
+import GridContainer from "@/components/grids/grid-container";
+import GridFour from "@/components/grids/grid-four";
+import ScrollReveal from "@/components/scroll-reveal";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import type { Locale } from "@/lib/i18n";
 

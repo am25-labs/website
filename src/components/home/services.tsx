@@ -1,5 +1,5 @@
-import GridContainer from "@/components/grids/GridContainer";
-import ScrollReveal from "@/components/ScrollReveal";
+import GridContainer from "@/components/grids/grid-container";
+import ScrollReveal from "@/components/scroll-reveal";
 import type { Service } from "@/types/domain";
 import type { Locale } from "@/lib/i18n";
 import { getCopy } from "@/lib/i18n";

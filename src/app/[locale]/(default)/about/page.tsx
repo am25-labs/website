@@ -1,7 +1,7 @@
-import ContentRenderer from "@/components/ContentRenderer";
-import AboutFaq from "@/components/about/Faq";
-import GenericContent from "@/components/GenericContent";
-import { AlertWrap } from "@/components/ui/custom/AlertWrap";
+import ContentRenderer from "@/components/content-renderer";
+import AboutFaq from "@/components/about/faq";
+import GenericContent from "@/components/generic-content";
+import { AlertWrap } from "@/components/ui/custom/alert-wrap";
 import { getPageMetadata } from "@/lib/metadata";
 import { getAbout } from "@/lib/plank/fetch";
 import type { Metadata } from "next";

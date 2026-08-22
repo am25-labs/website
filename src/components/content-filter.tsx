@@ -3,8 +3,8 @@
 import { useState } from "react";
 import clsx from "clsx";
 import { ChevronDownIcon } from "lucide-react";
-import GridContainer from "@/components/grids/GridContainer";
-import ScrollReveal from "@/components/ScrollReveal";
+import GridContainer from "@/components/grids/grid-container";
+import ScrollReveal from "@/components/scroll-reveal";
 import {
   Collapsible,
   CollapsibleContent,

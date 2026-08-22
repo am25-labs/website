@@ -1,7 +1,7 @@
-import GridContainer from "@/components/grids/GridContainer";
-import GridFour from "@/components/grids/GridFour";
-import GridTwo from "@/components/grids/GridTwo";
-import ScrollReveal from "@/components/ScrollReveal";
+import GridContainer from "@/components/grids/grid-container";
+import GridFour from "@/components/grids/grid-four";
+import GridTwo from "@/components/grids/grid-two";
+import ScrollReveal from "@/components/scroll-reveal";
 import { RefreshCwIcon } from "lucide-react";
 
 interface GenericContentProps {

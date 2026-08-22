@@ -2,10 +2,10 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getBaseMetadata } from "@/lib/metadata";
 import { getSingleWork, getWorks } from "@/lib/plank/fetch";
-import WorkBackLink from "@/components/work/WorkBackLink";
-import WorkGallery from "@/components/work/WorkGallery";
-import WorkHeader from "@/components/work/WorkHeader";
-import WorkMeta from "@/components/work/WorkMeta";
+import WorkBackLink from "@/components/work/work-back-link";
+import WorkGallery from "@/components/work/work-gallery";
+import WorkHeader from "@/components/work/work-header";
+import WorkMeta from "@/components/work/work-meta";
 import { getRouteLocale } from "@/lib/i18n";
 
 const baseUrl = process.env.BASE_URL;
