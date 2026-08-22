@@ -91,6 +91,13 @@
 - Do not format user-facing dates with ad hoc `toLocaleDateString`, `Intl.DateTimeFormat`, or manual string assembly outside the shared helper.
 - Keep calendar-only CMS values as strings when possible and pass them through the shared date helper.
 
+## File Naming
+
+- Use `kebab-case` for all source file names.
+- React components must be exported in `PascalCase`.
+- Hooks must use the `use-*` naming pattern.
+- Do not introduce `PascalCase` file names.
+
 ## Validation & Verification
 
 - Prefer the fastest verification path available.
