@@ -8,8 +8,6 @@ import type {
   LegalPage,
   ContentHub,
   Footer,
-  Category,
-  Discipline,
 } from "@/types/domain";
 import type { Locale } from "@/lib/i18n";
 
@@ -32,42 +30,6 @@ const CACHE_NOTES_OPTIONS = {
 
 type LocaleOptions = { locale?: Locale };
 
-async function getCategories(locale: Locale) {
-  return plank.collection<Category>("categories").findMany(
-    { status: "published", locale, fallback: "en" },
-    CACHE_GENERAL_OPTIONS,
-  );
-}
-
-async function getDisciplines(locale: Locale) {
-  return plank.collection<Discipline>("disciplines").findMany(
-    { status: "published", locale, fallback: "en" },
-    CACHE_GENERAL_OPTIONS,
-  );
-}
-
-async function withCategories(notes: Note[], locale: Locale) {
-  const { data: categories } = await getCategories(locale);
-  const byId = new Map(categories.map((category) => [category.id, category]));
-
-  return notes.map((note) => ({
-    ...note,
-    category: note.category ? (byId.get(note.category.id) ?? note.category) : null,
-  }));
-}
-
-async function withDisciplines(works: Work[], locale: Locale) {
-  const { data: disciplines } = await getDisciplines(locale);
-  const byId = new Map(disciplines.map((discipline) => [discipline.id, discipline]));
-
-  return works.map((work) => ({
-    ...work,
-    disciplines: work.disciplines.map(
-      (discipline) => byId.get(discipline.id) ?? discipline,
-    ),
-  }));
-}
-
 const PREVIEW_FETCH_OPTIONS = { cache: "no-store" } as const;
 
 // CT: Works
@@ -85,7 +47,7 @@ export async function getWorks({ onlyFeatured = false, locale }: { onlyFeatured?
     CACHE_GENERAL_OPTIONS,
   );
 
-  return { ...result, data: await withDisciplines(result.data, activeLocale) };
+  return result;
 }
 
 export async function getSingleWork(slug: string, { locale }: LocaleOptions = {}) {
@@ -99,8 +61,7 @@ export async function getSingleWork(slug: string, { locale }: LocaleOptions = {}
     },
     CACHE_GENERAL_OPTIONS,
   );
-  const works = await withDisciplines(result.data, activeLocale);
-  return works[0];
+  return result.data[0];
 }
 
 export async function getPreviewWork(slug: string) {
@@ -128,7 +89,7 @@ export async function getNotes({ locale }: LocaleOptions = {}) {
     CACHE_NOTES_OPTIONS,
   );
 
-  return { ...result, data: await withCategories(result.data, activeLocale) };
+  return result;
 }
 
 export async function getSingleNote(
@@ -145,8 +106,7 @@ export async function getSingleNote(
     },
     CACHE_NOTES_OPTIONS,
   );
-  const notes = await withCategories(result.data, activeLocale);
-  return notes[0];
+  return result.data[0];
 }
 
 export async function getPreviewNote(
