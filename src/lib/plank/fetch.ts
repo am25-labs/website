@@ -2,6 +2,7 @@ import plank from "./client";
 import type {
   Navigation,
   Work,
+  CaseStudy,
   Note,
   Home,
   About,
@@ -76,6 +77,39 @@ export async function getPreviewWork(slug: string) {
     },
     PREVIEW_FETCH_OPTIONS,
   );
+}
+
+// CT: Case Studies
+export async function getCaseStudies({ locale }: LocaleOptions = {}) {
+  const activeLocale = locale ?? "es";
+  return plank.collection<CaseStudy>("case-studies").findMany(
+    {
+      status: "published",
+      sort: "date",
+      order: "desc",
+      locale: activeLocale,
+      fallback: "en",
+    },
+    CACHE_GENERAL_OPTIONS,
+  );
+}
+
+export async function getSingleCaseStudy(
+  slug: string,
+  { locale }: LocaleOptions = {},
+) {
+  const activeLocale = locale ?? "es";
+  const result = await plank.collection<CaseStudy>("case-studies").findMany(
+    {
+      status: "published",
+      filters: { slug: { eq: slug } },
+      locale: activeLocale,
+      fallback: "en",
+    },
+    CACHE_GENERAL_OPTIONS,
+  );
+
+  return result.data[0];
 }
 
 // CT: Notes

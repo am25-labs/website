@@ -3,12 +3,12 @@
 import ContentFilter from "@/components/content-filter";
 import GridContainer from "@/components/grids/grid-container";
 import ScrollReveal from "@/components/scroll-reveal";
-import type { Discipline, Work } from "@/types/domain";
+import type { CaseStudy, Discipline, Work } from "@/types/domain";
 import WorkCard from "./work-card";
 import type { Locale } from "@/lib/i18n";
 
 interface CasesFilterProps {
-  works: Work[];
+  works: Array<(Work | CaseStudy) & { href: string }>;
   locale: Locale;
 }
 
@@ -47,7 +47,7 @@ export default function WorkFilter({ works, locale }: CasesFilterProps) {
               <WorkCard
                 cover={work.cover?.url ?? null}
                 title={work.title}
-                href={`/work/${work.slug}`}
+                href={work.href}
                 category={work.disciplines
                   .map((discipline) => discipline.title)
                   .join(", ")}

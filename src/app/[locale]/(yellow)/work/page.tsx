@@ -3,7 +3,7 @@ import { baseMetadata, getPageMetadata } from "@/lib/metadata";
 import PageContainer from "@/components/page-container";
 import ScrollReveal from "@/components/scroll-reveal";
 import WorkFilter from "@/components/work/work-filter";
-import { getWorks } from "@/lib/plank/fetch";
+import { getCaseStudies, getWorks } from "@/lib/plank/fetch";
 import { getCopy, getRouteLocale } from "@/lib/i18n";
 
 const baseUrl = process.env.BASE_URL;
@@ -18,7 +18,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CasesPage({ params }: Props) {
   const locale = await getRouteLocale(params);
-  const { data: works } = await getWorks({ locale });
+  const [{ data: works }, { data: caseStudies }] = await Promise.all([
+    getWorks({ locale }),
+    getCaseStudies({ locale }),
+  ]);
+  const entries = [
+    ...works.map((work) => ({ ...work, href: `/work/${work.slug}` })),
+    ...caseStudies.map((caseStudy) => ({
+      ...caseStudy,
+      href: `/case/${caseStudy.slug}`,
+    })),
+  ].sort((first, second) =>
+    (second.date ?? "").localeCompare(first.date ?? ""),
+  );
   const title = getCopy(locale).work;
 
   return (
@@ -29,7 +41,7 @@ export default async function CasesPage({ params }: Props) {
         </ScrollReveal>
       </PageContainer>
 
-      {works.length > 0 ? <WorkFilter works={works} locale={locale} /> : null}
+      {entries.length > 0 ? <WorkFilter works={entries} locale={locale} /> : null}
     </>
   );
 }
