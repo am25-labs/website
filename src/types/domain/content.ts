@@ -43,6 +43,36 @@ export interface Work {
   disciplines: Discipline[];
 }
 
+export interface CaseStudy {
+  id: string;
+  title: string;
+  slug: string;
+  cover: PlankMedia | null;
+  description: string | null;
+  client: string | null;
+  campaign: string | null;
+  country: string | null;
+  creative: string | null;
+  strategy: string | null;
+  lead_design: string | null;
+  design: string | null;
+  copy: string | null;
+  illustration: string | null;
+  animation: string | null;
+  photo: string | null;
+  develop: string | null;
+  date: string | null;
+  featured: boolean;
+  work_team: string | null;
+  disciplines: Discipline[];
+  scope: string | null;
+  problem: string | null;
+  research: string | null;
+  solution: string | null;
+  outcome: string | null;
+  learnings: string | null;
+}
+
 export interface Discipline {
   id: string;
   title: string;
