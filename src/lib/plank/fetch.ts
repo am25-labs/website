@@ -42,7 +42,6 @@ export async function getWorks({ onlyFeatured = false, locale }: { onlyFeatured?
       sort: "date",
       order: "desc",
       ...(onlyFeatured && { filters: { featured: { eq: true } } }),
-      exclude: "case_study",
       locale: activeLocale,
       fallback: "en",
     },
@@ -58,7 +57,6 @@ export async function getSingleWork(slug: string, { locale }: LocaleOptions = {}
     {
       status: "published",
       filters: { slug: { eq: slug } },
-      exclude: "case_study",
       locale: activeLocale,
       fallback: "en",
     },
@@ -73,7 +71,6 @@ export async function getPreviewWork(slug: string) {
       limit: 1,
       status: "all",
       filters: { slug: { eq: slug } },
-      exclude: "case_study",
     },
     PREVIEW_FETCH_OPTIONS,
   );
