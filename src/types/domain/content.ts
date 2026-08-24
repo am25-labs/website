@@ -39,7 +39,6 @@ export interface Work {
   develop: string | null;
   date: string | null;
   featured: boolean;
-  case_study: boolean;
   work_team: string | null;
   disciplines: Discipline[];
 }
