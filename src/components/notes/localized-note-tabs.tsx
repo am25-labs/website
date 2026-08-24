@@ -60,7 +60,7 @@ export default function LocalizedNoteTabs({
       </section>
 
       <section className="col-span-2 md:col-span-4">
-        <div className="relative mb-4 aspect-square md:aspect-video">
+        <div className="relative mb-8 aspect-square md:aspect-video">
           {note.cover ? (
             <img
               src={note.cover.url}
@@ -73,6 +73,7 @@ export default function LocalizedNoteTabs({
         <ScrollReveal
           className="grid grid-cols-2 gap-4 md:grid-cols-4"
           delay={0.15}
+          viewportAmount={0.01}
         >
           <div className="col-span-full">
             <ContentRenderer content={note.content} />

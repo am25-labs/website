@@ -11,6 +11,7 @@ type Props = {
   className?: string;
   delay?: number;
   direction?: Direction;
+  viewportAmount?: number;
 };
 
 const offsets: Record<Direction, { x: number; y: number }> = {
@@ -25,6 +26,7 @@ export default function ScrollReveal({
   className,
   delay = 0,
   direction = "up",
+  viewportAmount = 0.15,
 }: Props) {
   const shouldReduceMotion = useReducedMotion();
   const offset = offsets[direction];
@@ -43,7 +45,7 @@ export default function ScrollReveal({
         delay: shouldReduceMotion ? 0 : delay,
         ease: [0.16, 1, 0.3, 1],
       }}
-      viewport={{ amount: 0.15 }}
+      viewport={{ amount: viewportAmount }}
       whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)", x: 0, y: 0 }}
     >
       {children}
