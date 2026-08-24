@@ -8,15 +8,12 @@ import { formatDate } from "@/lib/utils";
 import { dateLocale, getCopy, withLocale, type Locale } from "@/lib/i18n";
 import type { Note } from "@/types/domain";
 
-interface LocalizedNoteTabsProps {
+interface NoteDetailProps {
   note: Note;
   locale: Locale;
 }
 
-export default function LocalizedNoteTabs({
-  note,
-  locale,
-}: LocalizedNoteTabsProps) {
+export default function NoteDetail({ note, locale }: NoteDetailProps) {
   const copy = getCopy(locale);
 
   return (
@@ -65,7 +62,7 @@ export default function LocalizedNoteTabs({
             <img
               src={note.cover.url}
               alt={note.cover.alt ?? note.title}
-              className="h-full w-full object-cover border"
+              className="h-full w-full border object-cover"
             />
           ) : null}
         </div>

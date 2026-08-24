@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { getBaseMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
-import LocalizedNoteTabs from "@/components/notes/localized-note-tabs";
+import NoteDetail from "@/components/notes/note-detail";
 import { getNotes, getSingleNote } from "@/lib/plank/fetch";
 import PageContainer from "@/components/page-container";
 import { getRouteLocale } from "@/lib/i18n";
@@ -61,7 +61,7 @@ export default async function NotePage({ params }: NotePageProps) {
 
   return (
     <PageContainer>
-      <LocalizedNoteTabs note={note} locale={locale} />
+      <NoteDetail note={note} locale={locale} />
     </PageContainer>
   );
 }

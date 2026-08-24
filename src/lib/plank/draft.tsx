@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import PageShell from "@/components/page-shell";
 import PreviewAutoRefresh from "@/components/preview-auto-refresh";
-import LocalizedNoteTabs from "@/components/notes/localized-note-tabs";
+import NoteDetail from "@/components/notes/note-detail";
 import WorkBackLink from "@/components/work/work-back-link";
 import WorkGallery from "@/components/work/work-gallery";
 import WorkHeader from "@/components/work/work-header";
@@ -64,7 +64,7 @@ async function renderNoteDraftPreview(slug: string) {
   return (
     <PageShell locale={locale}>
       <PreviewAutoRefresh contentType="notes" slug={slug} />
-      <LocalizedNoteTabs note={note} locale={locale} />
+      <NoteDetail note={note} locale={locale} />
     </PageShell>
   );
 }
