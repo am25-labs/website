@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator";
 import ScrollReveal from "@/components/scroll-reveal";
 import { getFooter, getFooterNav } from "@/lib/plank/fetch";
 import { withLocale, type Locale } from "@/lib/i18n";
-import GridTwo from "./grids/grid-two";
+import GridFour from "./grids/grid-four";
 
 export default async function Footer({ locale }: { locale: Locale }) {
   const [nav, footer] = await Promise.all([
@@ -16,18 +16,16 @@ export default async function Footer({ locale }: { locale: Locale }) {
     <>
       <Separator />
 
-      <footer className="mx-auto w-full max-w-8xl grid grid-cols-2 md:grid-cols-8 px-4 mt-8 mb-16">
-        <GridTwo>
+      <footer className="mx-auto w-full max-w-8xl grid grid-cols-2 md:grid-cols-8 px-4 my-20 md:items-center">
+        <GridFour>
           <ScrollReveal className="col-span-full">
             <h2 className="text-4xl md:text-5xl font-bold uppercase leading-[1.1]">
               {footer.claim}
             </h2>
           </ScrollReveal>
-        </GridTwo>
+        </GridFour>
 
-        <div className="hidden md:col-span-2 md:block" />
-
-        <div className="col-span-2 flex flex-col gap-12 mt-16 md:col-span-4 md:items-end md:justify-between md:gap-0 md:mt-0">
+        <div className="col-span-2 flex flex-col gap-12 mt-16 md:col-span-4 md:items-end md:justify-between md:gap-20 md:mt-0">
           <ScrollReveal delay={0.2}>
             <Link href={withLocale(locale, "/")}>
               <img
@@ -41,7 +39,7 @@ export default async function Footer({ locale }: { locale: Locale }) {
           </ScrollReveal>
 
           <ScrollReveal
-            className="flex flex-col md:items-end gap-8"
+            className="flex flex-col md:items-end gap-12 md:gap-4"
             delay={0.4}
           >
             <nav>
