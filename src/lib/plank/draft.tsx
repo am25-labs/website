@@ -7,10 +7,10 @@ import WorkGallery from "@/components/work/work-gallery";
 import WorkHeader from "@/components/work/work-header";
 import WorkMeta from "@/components/work/work-meta";
 import { getPreviewNote, getPreviewWork } from "./fetch";
-import { defaultLocale } from "@/lib/i18n";
+import { defaultLocale, type Locale } from "@/lib/i18n";
 
-async function renderWorkDraftPreview(slug: string) {
-  const result = await getPreviewWork(slug).catch(() => null);
+async function renderWorkDraftPreview(slug: string, locale: Locale) {
+  const result = await getPreviewWork(slug, { locale }).catch(() => null);
   const work = result?.data[0] ?? null;
 
   if (!work) {
@@ -18,7 +18,7 @@ async function renderWorkDraftPreview(slug: string) {
   }
 
   return (
-    <PageShell locale={defaultLocale}>
+    <PageShell locale={locale}>
       <PreviewAutoRefresh contentType="works" slug={slug} />
 
       <WorkHeader
@@ -27,7 +27,7 @@ async function renderWorkDraftPreview(slug: string) {
         description={work.description}
       />
 
-      <WorkMeta locale={defaultLocale}
+      <WorkMeta locale={locale}
         client={work.client}
         campaign={work.campaign}
         country={work.country}
@@ -46,13 +46,12 @@ async function renderWorkDraftPreview(slug: string) {
 
       <WorkGallery images={work.images_before} />
       <WorkGallery quote={work.quote} images={work.images_after} />
-      <WorkBackLink locale={defaultLocale} />
+      <WorkBackLink locale={locale} />
     </PageShell>
   );
 }
 
-async function renderNoteDraftPreview(slug: string) {
-  const locale = defaultLocale;
+async function renderNoteDraftPreview(slug: string, locale: Locale) {
   const note = await getPreviewNote(slug, { locale })
     .then((result) => result.data[0] ?? null)
     .catch(() => null);
@@ -72,13 +71,14 @@ async function renderNoteDraftPreview(slug: string) {
 export async function renderDraftPreview(
   contentType: string,
   slug: string,
+  locale: Locale = defaultLocale,
 ): Promise<React.ReactNode | null> {
   if (contentType === "works") {
-    return renderWorkDraftPreview(slug);
+    return renderWorkDraftPreview(slug, locale);
   }
 
   if (contentType === "notes") {
-    return renderNoteDraftPreview(slug);
+    return renderNoteDraftPreview(slug, locale);
   }
 
   return null;

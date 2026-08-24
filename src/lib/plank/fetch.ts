@@ -65,12 +65,16 @@ export async function getSingleWork(slug: string, { locale }: LocaleOptions = {}
   return result.data[0];
 }
 
-export async function getPreviewWork(slug: string) {
+export async function getPreviewWork(
+  slug: string,
+  { locale }: LocaleOptions = {},
+) {
   return plank.collection<Work>("works").findMany(
     {
       limit: 1,
       status: "all",
       filters: { slug: { eq: slug } },
+      ...(locale && { locale, fallback: "en" }),
     },
     PREVIEW_FETCH_OPTIONS,
   );

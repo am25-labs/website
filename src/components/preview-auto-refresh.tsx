@@ -52,9 +52,18 @@ export default function PreviewAutoRefresh({
 
         window.localStorage.setItem(storageKey, state.triggeredAt);
 
-        if (state.previewUrl && state.previewUrl !== window.location.href) {
-          window.location.assign(state.previewUrl);
-          return;
+        if (state.previewUrl) {
+          const previewUrl = new URL(state.previewUrl, window.location.origin);
+          const locale = new URL(window.location.href).searchParams.get("locale");
+
+          if (locale) {
+            previewUrl.searchParams.set("locale", locale);
+          }
+
+          if (previewUrl.href !== window.location.href) {
+            window.location.assign(previewUrl);
+            return;
+          }
         }
 
         window.location.reload();
