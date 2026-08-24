@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import type { Locale } from "@/lib/i18n";
 
 interface Props {
@@ -10,14 +10,10 @@ interface Props {
 
 export default function LocaleSwitch({ locale }: Props) {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const next = locale === "en" ? "es" : "en";
   const isDraft = pathname.startsWith("/draft/");
   const href = isDraft
-    ? `${pathname}?${new URLSearchParams({
-        ...Object.fromEntries(searchParams.entries()),
-        locale: next,
-      })}`
+    ? `${pathname}?locale=${next}`
     : pathname.replace(/^\/(en|es)(?=\/|$)/, `/${next}`);
 
   return (
