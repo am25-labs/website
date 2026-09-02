@@ -43,27 +43,33 @@ export default function WorkGallery({
             delay={groupIndex * 0.1}
             key={groupIndex}
           >
-            <Image
-              src={firstImage.url}
-              alt={firstImage.alt ?? ""}
-              width={firstImage.width ?? 1600}
-              height={firstImage.height ?? 1200}
-              sizes="100vw"
-              className="w-full h-auto object-contain"
-            />
+            <div className="aspect-[5/4] overflow-hidden md:aspect-auto">
+              <Image
+                src={firstImage.url}
+                alt={firstImage.alt ?? ""}
+                width={firstImage.width ?? 1600}
+                height={firstImage.height ?? 1200}
+                sizes="100vw"
+                className="h-full w-full object-cover md:h-auto md:object-contain"
+              />
+            </div>
 
             {pair.length > 0 && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 {pair.map((image, i) => (
-                  <Image
+                  <div
+                    className="aspect-[5/4] overflow-hidden md:aspect-auto"
                     key={image.id ?? i}
-                    src={image.url}
-                    alt={image.alt ?? ""}
-                    width={image.width ?? 1600}
-                    height={image.height ?? 1200}
-                    sizes="100vw"
-                    className="w-full h-auto object-contain"
-                  />
+                  >
+                    <Image
+                      src={image.url}
+                      alt={image.alt ?? ""}
+                      width={image.width ?? 1600}
+                      height={image.height ?? 1200}
+                      sizes="100vw"
+                      className="h-full w-full object-cover md:h-auto md:object-contain"
+                    />
+                  </div>
                 ))}
               </div>
             )}
