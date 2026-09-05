@@ -19,7 +19,7 @@ export default async function Footer({ locale }: { locale: Locale }) {
       <footer className="mx-auto w-full max-w-8xl grid grid-cols-2 md:grid-cols-8 px-4 my-20 md:items-center">
         <GridFour>
           <ScrollReveal className="col-span-full">
-            <h2 className="text-4xl md:text-5xl font-bold uppercase leading-[1.1]">
+            <h2 className="text-4xl md:text-6xl font-bold uppercase leading-[1.1]">
               {footer.claim}
             </h2>
           </ScrollReveal>
