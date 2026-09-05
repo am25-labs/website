@@ -23,9 +23,16 @@ export default async function AboutPage({ params }: Props) {
   const locale = await getRouteLocale(params);
   const entry = await getAbout({ locale });
   const title = getCopy(locale).aboutUs;
-  const brandPrompt = locale === "es"
-    ? { title: "¿Te dio curiosidad?", text: "Conoce AM25 y mira lo que realmente hacemos" }
-    : { title: "Curious enough?", text: "Fine. Meet AM25 and see what we actually do" };
+  const brandPrompt =
+    locale === "es"
+      ? {
+          title: "¿Te dio curiosidad?",
+          text: "Conoce AM25 y mira lo que realmente hacemos",
+        }
+      : {
+          title: "Curious enough?",
+          text: "Fine. Meet AM25 and see what we actually do",
+        };
 
   return (
     <>
@@ -38,11 +45,11 @@ export default async function AboutPage({ params }: Props) {
 
         <ContentRenderer content={entry.description} />
 
-        <Link href={withLocale(locale, "/brand")}>
+        {/* <Link href={withLocale(locale, "/brand")}>
           <AlertWrap className="mt-8" variant="info" title={brandPrompt.title}>
             <p>{brandPrompt.text}</p>
           </AlertWrap>
-        </Link>
+        </Link> */}
       </GenericContent>
 
       <Separator />
