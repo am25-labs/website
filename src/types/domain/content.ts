@@ -1,5 +1,6 @@
 import type { TiptapDoc } from "./index";
 import type { PlankMedia, PlankMediaGallery } from "./index";
+import type { LegalPage } from "./pages";
 
 // Rich Content
 export type RichContent = string | TiptapDoc;
@@ -93,6 +94,12 @@ export interface Note {
 
 export interface Category {
   id: string;
+  title: string;
+  slug: string;
+}
+
+// Terms of Service
+export interface Terms extends LegalPage {
   title: string;
   slug: string;
 }

@@ -9,6 +9,7 @@ import type {
   LegalPage,
   ContentHub,
   Footer,
+  Terms,
 } from "@/types/domain";
 import type { Locale } from "@/lib/i18n";
 
@@ -34,7 +35,10 @@ type LocaleOptions = { locale?: Locale };
 const PREVIEW_FETCH_OPTIONS = { cache: "no-store" } as const;
 
 // CT: Works
-export async function getWorks({ onlyFeatured = false, locale }: { onlyFeatured?: boolean; locale?: Locale } = {}) {
+export async function getWorks({
+  onlyFeatured = false,
+  locale,
+}: { onlyFeatured?: boolean; locale?: Locale } = {}) {
   const activeLocale = locale ?? "es";
   const result = await plank.collection<Work>("works").findMany(
     {
@@ -51,7 +55,10 @@ export async function getWorks({ onlyFeatured = false, locale }: { onlyFeatured?
   return result;
 }
 
-export async function getSingleWork(slug: string, { locale }: LocaleOptions = {}) {
+export async function getSingleWork(
+  slug: string,
+  { locale }: LocaleOptions = {},
+) {
   const activeLocale = locale ?? "es";
   const result = await plank.collection<Work>("works").findMany(
     {
@@ -180,58 +187,87 @@ export async function getFooterNav(options?: LocaleOptions) {
   return navigation.footer_nav ?? [];
 }
 
-// Home
+// ST: Home
 export async function getHome({ locale }: LocaleOptions = {}) {
   const activeLocale = locale ?? "es";
-  return plank.single<Home>("home").find({ locale: activeLocale, fallback: "en" }, CACHE_GENERAL_OPTIONS);
+  return plank
+    .single<Home>("home")
+    .find({ locale: activeLocale, fallback: "en" }, CACHE_GENERAL_OPTIONS);
 }
 
-// About
+// ST: About
 export async function getAbout({ locale }: LocaleOptions = {}): Promise<About> {
   const activeLocale = locale ?? "es";
-  return plank.single<About>("about").find({ locale: activeLocale, fallback: "en" }, CACHE_GENERAL_OPTIONS);
+  return plank
+    .single<About>("about")
+    .find({ locale: activeLocale, fallback: "en" }, CACHE_GENERAL_OPTIONS);
 }
 
-// Legals
+// ST: Legals
 export async function getPrivacy({ locale }: LocaleOptions = {}) {
   const activeLocale = locale ?? "es";
   return plank
     .single<LegalPage>("privacy")
-    .find(
-      { locale: activeLocale, fallback: "en" },
-      CACHE_GENERAL_OPTIONS,
-    );
+    .find({ locale: activeLocale, fallback: "en" }, CACHE_GENERAL_OPTIONS);
 }
 
 export async function getTerms({ locale }: LocaleOptions = {}) {
   const activeLocale = locale ?? "es";
   return plank
     .single<LegalPage>("terms")
-    .find(
-      { locale: activeLocale, fallback: "en" },
-      CACHE_GENERAL_OPTIONS,
-    );
+    .find({ locale: activeLocale, fallback: "en" }, CACHE_GENERAL_OPTIONS);
 }
 
 export async function getCopyright({ locale }: LocaleOptions = {}) {
   const activeLocale = locale ?? "es";
   return plank
     .single<LegalPage>("copyright")
-    .find(
-      { locale: activeLocale, fallback: "en" },
-      CACHE_GENERAL_OPTIONS,
-    );
+    .find({ locale: activeLocale, fallback: "en" }, CACHE_GENERAL_OPTIONS);
 }
 
 export async function getFooter({ locale }: LocaleOptions = {}) {
   const activeLocale = locale ?? "es";
-  return plank.single<Footer>("footer").find({ locale: activeLocale, fallback: "en" }, CACHE_GENERAL_OPTIONS);
+  return plank
+    .single<Footer>("footer")
+    .find({ locale: activeLocale, fallback: "en" }, CACHE_GENERAL_OPTIONS);
 }
 
-// Content Hub
-export async function getContentHub({ locale }: LocaleOptions = {}): Promise<ContentHub> {
+// ST: Content Hub
+export async function getContentHub({
+  locale,
+}: LocaleOptions = {}): Promise<ContentHub> {
   const activeLocale = locale ?? "es";
   return plank
     .single<ContentHub>("content-hub")
     .find({ locale: activeLocale, fallback: "en" }, CACHE_GENERAL_OPTIONS);
+}
+
+// CT: Terms of Service
+export async function getTermsOfService({ locale }: LocaleOptions = {}) {
+  const activeLocale = locale ?? "es";
+  return plank.collection<Terms>("terms-of-service").findMany(
+    {
+      status: "published",
+      locale: activeLocale,
+      fallback: "en",
+    },
+    CACHE_GENERAL_OPTIONS,
+  );
+}
+
+export async function getSingleTermsOfService(
+  slug: string,
+  { locale }: LocaleOptions = {},
+) {
+  const activeLocale = locale ?? "es";
+  const result = await plank.collection<Terms>("terms-of-service").findMany(
+    {
+      status: "published",
+      filters: { slug: { eq: slug } },
+      locale: activeLocale,
+      fallback: "en",
+    },
+    CACHE_GENERAL_OPTIONS,
+  );
+  return result.data[0];
 }

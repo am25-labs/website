@@ -1,4 +1,5 @@
 import type { PlankMedia, FaqItem } from "./index";
+import type { RichContent } from "./content";
 
 // Home
 export interface Home {
@@ -22,7 +23,7 @@ export interface About {
 
 // Legales
 export interface LegalPage {
-  content: string;
+  content: RichContent;
   date?: string;
 }
 
