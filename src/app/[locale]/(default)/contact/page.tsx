@@ -22,9 +22,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ContactPage({ params }: Props) {
   const locale = await getRouteLocale(params);
   const copy = getCopy(locale);
-  const generalPrompt = locale === "es"
-    ? { title: "¿Consultas generales?", text: "Este formulario es para proyectos. Si no es tu caso, ve aquí" }
-    : { title: "General inquiries?", text: "This contact form is for projects. If that’s not you, go here instead" };
+  const generalPrompt =
+    locale === "es"
+      ? {
+          title: "¿Consultas generales?",
+          text: "Este formulario es para proyectos. Si no es tu caso, ve aquí.",
+        }
+      : {
+          title: "General inquiries?",
+          text: "This contact form is for projects. If that’s not you, go here instead.",
+        };
   return (
     <GridContainer>
       <GridTwo className="mb-8">
@@ -46,9 +53,7 @@ export default async function ContactPage({ params }: Props) {
               variant="info"
               title={generalPrompt.title}
             >
-              <p>
-                {generalPrompt.text}
-              </p>
+              <p>{generalPrompt.text}</p>
             </AlertWrap>
           </Link>
         </div>
