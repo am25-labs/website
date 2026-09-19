@@ -17,7 +17,11 @@ interface MobileMenuProps {
   locale: Locale;
 }
 
-export default function MobileMenu({ items, socialItems, locale }: MobileMenuProps) {
+export default function MobileMenu({
+  items,
+  socialItems,
+  locale,
+}: MobileMenuProps) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -67,7 +71,12 @@ export default function MobileMenu({ items, socialItems, locale }: MobileMenuPro
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
-                  {isExternal ? <ArrowUpRightIcon size={20} className="shrink-0 text-am-y" /> : null}
+                  {isExternal ? (
+                    <ArrowUpRightIcon
+                      size={20}
+                      className="shrink-0 text-am-y"
+                    />
+                  ) : null}
                 </Link>
               </li>
             );
@@ -93,7 +102,7 @@ export default function MobileMenu({ items, socialItems, locale }: MobileMenuPro
           })}
         </ul>
 
-        <div className="-mx-1 mt-1 border-t px-3 py-2">
+        <div className="-mx-1 mt-1 border-t px-3 pt-3 pb-2.5">
           <LocaleSwitch locale={locale} />
         </div>
       </div>
