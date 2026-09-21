@@ -1,5 +1,5 @@
 import type { PlankMedia, FaqItem } from "./index";
-import type { RichContent } from "./content";
+import type { LabItem, RichContent } from "./content";
 
 // Home
 export interface Home {
@@ -36,4 +36,10 @@ export interface ContentHub {
   end_description?: string;
   pricing_title?: string;
   faq: FaqItem[];
+}
+
+// Labs
+export interface Labs {
+  quote: string;
+  faq: LabItem[];
 }

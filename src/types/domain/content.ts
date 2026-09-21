@@ -100,6 +100,25 @@ export interface Category {
   slug: string;
 }
 
+// Labs
+export interface LabItem {
+  label: string;
+  content: string;
+}
+
+export interface LabProject {
+  id: string;
+  title: string;
+  slug: string;
+  icon: PlankMedia | null;
+  featured: boolean;
+  quote: string | null;
+  description: RichContent;
+  details: LabItem[];
+  meta: LabItem[];
+  get_started: RichContent | null;
+}
+
 // Terms of Service
 export interface Terms extends LegalPage {
   title: string;

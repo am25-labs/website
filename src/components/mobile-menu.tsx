@@ -91,8 +91,8 @@ export default function MobileMenu({
               <li key={item.href}>
                 <a
                   href={item.href}
-                  target="_blank"
-                  rel="noopener"
+                  target={item.target}
+                  rel={item.target === "_blank" ? "noopener" : undefined}
                   className="flex items-center p-2 hover:bg-accent"
                 >
                   <BrandIcon icon={item.icon} size={item.size} />

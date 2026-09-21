@@ -55,7 +55,11 @@ export default async function Header({ locale }: { locale: Locale }) {
             {headerSocialItems.map((item) => {
               return (
                 <li key={item.href} className="hover:scale-110">
-                  <a href={item.href} target="_blank" rel="noopener">
+                  <a
+                    href={item.href}
+                    target={item.target}
+                    rel={item.target === "_blank" ? "noopener" : undefined}
+                  >
                     <BrandIcon icon={item.icon} size={item.size} />
                   </a>
                 </li>

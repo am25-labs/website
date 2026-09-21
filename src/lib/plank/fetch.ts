@@ -4,12 +4,14 @@ import type {
   Work,
   CaseStudy,
   Note,
+  LabProject,
   Home,
   About,
   LegalPage,
   ContentHub,
   Footer,
   Terms,
+  Labs,
 } from "@/types/domain";
 import type { Locale } from "@/lib/i18n";
 
@@ -182,6 +184,28 @@ export async function getPreviewNote(
     },
     PREVIEW_FETCH_OPTIONS,
   );
+}
+
+// CT: Labs
+export async function getLabProjects({ locale }: LocaleOptions = {}) {
+  const activeLocale = locale ?? "es";
+  return plank.collection<LabProject>("projects").findMany(
+    {
+      status: "published",
+      sort: "title",
+      order: "asc",
+      locale: activeLocale,
+      fallback: "en",
+    },
+    CACHE_GENERAL_OPTIONS,
+  );
+}
+
+export async function getLabs({ locale }: LocaleOptions = {}) {
+  const activeLocale = locale ?? "es";
+  return plank
+    .single<Labs>("labs")
+    .find({ locale: activeLocale, fallback: "en" }, CACHE_GENERAL_OPTIONS);
 }
 
 // ST: Navigation
