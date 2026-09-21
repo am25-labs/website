@@ -15,7 +15,7 @@ export default async function RecentEntries({ locale }: { locale: Locale }) {
     slug: note.slug,
     cover: note.cover?.url ?? null,
     categories: note.category ? [note.category] : [],
-    publishedAt: note.published_at,
+    publishedAt: note.published_at ?? undefined,
     author: note.author,
   }));
 

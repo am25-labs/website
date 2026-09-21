@@ -25,11 +25,13 @@ export default function NoteDetail({ note, locale }: NoteDetailProps) {
               {note.title}
             </h1>
 
-            <p className="mt-4 flex items-center gap-2 text-muted-foreground">
-              {formatDate(note.published_at, {
-                locale: dateLocale(locale),
-              })}
-            </p>
+            {note.published_at ? (
+              <p className="mt-4 flex items-center gap-2 text-muted-foreground">
+                {formatDate(note.published_at, {
+                  locale: dateLocale(locale),
+                })}
+              </p>
+            ) : null}
 
             <div className="mt-8 flex flex-col">
               <div className="flex items-center gap-2">

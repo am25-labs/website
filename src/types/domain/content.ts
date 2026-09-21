@@ -91,7 +91,7 @@ export interface Note {
   content: RichContent;
   category: Category | null;
   author: Author;
-  published_at: string;
+  published_at: string | null;
 }
 
 export interface Category {

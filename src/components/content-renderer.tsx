@@ -148,6 +148,10 @@ interface Props {
 }
 
 export function ContentRenderer({ content, revealBlocks = false }: Props) {
+  if (typeof content === "string" && !content.trim()) {
+    return null;
+  }
+
   return (
     <PlankRenderer
       content={content}
