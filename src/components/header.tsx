@@ -18,7 +18,7 @@ export default async function Header({ locale }: { locale: Locale }) {
           <img
             src="/am25-logo.svg"
             alt="AM25 Logo"
-            width="100"
+            width="128"
             title="AM25"
             className="group-data-[variant=yellow]:brightness-0 group-data-[variant=light]:brightness-0"
           />
