@@ -91,6 +91,18 @@ body {
   text-decoration: none;
 }
 
+.case-study-content .plank-renderer figure > img {
+  margin-bottom: 0.5rem;
+}
+
+.case-study-content .plank-renderer > [data-slot="scroll-reveal"]:has(> figure) {
+  margin-bottom: 1rem;
+}
+
+.case-study-content .plank-renderer > [data-slot="scroll-reveal"]:has(> figure):has(+ [data-slot="scroll-reveal"] > :is(h1, h2, h3, h4, h5, h6, .blockquote-wrapper, figure, img, pre)) {
+  margin-bottom: 0;
+}
+
 /* Link icons */
 .link-icon {
   stroke: var(--color-am-y);

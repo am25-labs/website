@@ -85,7 +85,9 @@ export default function CaseStudyContent({
               <h3 className="mb-4 text-base md:text-lg font-bold uppercase text-neutral-500">
                 {section.label}
               </h3>
-              <ContentRenderer content={section.content} revealBlocks />
+              <div className="case-study-content">
+                <ContentRenderer content={section.content} revealBlocks />
+              </div>
             </section>
           </ScrollReveal>
         ))}
