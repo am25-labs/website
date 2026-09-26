@@ -2,22 +2,40 @@ import Link from "next/link";
 import { ArrowRightIcon } from "lucide-react";
 import GridContainer from "@/components/grids/grid-container";
 import ScrollReveal from "@/components/scroll-reveal";
-import { getNotes } from "@/lib/plank/fetch";
+import { getCaseStudies, getNotes } from "@/lib/plank/fetch";
 import NoteCard from "@/components/notes/note-card";
 import { getCopy, withLocale, type Locale } from "@/lib/i18n";
 
 export default async function RecentEntries({ locale }: { locale: Locale }) {
   const copy = getCopy(locale);
-  const { data: notes } = await getNotes({ locale });
-  const entries = (notes ?? []).slice(0, 4).map((note) => ({
-    id: note.id,
-    title: note.title,
-    slug: note.slug,
-    cover: note.cover?.url ?? null,
-    categories: note.category ? [note.category] : [],
-    publishedAt: note.published_at ?? undefined,
-    author: note.author,
-  }));
+  const [{ data: notes }, { data: caseStudies }] = await Promise.all([
+    getNotes({ locale }),
+    getCaseStudies({ locale }),
+  ]);
+  const entries = [
+    ...notes.map((note) => ({
+      id: note.id,
+      title: note.title,
+      href: withLocale(locale, `/notes/${note.slug}`),
+      cover: note.cover?.url ?? null,
+      categories: note.category ? [note.category] : [],
+      publishedAt: note.published_at ?? undefined,
+      author: note.author,
+    })),
+    ...caseStudies.map((caseStudy) => ({
+      id: caseStudy.id,
+      title: caseStudy.title,
+      href: withLocale(locale, `/case/${caseStudy.slug}`),
+      cover: caseStudy.cover?.url ?? null,
+      categories: caseStudy.category ? [caseStudy.category] : [],
+      publishedAt: caseStudy.date ?? undefined,
+      author: caseStudy.author,
+    })),
+  ]
+    .sort((first, second) =>
+      (second.publishedAt ?? "").localeCompare(first.publishedAt ?? ""),
+    )
+    .slice(0, 4);
 
   return (
     <>
@@ -49,7 +67,7 @@ export default async function RecentEntries({ locale }: { locale: Locale }) {
             <NoteCard
               cover={entry.cover}
               title={entry.title}
-              href={withLocale(locale, `/notes/${entry.slug}`)}
+              href={entry.href}
               category={entry.categories
                 .map((category) => category.title)
                 .join(", ")}
