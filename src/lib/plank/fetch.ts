@@ -20,16 +20,16 @@ const MINUTE = 60 * SECOND;
 const HOUR = 60 * MINUTE;
 
 const TTL_GENERAL = 6 * HOUR;
-const TTL_NOTES = 5 * MINUTE;
+const TTL_SHORT = 5 * MINUTE;
 
 const CACHE_GENERAL_OPTIONS = {
   cache: "force-cache",
   revalidate: TTL_GENERAL / SECOND,
 } as const;
 
-const CACHE_NOTES_OPTIONS = {
+const CACHE_SHORT_OPTIONS = {
   cache: "force-cache",
-  revalidate: TTL_NOTES / SECOND,
+  revalidate: TTL_SHORT / SECOND,
 } as const;
 
 type LocaleOptions = { locale?: Locale };
@@ -100,7 +100,7 @@ export async function getCaseStudies({ locale }: LocaleOptions = {}) {
       locale: activeLocale,
       fallback: "en",
     },
-    CACHE_GENERAL_OPTIONS,
+    CACHE_SHORT_OPTIONS,
   );
 }
 
@@ -116,7 +116,7 @@ export async function getSingleCaseStudy(
       locale: activeLocale,
       fallback: "en",
     },
-    CACHE_GENERAL_OPTIONS,
+    CACHE_SHORT_OPTIONS,
   );
 
   return result.data[0];
@@ -148,7 +148,7 @@ export async function getNotes({ locale }: LocaleOptions = {}) {
       locale: activeLocale,
       fallback: "en",
     },
-    CACHE_NOTES_OPTIONS,
+    CACHE_SHORT_OPTIONS,
   );
 
   return result;
@@ -166,7 +166,7 @@ export async function getSingleNote(
       locale: activeLocale,
       fallback: "en",
     },
-    CACHE_NOTES_OPTIONS,
+    CACHE_SHORT_OPTIONS,
   );
   return result.data[0];
 }
