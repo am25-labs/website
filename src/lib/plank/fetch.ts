@@ -11,6 +11,7 @@ import type {
   ContentHub,
   Footer,
   Terms,
+  PrivacyPolicy,
   Labs,
 } from "@/types/domain";
 import type { Locale } from "@/lib/i18n";
@@ -300,6 +301,35 @@ export async function getSingleTermsOfService(
 ) {
   const activeLocale = locale ?? "es";
   const result = await plank.collection<Terms>("terms-of-service").findMany(
+    {
+      status: "published",
+      filters: { slug: { eq: slug } },
+      locale: activeLocale,
+      fallback: "en",
+    },
+    CACHE_GENERAL_OPTIONS,
+  );
+  return result.data[0];
+}
+
+export async function getPrivacyPolicies({ locale }: LocaleOptions = {}) {
+  const activeLocale = locale ?? "es";
+  return plank.collection<PrivacyPolicy>("privacy-policy").findMany(
+    {
+      status: "published",
+      locale: activeLocale,
+      fallback: "en",
+    },
+    CACHE_GENERAL_OPTIONS,
+  );
+}
+
+export async function getSinglePrivacyPolicy(
+  slug: string,
+  { locale }: LocaleOptions = {},
+) {
+  const activeLocale = locale ?? "es";
+  const result = await plank.collection<PrivacyPolicy>("privacy-policy").findMany(
     {
       status: "published",
       filters: { slug: { eq: slug } },

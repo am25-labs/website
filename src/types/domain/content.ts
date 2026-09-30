@@ -124,3 +124,5 @@ export interface Terms extends LegalPage {
   title: string;
   slug: string;
 }
+
+export type PrivacyPolicy = Terms;
