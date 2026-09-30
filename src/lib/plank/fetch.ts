@@ -310,3 +310,19 @@ export async function getSingleTermsOfService(
   );
   return result.data[0];
 }
+
+export async function getPreviewLegalPage(
+  contentType: "terms-of-service" | "privacy-policy",
+  slug: string,
+  { locale }: LocaleOptions = {},
+) {
+  return plank.collection<Terms>(contentType).findMany(
+    {
+      limit: 1,
+      status: "all",
+      filters: { slug: { eq: slug } },
+      ...(locale && { locale, fallback: "en" }),
+    },
+    PREVIEW_FETCH_OPTIONS,
+  );
+}

@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import CaseStudyContent from "@/components/case-study/case-study-content";
 import CaseStudyHeader from "@/components/case-study/case-study-header";
+import LocalizedLegalTabs from "@/components/legal/localized-legal-tabs";
+import PageContainer from "@/components/page-container";
 import PageShell from "@/components/page-shell";
 import PreviewAutoRefresh from "@/components/preview-auto-refresh";
 import NoteDetail from "@/components/notes/note-detail";
@@ -10,6 +12,7 @@ import WorkHeader from "@/components/work/work-header";
 import WorkMeta from "@/components/work/work-meta";
 import {
   getPreviewCaseStudy,
+  getPreviewLegalPage,
   getPreviewNote,
   getPreviewWork,
 } from "./fetch";
@@ -127,6 +130,29 @@ async function renderCaseStudyDraftPreview(slug: string, locale: Locale) {
   );
 }
 
+async function renderLegalDraftPreview(
+  contentType: "terms-of-service" | "privacy-policy",
+  slug: string,
+  locale: Locale,
+) {
+  const page = await getPreviewLegalPage(contentType, slug, { locale })
+    .then((result) => result.data[0] ?? null)
+    .catch(() => null);
+
+  if (!page) {
+    notFound();
+  }
+
+  return (
+    <PageShell locale={locale}>
+      <PreviewAutoRefresh contentType={contentType} slug={slug} />
+      <PageContainer>
+        <LocalizedLegalTabs title={page.title} page={page} locale={locale} />
+      </PageContainer>
+    </PageShell>
+  );
+}
+
 export async function renderDraftPreview(
   contentType: string,
   slug: string,
@@ -142,6 +168,10 @@ export async function renderDraftPreview(
 
   if (contentType === "case-studies") {
     return renderCaseStudyDraftPreview(slug, locale);
+  }
+
+  if (contentType === "terms-of-service" || contentType === "privacy-policy") {
+    return renderLegalDraftPreview(contentType, slug, locale);
   }
 
   return null;
