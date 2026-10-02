@@ -1,4 +1,5 @@
 import plank from "./client";
+import type { PodcastLink, PodcastPlatform } from "@/types/domain/podcast";
 import type {
   Navigation,
   Work,
@@ -36,6 +37,20 @@ const CACHE_SHORT_OPTIONS = {
 type LocaleOptions = { locale?: Locale };
 
 const PREVIEW_FETCH_OPTIONS = { cache: "no-store" } as const;
+
+export async function getPodcastLinks(): Promise<PodcastLink[]> {
+  const globals = await plank
+    .single<{ podcast?: Partial<Record<PodcastPlatform, string | null>>[] }>("globals")
+    .find(undefined, CACHE_GENERAL_OPTIONS);
+  const podcast = globals.podcast?.[0];
+
+  return [
+    { platform: "spotify", label: "Spotify", url: podcast?.spotify ?? undefined },
+    { platform: "apple", label: "Apple Podcasts", url: podcast?.apple ?? undefined },
+    { platform: "amazon", label: "Amazon Music", url: podcast?.amazon ?? undefined },
+    { platform: "youtube", label: "YouTube", url: podcast?.youtube ?? undefined },
+  ];
+}
 
 // CT: Works
 export async function getWorks({
