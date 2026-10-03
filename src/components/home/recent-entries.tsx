@@ -39,7 +39,7 @@ export default async function RecentEntries({ locale }: { locale: Locale }) {
 
   return (
     <>
-      <GridContainer className="mb-0">
+      <GridContainer>
         <ScrollReveal className="col-span-full">
           <div className="flex items-center justify-between">
             <h2 className="font-bold uppercase text-muted-foreground group-data-[variant=yellow]:text-black">
@@ -56,7 +56,7 @@ export default async function RecentEntries({ locale }: { locale: Locale }) {
         </ScrollReveal>
       </GridContainer>
 
-      <GridContainer className="mt-4">
+      <GridContainer>
         {entries.map((entry, index) => (
           <ScrollReveal
             className="col-span-2"
