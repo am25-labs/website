@@ -11,6 +11,7 @@ import PodcastButtons from "@/components/podcast/podcast-buttons";
 import GridContainer from "@/components/grids/grid-container";
 import GridSix from "@/components/grids/grid-six";
 import GridTwo from "@/components/grids/grid-two";
+import ScrollReveal from "@/components/scroll-reveal";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -29,21 +30,21 @@ export default async function PodcastPage({ params }: Props) {
         <EpisodeProvider initialEpisode={episodes[0] ?? null} episodes={episodes}>
           <GridContainer className="mt-0 md:pt-2 mb-0">
             <GridSix>
-              <div className="col-span-full">
+              <ScrollReveal className="col-span-full" direction="left">
                 <PodcastPlayer />
-              </div>
+              </ScrollReveal>
             </GridSix>
             <GridTwo>
-              <div className="col-span-full">
+              <ScrollReveal className="col-span-full" direction="right" delay={0.15}>
                 <p className="text-center font-bold md:hidden">Episode list:</p>
                 <PodcastEpisodes episodes={episodes} locale={locale} />
-              </div>
+              </ScrollReveal>
             </GridTwo>
           </GridContainer>
         </EpisodeProvider>
       </Suspense>
       <GridContainer className="mt-0">
-        <div className="col-span-full">
+        <ScrollReveal className="col-span-full" delay={0.25}>
           <div className="border-t mb-8" />
           <h3 className="text-center font-bold mb-4">Also available in:</h3>
           <div className="flex flex-col md:flex-row items-center justify-center max-w-5xl mx-auto gap-2 md:gap-5">
@@ -51,7 +52,7 @@ export default async function PodcastPage({ params }: Props) {
               <PodcastButtons key={link.platform} {...link} />
             ))}
           </div>
-        </div>
+        </ScrollReveal>
       </GridContainer>
     </>
   );
