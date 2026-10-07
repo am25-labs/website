@@ -234,7 +234,7 @@ export default function AccessDialog({ className, locale }: Props) {
                     updateField("acceptedPrivacy", checked === true)
                   }
                 />
-                <FieldLabel className="flex-wrap gap-1.5 text-xs group-data-[variant=light]:text-electric">
+                <FieldLabel className="flex-wrap gap-1.5 text-xs group-data-[variant=light]:text-plot">
                   {text.privacy}
                   <Link
                     href={withLocale(locale, "/privacy")}

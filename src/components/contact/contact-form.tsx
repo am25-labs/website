@@ -80,19 +80,63 @@ export default function ContactForm({ mode, locale }: ContactFormProps) {
 
   const isGeneral = mode === "general";
   const endpoint = isGeneral ? "/api/contact/general" : "/api/contact/services";
-  const text = locale === "es" ? {
-    contact: "¿Cómo puedo contactarte?", contactDescription: "Para responder tus preguntas necesitamos poder contactarte", fullName: "Nombre completo", language: "Idioma", chooseSubject: "Elige un asunto", chooseService: "Elige un servicio", subjectDescription: "El motivo principal de tu mensaje:", serviceDescription: "El servicio principal que te interesa:", subject: "Asunto", service: "Servicio", message: "Escribe tu mensaje aquí", privacy: "He leído y acepto la", privacyLink: "Política de privacidad", sending: "Enviando...", send: "Enviar", cancel: "Cancelar",
-  } : {
-    contact: "How can I contact you?", contactDescription: "To answer your questions, we need to be able to contact you", fullName: "Full Name", language: "Language", chooseSubject: "Choose a subject", chooseService: "Choose a service", subjectDescription: "The main reason for your message:", serviceDescription: "The main service that interests you:", subject: "Subject", service: "Service", message: "Type your message here", privacy: "I have read and agree to the", privacyLink: "Privacy Policy", sending: "Sending...", send: "Send", cancel: "Cancel",
-  };
+  const text =
+    locale === "es"
+      ? {
+          contact: "¿Cómo puedo contactarte?",
+          contactDescription:
+            "Para responder tus preguntas necesitamos poder contactarte",
+          fullName: "Nombre completo",
+          language: "Idioma",
+          chooseSubject: "Elige un asunto",
+          chooseService: "Elige un servicio",
+          subjectDescription: "El motivo principal de tu mensaje:",
+          serviceDescription: "El servicio principal que te interesa:",
+          subject: "Asunto",
+          service: "Servicio",
+          message: "Escribe tu mensaje aquí",
+          privacy: "He leído y acepto la",
+          privacyLink: "Política de privacidad",
+          sending: "Enviando...",
+          send: "Enviar",
+          cancel: "Cancelar",
+        }
+      : {
+          contact: "How can I contact you?",
+          contactDescription:
+            "To answer your questions, we need to be able to contact you",
+          fullName: "Full Name",
+          language: "Language",
+          chooseSubject: "Choose a subject",
+          chooseService: "Choose a service",
+          subjectDescription: "The main reason for your message:",
+          serviceDescription: "The main service that interests you:",
+          subject: "Subject",
+          service: "Service",
+          message: "Type your message here",
+          privacy: "I have read and agree to the",
+          privacyLink: "Privacy Policy",
+          sending: "Sending...",
+          send: "Send",
+          cancel: "Cancel",
+        };
   const title = isGeneral ? text.chooseSubject : text.chooseService;
   const description = isGeneral
     ? text.subjectDescription
     : text.serviceDescription;
   const placeholder = isGeneral ? text.subject : text.service;
   const options = isGeneral
-    ? locale === "es" ? ["Consulta general", "Soporte técnico", "Colaboración", "Otro mensaje"] : SUBJECT_OPTIONS
-    : locale === "es" ? ["Diseño gráfico", "Web/Desarrollo", "Multimedia", "Fuera de nuestro alcance"] : SERVICE_OPTIONS;
+    ? locale === "es"
+      ? ["Consulta general", "Soporte técnico", "Colaboración", "Otro mensaje"]
+      : SUBJECT_OPTIONS
+    : locale === "es"
+      ? [
+          "Diseño gráfico",
+          "Web/Desarrollo",
+          "Multimedia",
+          "Fuera de nuestro alcance",
+        ]
+      : SERVICE_OPTIONS;
 
   function updateField<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((current) => ({ ...current, [key]: value }));
@@ -189,53 +233,87 @@ export default function ContactForm({ mode, locale }: ContactFormProps) {
   return (
     <form onSubmit={handleSubmit}>
       <ScrollReveal>
-        <Card className="gap-6 overflow-hidden rounded-2xl border-foreground/10 group-data-[variant=default]:border-white bg-card py-6 text-sm text-card-foreground shadow-none ring-0 group-data-[variant=light]:bg-white group-data-[variant=light]:text-electric">
-        <div className="px-6">
-          <FieldSet>
-            <div className="flex flex-col gap-2">
-              <FieldLegend className="mb-0 font-bold uppercase">
-                {text.contact}
-              </FieldLegend>
-              <FieldDescription>
-                {text.contactDescription}
-              </FieldDescription>
-            </div>
+        <Card className="gap-6 overflow-hidden rounded-2xl border-foreground/10 group-data-[variant=default]:border-white bg-card py-6 text-sm text-card-foreground shadow-none ring-0 group-data-[variant=light]:bg-white group-data-[variant=light]:text-plot">
+          <div className="px-6">
+            <FieldSet>
+              <div className="flex flex-col gap-2">
+                <FieldLegend className="mb-0 font-bold uppercase">
+                  {text.contact}
+                </FieldLegend>
+                <FieldDescription>{text.contactDescription}</FieldDescription>
+              </div>
 
-            <FieldGroup>
-              <Field className="-mb-3">
-                <Input
-                  name="name"
-                  placeholder={text.fullName}
-                  className="rounded-none group-data-[variant=default]:bg-electric group-data-[variant=light]:bg-input/10 group-data-[variant=light]:text-electric group-data-[variant=light]:placeholder:text-electric"
-                  autoComplete="name"
-                  value={form.name}
-                  onChange={(event) => updateField("name", event.target.value)}
-                />
-              </Field>
-
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <Field>
+              <FieldGroup>
+                <Field className="-mb-3">
                   <Input
-                    name="email"
-                    type="email"
-                    placeholder="Email"
-                    className="rounded-none group-data-[variant=default]:bg-electric group-data-[variant=light]:bg-input/10 group-data-[variant=light]:text-electric group-data-[variant=light]:placeholder:text-electric"
-                    autoComplete="email"
-                    value={form.email}
-                    onChange={(event) => updateField("email", event.target.value)}
+                    name="name"
+                    placeholder={text.fullName}
+                    className="rounded-none group-data-[variant=default]:bg-plot group-data-[variant=light]:bg-input/10 group-data-[variant=light]:text-plot group-data-[variant=light]:placeholder:text-plot"
+                    autoComplete="name"
+                    value={form.name}
+                    onChange={(event) =>
+                      updateField("name", event.target.value)
+                    }
                   />
                 </Field>
 
-                <Field>
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                  <Field>
+                    <Input
+                      name="email"
+                      type="email"
+                      placeholder="Email"
+                      className="rounded-none group-data-[variant=default]:bg-plot group-data-[variant=light]:bg-input/10 group-data-[variant=light]:text-plot group-data-[variant=light]:placeholder:text-plot"
+                      autoComplete="email"
+                      value={form.email}
+                      onChange={(event) =>
+                        updateField("email", event.target.value)
+                      }
+                    />
+                  </Field>
+
+                  <Field>
+                    <Select
+                      value={form.language}
+                      onValueChange={(value) => updateField("language", value)}
+                    >
+                      <SelectTrigger className="w-full rounded-none group-data-[variant=default]:bg-plot group-data-[variant=default]:hover:bg-plot group-data-[variant=light]:bg-input/10 group-data-[variant=light]:text-plot group-data-[variant=light]:data-placeholder:text-plot">
+                        <SelectValue placeholder={text.language} />
+                      </SelectTrigger>
+                      <SelectContent className="group-data-[variant=light]:[--popover:#ffffff] group-data-[variant=light]:[--popover-foreground:var(--color-plot)] group-data-[variant=light]:[--accent:var(--color-plot)] group-data-[variant=light]:[--accent-foreground:#ffffff]">
+                        {LANGUAGE_OPTIONS.map((option) => (
+                          <SelectItem key={option} value={option}>
+                            {option}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </Field>
+                </div>
+              </FieldGroup>
+            </FieldSet>
+
+            <FieldSet className="mt-8">
+              <div className="flex flex-col gap-2">
+                <FieldLegend className="mb-0 font-bold uppercase">
+                  {title}
+                </FieldLegend>
+                <FieldDescription>{description}</FieldDescription>
+              </div>
+
+              <FieldGroup>
+                <Field className="-mb-3">
                   <Select
-                    value={form.language}
-                    onValueChange={(value) => updateField("language", value)}
+                    value={form.subjectOrService}
+                    onValueChange={(value) =>
+                      updateField("subjectOrService", value)
+                    }
                   >
-                    <SelectTrigger className="w-full rounded-none group-data-[variant=default]:bg-electric group-data-[variant=default]:hover:bg-electric group-data-[variant=light]:bg-input/10 group-data-[variant=light]:text-electric group-data-[variant=light]:data-placeholder:text-electric">
-                    <SelectValue placeholder={text.language} />
+                    <SelectTrigger className="w-full rounded-none group-data-[variant=default]:bg-plot group-data-[variant=default]:hover:bg-plot group-data-[variant=light]:bg-input/10 group-data-[variant=light]:text-plot group-data-[variant=light]:data-placeholder:text-plot">
+                      <SelectValue placeholder={placeholder} />
                     </SelectTrigger>
-                    <SelectContent className="group-data-[variant=light]:[--popover:#ffffff] group-data-[variant=light]:[--popover-foreground:var(--color-electric)] group-data-[variant=light]:[--accent:var(--color-electric)] group-data-[variant=light]:[--accent-foreground:#ffffff]">
-                      {LANGUAGE_OPTIONS.map((option) => (
+                    <SelectContent className="group-data-[variant=light]:[--popover:#ffffff] group-data-[variant=light]:[--popover-foreground:var(--color-plot)] group-data-[variant=light]:[--accent:var(--color-plot)] group-data-[variant=light]:[--accent-foreground:#ffffff]">
+                      {options.map((option) => (
                         <SelectItem key={option} value={option}>
                           {option}
                         </SelectItem>
@@ -243,113 +321,83 @@ export default function ContactForm({ mode, locale }: ContactFormProps) {
                     </SelectContent>
                   </Select>
                 </Field>
-              </div>
-            </FieldGroup>
-          </FieldSet>
 
-          <FieldSet className="mt-8">
-            <div className="flex flex-col gap-2">
-              <FieldLegend className="mb-0 font-bold uppercase">
-                {title}
-              </FieldLegend>
-              <FieldDescription>{description}</FieldDescription>
-            </div>
+                <Field>
+                  <Textarea
+                    name="message"
+                    placeholder={text.message}
+                    className="rounded-none group-data-[variant=default]:bg-plot group-data-[variant=light]:bg-input/10 group-data-[variant=light]:text-plot group-data-[variant=light]:placeholder:text-plot"
+                    value={form.message}
+                    onChange={(event) =>
+                      updateField("message", event.target.value)
+                    }
+                  />
+                </Field>
+              </FieldGroup>
 
-            <FieldGroup>
-              <Field className="-mb-3">
-                <Select
-                  value={form.subjectOrService}
-                  onValueChange={(value) =>
-                    updateField("subjectOrService", value)
-                  }
-                >
-                  <SelectTrigger className="w-full rounded-none group-data-[variant=default]:bg-electric group-data-[variant=default]:hover:bg-electric group-data-[variant=light]:bg-input/10 group-data-[variant=light]:text-electric group-data-[variant=light]:data-placeholder:text-electric">
-                    <SelectValue placeholder={placeholder} />
-                  </SelectTrigger>
-                  <SelectContent className="group-data-[variant=light]:[--popover:#ffffff] group-data-[variant=light]:[--popover-foreground:var(--color-electric)] group-data-[variant=light]:[--accent:var(--color-electric)] group-data-[variant=light]:[--accent-foreground:#ffffff]">
-                    {options.map((option) => (
-                      <SelectItem key={option} value={option}>
-                        {option}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </Field>
+              <FieldGroup>
+                <Field orientation="horizontal">
+                  <Checkbox
+                    className="[--primary:var(--foreground)] [--primary-foreground:var(--background)]"
+                    checked={form.acceptedPrivacy}
+                    onCheckedChange={(checked) =>
+                      updateField("acceptedPrivacy", checked === true)
+                    }
+                  />
+                  <FieldLabel className="flex-wrap gap-1.5 text-xs group-data-[variant=light]:text-plot">
+                    {text.privacy}
+                    <Link
+                      href={withLocale(locale, "/privacy")}
+                      target="_blank"
+                      rel="noopener"
+                      className="inline-flex items-center hover:font-bold"
+                    >
+                      {text.privacyLink}
+                      <ArrowUpRightIcon size={16} className="shrink-0" />
+                    </Link>
+                  </FieldLabel>
+                </Field>
+              </FieldGroup>
 
-              <Field>
-                <Textarea
-                  name="message"
-                  placeholder={text.message}
-                  className="rounded-none group-data-[variant=default]:bg-electric group-data-[variant=light]:bg-input/10 group-data-[variant=light]:text-electric group-data-[variant=light]:placeholder:text-electric"
-                  value={form.message}
-                  onChange={(event) => updateField("message", event.target.value)}
+              <FieldGroup>
+                <TurnstileWrap
+                  theme="light"
+                  onVerify={(token) => setCaptchaToken(token)}
+                  onExpire={() => setCaptchaToken("")}
                 />
-              </Field>
-            </FieldGroup>
+              </FieldGroup>
 
-            <FieldGroup>
-              <Field orientation="horizontal">
-                <Checkbox
-                  className="[--primary:var(--foreground)] [--primary-foreground:var(--background)]"
-                  checked={form.acceptedPrivacy}
-                  onCheckedChange={(checked) =>
-                    updateField("acceptedPrivacy", checked === true)
-                  }
-                />
-                <FieldLabel className="flex-wrap gap-1.5 text-xs group-data-[variant=light]:text-electric">
-                  {text.privacy}
-                  <Link
-                    href={withLocale(locale, "/privacy")}
-                    target="_blank"
-                    rel="noopener"
-                    className="inline-flex items-center hover:font-bold"
-                  >
-                    {text.privacyLink}
-                    <ArrowUpRightIcon size={16} className="shrink-0" />
-                  </Link>
-                </FieldLabel>
-              </Field>
-            </FieldGroup>
+              {status?.type === "success" ? (
+                <AlertWrap variant="success" title={status.text} />
+              ) : null}
 
-            <FieldGroup>
-              <TurnstileWrap
-                theme="light"
-                onVerify={(token) => setCaptchaToken(token)}
-                onExpire={() => setCaptchaToken("")}
-              />
-            </FieldGroup>
+              {status?.type === "error" ? (
+                <AlertWrap variant="destructive" title={status.text} />
+              ) : null}
+            </FieldSet>
+          </div>
 
-            {status?.type === "success" ? (
-              <AlertWrap variant="success" title={status.text} />
-            ) : null}
-
-            {status?.type === "error" ? (
-              <AlertWrap variant="destructive" title={status.text} />
-            ) : null}
-          </FieldSet>
-        </div>
-
-        <div className="flex items-center gap-3 px-6">
-          <Button
-            type="submit"
-            size="lg"
-            className="border border-white! bg-white! text-electric! font-bold uppercase hover:border-white! hover:bg-electric! hover:text-white!"
-            disabled={isSubmitting}
-          >
-            <SendIcon />
-            <span>{isSubmitting ? text.sending : text.send}</span>
-          </Button>
-          <Button
-            type="button"
-            variant="outline"
-            size="lg"
-            className="border border-electric! bg-electric! text-white! font-bold uppercase hover:border-white! hover:bg-electric! hover:text-white!"
-            onClick={resetForm}
-            disabled={isSubmitting}
-          >
-            {text.cancel}
-          </Button>
-        </div>
+          <div className="flex items-center gap-3 px-6">
+            <Button
+              type="submit"
+              size="lg"
+              className="border border-white! bg-white! text-plot! font-bold uppercase hover:border-white! hover:bg-plot! hover:text-white!"
+              disabled={isSubmitting}
+            >
+              <SendIcon />
+              <span>{isSubmitting ? text.sending : text.send}</span>
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              size="lg"
+              className="border border-plot! bg-plot! text-white! font-bold uppercase hover:border-white! hover:bg-plot! hover:text-white!"
+              onClick={resetForm}
+              disabled={isSubmitting}
+            >
+              {text.cancel}
+            </Button>
+          </div>
         </Card>
       </ScrollReveal>
     </form>

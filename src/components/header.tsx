@@ -13,7 +13,7 @@ export default async function Header({ locale }: { locale: Locale }) {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 mx-auto flex w-full max-w-8xl items-center justify-between bg-electric p-4 group-data-[variant=light]:bg-white">
+      <header className="fixed inset-x-0 top-0 z-50 mx-auto flex w-full max-w-8xl items-center justify-between bg-plot p-4 group-data-[variant=light]:bg-white">
         <Link href={withLocale(locale, "/")} className="relative block">
           <img
             src="/am25-logo.svg"
@@ -24,7 +24,7 @@ export default async function Header({ locale }: { locale: Locale }) {
           />
           <span
             aria-hidden="true"
-            className="absolute inset-0 hidden bg-electric [mask:url('/am25-logo.svg')_center/contain_no-repeat] group-data-[variant=light]:block"
+            className="absolute inset-0 hidden bg-plot [mask:url('/am25-logo.svg')_center/contain_no-repeat] group-data-[variant=light]:block"
           />
         </Link>
 
@@ -48,7 +48,7 @@ export default async function Header({ locale }: { locale: Locale }) {
                     {isExternal ? (
                       <ArrowUpRightIcon
                         size={20}
-                        className="shrink-0 text-white group-data-[variant=light]:text-electric"
+                        className="shrink-0 text-white group-data-[variant=light]:text-plot"
                       />
                     ) : null}
                   </Link>

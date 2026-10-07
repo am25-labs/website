@@ -32,10 +32,10 @@ export default function SelectWrap({ name, placeholder, options }: Props) {
     <>
       <input ref={hiddenRef} type="hidden" name={name} value={value} />
       <Select value={value} onValueChange={setValue}>
-        <SelectTrigger className="w-full rounded-none group-data-[variant=light]:data-placeholder:text-electric group-data-[variant=light]:bg-input/10 group-data-[variant=light]:text-electric">
+        <SelectTrigger className="w-full rounded-none group-data-[variant=light]:data-placeholder:text-plot group-data-[variant=light]:bg-input/10 group-data-[variant=light]:text-plot">
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
-        <SelectContent className="group-data-[variant=light]:[--popover:#ffffff] group-data-[variant=light]:[--popover-foreground:var(--color-electric)] group-data-[variant=light]:[--accent:var(--color-electric)] group-data-[variant=light]:[--accent-foreground:#ffffff]">
+        <SelectContent className="group-data-[variant=light]:[--popover:#ffffff] group-data-[variant=light]:[--popover-foreground:var(--color-plot)] group-data-[variant=light]:[--accent:var(--color-plot)] group-data-[variant=light]:[--accent-foreground:#ffffff]">
           {options.map((opt) => (
             <SelectItem key={opt} value={opt}>
               {opt}

@@ -19,7 +19,7 @@ export function AuditBanner() {
 
   return (
     <>
-      <div className="w-full bg-primary-foreground group-data-[variant=default]:bg-electric mb-20">
+      <div className="w-full bg-primary-foreground group-data-[variant=default]:bg-plot mb-20">
         <div className="mx-auto max-w-4xl px-4 py-12">
           <div className="flex flex-col items-center justify-between gap-6 sm:flex-row sm:gap-4">
             <div className="text-center sm:text-left">

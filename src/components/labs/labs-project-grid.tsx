@@ -20,12 +20,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-} from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { getCopy, type Locale } from "@/lib/i18n";
 import type { LabProject } from "@/types/domain";
 
@@ -49,14 +44,23 @@ const metaIconMap: Record<string, LucideIcon> = {
   documentación: BookOpenIcon,
 };
 
-function ProjectDialog({ project, locale }: { project: LabProject; locale: Locale }) {
+function ProjectDialog({
+  project,
+  locale,
+}: {
+  project: LabProject;
+  locale: Locale;
+}) {
   const copy = getCopy(locale);
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button type="button" className="group/tile w-full cursor-pointer text-left">
-          <Card className="aspect-square justify-center rounded-none bg-card py-0 group-data-[variant=light]:bg-white group-data-[variant=light]:ring-electric">
+        <button
+          type="button"
+          className="group/tile w-full cursor-pointer text-left"
+        >
+          <Card className="aspect-square justify-center rounded-none bg-card py-0 group-data-[variant=light]:bg-white group-data-[variant=light]:ring-plot">
             {project.icon ? (
               <img
                 src={project.icon.url}
@@ -69,7 +73,7 @@ function ProjectDialog({ project, locale }: { project: LabProject; locale: Local
               </span>
             )}
           </Card>
-          <span className="mt-2 block text-center text-xs text-muted-foreground group-hover/tile:underline group-data-[variant=light]:text-electric">
+          <span className="mt-2 block text-center text-xs text-muted-foreground group-hover/tile:underline group-data-[variant=light]:text-plot">
             {project.title}
           </span>
         </button>

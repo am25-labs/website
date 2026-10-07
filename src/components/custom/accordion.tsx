@@ -20,10 +20,10 @@ export function AccordionWrap({ items }: Props) {
           value={`item-${i}`}
           className="group-data-[variant=light]:data-open:bg-muted/10"
         >
-          <AccordionTrigger className="group-data-[variant=light]:[&_svg]:text-electric text-base font-bold">
+          <AccordionTrigger className="group-data-[variant=light]:[&_svg]:text-plot text-base font-bold">
             {item.label}
           </AccordionTrigger>
-          <AccordionContent className="text-neutral-400 group-data-[variant=default]:text-white text-base group-data-[variant=light]:text-electric">
+          <AccordionContent className="text-neutral-400 group-data-[variant=default]:text-white text-base group-data-[variant=light]:text-plot">
             <ContentRenderer content={item.content} />
           </AccordionContent>
         </AccordionItem>

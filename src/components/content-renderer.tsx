@@ -17,12 +17,12 @@ const components: NodeComponents = {
     return <Tag className={className}>{children}</Tag>;
   },
   bulletList: ({ children }) => (
-    <ul className="marker:text-white group-data-[variant=light]:marker:text-electric">
+    <ul className="marker:text-white group-data-[variant=light]:marker:text-plot">
       {children}
     </ul>
   ),
   orderedList: ({ children }) => (
-    <ol className="marker:text-white group-data-[variant=light]:marker:text-electric">
+    <ol className="marker:text-white group-data-[variant=light]:marker:text-plot">
       {children}
     </ol>
   ),
@@ -36,7 +36,7 @@ const components: NodeComponents = {
       {children}
       <ArrowUpRightIcon
         size={20}
-        className="text-white group-data-[variant=light]:text-electric shrink-0"
+        className="text-white group-data-[variant=light]:text-plot shrink-0"
       />
     </a>
   ),
@@ -80,7 +80,7 @@ const revealedComponents: NodeComponents = {
     revealBlock(<p>{children}</p>, isLast, isOnly),
   bulletList: ({ children, isLast, isOnly }) =>
     revealBlock(
-      <ul className="marker:text-white group-data-[variant=light]:marker:text-electric">
+      <ul className="marker:text-white group-data-[variant=light]:marker:text-plot">
         {children}
       </ul>,
       isLast,
@@ -90,7 +90,7 @@ const revealedComponents: NodeComponents = {
     revealBlock(
       <ol
         start={start}
-        className="marker:text-white group-data-[variant=light]:marker:text-electric"
+        className="marker:text-white group-data-[variant=light]:marker:text-plot"
       >
         {children}
       </ol>,
@@ -125,7 +125,9 @@ const revealedComponents: NodeComponents = {
             height={height ?? undefined}
             className="border"
           />
-          <figcaption className="text-xs text-neutral-500 group-data-[variant=default]:text-white group-data-[variant=light]:text-electric">{title}</figcaption>
+          <figcaption className="text-xs text-neutral-500 group-data-[variant=default]:text-white group-data-[variant=light]:text-plot">
+            {title}
+          </figcaption>
         </figure>
       ) : (
         <img

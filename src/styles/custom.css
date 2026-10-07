@@ -1,9 +1,9 @@
 /* Layout width */
 @theme {
-  --color-electric: #0000f2;
-  --color-alert-success: #3DFF8A;
-  --color-alert-warning: #FFE600;
-  --color-alert-destructive: #FF5C75;
+  --color-plot: #0000f2;
+  --color-alert-success: #3dff8a;
+  --color-alert-warning: #ffe600;
+  --color-alert-destructive: #ff5c75;
   --max-width-8xl: 104rem;
   --max-width-9xl: 116rem;
 }
@@ -14,7 +14,7 @@ html:has(body > [data-variant="default"]) {
 }
 
 html:has(body > [data-variant="light"]) {
-  --scrollbar-thumb: var(--color-electric);
+  --scrollbar-thumb: var(--color-plot);
 }
 
 ::-webkit-scrollbar {

@@ -22,27 +22,27 @@ export default function PageShell({
       <div
         data-variant={variant}
         className={cn(
-          "group min-h-screen flex flex-col bg-electric text-foreground",
+          "group min-h-screen flex flex-col bg-plot text-foreground",
           variant === "default" && [
-            "[--background:var(--color-electric)] [--foreground:#ffffff]",
-            "[--card:var(--color-electric)] [--card-foreground:#ffffff]",
-            "[--popover:var(--color-electric)] [--popover-foreground:#ffffff]",
-            "[--primary:var(--color-electric)] [--primary-foreground:#ffffff]",
-            "[--secondary:var(--color-electric)] [--secondary-foreground:#ffffff]",
-            "[--muted:var(--color-electric)] [--muted-foreground:#ffffff]",
-            "[--accent:#ffffff] [--accent-foreground:var(--color-electric)]",
+            "[--background:var(--color-plot)] [--foreground:#ffffff]",
+            "[--card:var(--color-plot)] [--card-foreground:#ffffff]",
+            "[--popover:var(--color-plot)] [--popover-foreground:#ffffff]",
+            "[--primary:var(--color-plot)] [--primary-foreground:#ffffff]",
+            "[--secondary:var(--color-plot)] [--secondary-foreground:#ffffff]",
+            "[--muted:var(--color-plot)] [--muted-foreground:#ffffff]",
+            "[--accent:#ffffff] [--accent-foreground:var(--color-plot)]",
             "[--border:#ffffff] [--input:#ffffff] [--ring:#ffffff]",
             "[--destructive:#ffffff] [--destructive-foreground:#ffffff] [&_[data-slot=card]]:ring-white",
           ],
           variant === "light" && [
-            "bg-white [--background:#ffffff] [--foreground:var(--color-electric)]",
-            "[--card:#ffffff] [--card-foreground:var(--color-electric)]",
-            "[--popover:#ffffff] [--popover-foreground:var(--color-electric)]",
-            "[--primary:#ffffff] [--primary-foreground:var(--color-electric)]",
-            "[--secondary:oklch(0.96_0_0)] [--secondary-foreground:var(--color-electric)]",
-            "[--muted:oklch(0.96_0_0)] [--muted-foreground:var(--color-electric)]",
-            "[--accent:var(--color-electric)] [--accent-foreground:#ffffff]",
-            "[--border:var(--color-electric)] [--input:var(--color-electric)] [--ring:var(--color-electric)]",
+            "bg-white [--background:#ffffff] [--foreground:var(--color-plot)]",
+            "[--card:#ffffff] [--card-foreground:var(--color-plot)]",
+            "[--popover:#ffffff] [--popover-foreground:var(--color-plot)]",
+            "[--primary:#ffffff] [--primary-foreground:var(--color-plot)]",
+            "[--secondary:oklch(0.96_0_0)] [--secondary-foreground:var(--color-plot)]",
+            "[--muted:oklch(0.96_0_0)] [--muted-foreground:var(--color-plot)]",
+            "[--accent:var(--color-plot)] [--accent-foreground:#ffffff]",
+            "[--border:var(--color-plot)] [--input:var(--color-plot)] [--ring:var(--color-plot)]",
           ],
         )}
       >

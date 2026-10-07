@@ -53,9 +53,7 @@ export default function PodcastPlayer({ locale }: { locale: Locale }) {
     <>
       <audio ref={audioRef} src={episode?.enclosure?.url} />
 
-      <div
-        className={clsx("flex flex-col justify-between mt-4 md:mt-0 mb-10")}
-      >
+      <div className={clsx("flex flex-col justify-between mt-4 md:mt-0 mb-10")}>
         <div className={clsx("flex flex-col items-center gap-2")}>
           <div
             className={clsx(
@@ -95,12 +93,15 @@ export default function PodcastPlayer({ locale }: { locale: Locale }) {
           >
             {episode?.itunes.episodeType === "trailer" ? (
               <span className={clsx("flex items-center gap-0.5")}>
-                <MicIcon size={16} />{copy.podcastSeasonLabel}{episode?.itunes.season} Trailer
+                <MicIcon size={16} />
+                {copy.podcastSeasonLabel}
+                {episode?.itunes.season} Trailer
               </span>
             ) : (
               <span className={clsx("flex items-center gap-0.5")}>
-                <MicIcon size={16} />{copy.podcastSeasonLabel}{episode?.itunes.season} E
-                {episode?.itunes.episode}
+                <MicIcon size={16} />
+                {copy.podcastSeasonLabel}
+                {episode?.itunes.season} E{episode?.itunes.episode}
               </span>
             )}
           </div>
@@ -111,7 +112,7 @@ export default function PodcastPlayer({ locale }: { locale: Locale }) {
             <Progress
               value={progressPercentage}
               aria-label="Playback progress"
-              className="h-1 cursor-pointer bg-white/25 [&_[data-slot=progress-indicator]]:bg-white group-data-[variant=light]:bg-electric/20 group-data-[variant=light]:[&_[data-slot=progress-indicator]]:bg-electric"
+              className="h-1 cursor-pointer bg-white/25 [&_[data-slot=progress-indicator]]:bg-white group-data-[variant=light]:bg-plot/20 group-data-[variant=light]:[&_[data-slot=progress-indicator]]:bg-plot"
               onClick={handleProgressClick}
             />
 

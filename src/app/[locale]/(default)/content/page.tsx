@@ -89,7 +89,7 @@ export default async function ContentHubPage({ params }: Props) {
           <div className="grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-3">
             {(entry.features ?? []).map((item, index) => (
               <ScrollReveal delay={index * 0.1} key={item.label}>
-                <Card className="min-h-48 gap-0 rounded-none border-0 bg-electric py-6 text-sm ring-0">
+                <Card className="min-h-48 gap-0 rounded-none border-0 bg-plot py-6 text-sm ring-0">
                   <div className="flex flex-col gap-4 px-6 py-4">
                     <span className="text-3xl font-bold uppercase">
                       {item.label}

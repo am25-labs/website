@@ -12,7 +12,7 @@ interface ServicesProps {
 export default function Services({ services, locale }: ServicesProps) {
   const copy = getCopy(locale);
   return (
-    <GridContainer className="mx-4 py-12 bg-white text-electric">
+    <GridContainer className="mx-4 py-12 bg-white text-plot">
       <ScrollReveal className="col-span-full">
         <h2 className="text-4xl font-bold uppercase md:text-center md:text-5xl">
           {copy.whatWeDo}
@@ -20,10 +20,7 @@ export default function Services({ services, locale }: ServicesProps) {
 
         <ul className="mt-8 flex list-none flex-col items-start gap-4 p-0 text-left md:flex-row md:justify-center md:gap-24 md:text-center">
           {services.map((service, index) => (
-            <li
-              key={service.label}
-              className="text-2xl md:text-3xl"
-            >
+            <li key={service.label} className="text-2xl md:text-3xl">
               <ScrollReveal
                 delay={index * 0.12}
                 direction={index % 2 === 0 ? "left" : "right"}

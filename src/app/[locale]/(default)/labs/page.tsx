@@ -16,7 +16,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = await getRouteLocale(params);
   const labs = await getLabs({ locale });
 
-  return getPageMetadata(locale, `AM25 ${getCopy(locale).labs}`, "/labs", labs.quote);
+  return getPageMetadata(
+    locale,
+    `AM25 ${getCopy(locale).labs}`,
+    "/labs",
+    labs.quote,
+  );
 }
 
 export default async function LabsPage({ params }: Props) {
@@ -46,7 +51,7 @@ export default async function LabsPage({ params }: Props) {
         <GridContainer className="pb-24">
           <GridTwo>
             <ScrollReveal className="col-span-full">
-              <h2 className="text-sm font-bold uppercase text-muted-foreground group-data-[variant=light]:text-electric">
+              <h2 className="text-sm font-bold uppercase text-muted-foreground group-data-[variant=light]:text-plot">
                 {copy.labsProjects}
               </h2>
             </ScrollReveal>
@@ -64,7 +69,7 @@ export default async function LabsPage({ params }: Props) {
         <GridContainer className="pb-16">
           <GridTwo>
             <ScrollReveal className="col-span-full">
-              <h2 className="text-sm font-bold uppercase text-muted-foreground group-data-[variant=light]:text-electric">
+              <h2 className="text-sm font-bold uppercase text-muted-foreground group-data-[variant=light]:text-plot">
                 {copy.labsFaq}
               </h2>
             </ScrollReveal>

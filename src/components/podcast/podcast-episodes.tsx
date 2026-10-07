@@ -13,7 +13,10 @@ interface PodcastEpisodesProps {
   locale: Locale;
 }
 
-export default function PodcastEpisodes({ episodes, locale }: PodcastEpisodesProps) {
+export default function PodcastEpisodes({
+  episodes,
+  locale,
+}: PodcastEpisodesProps) {
   const copy = getCopy(locale);
   const { currentEpisode, setCurrentEpisode } = useCurrentEpisode();
   const router = useRouter();
@@ -41,8 +44,9 @@ export default function PodcastEpisodes({ episodes, locale }: PodcastEpisodesPro
               key={ep.guid}
               onClick={() => handleEpisodeClick(ep)}
               className={clsx(
-                "cursor-pointer p-3 hover:bg-white hover:text-electric hover:[--muted-foreground:var(--color-electric)] hover:[--border:var(--color-electric)]",
-                isActive && "bg-white text-electric [--muted-foreground:var(--color-electric)] [--border:var(--color-electric)]",
+                "cursor-pointer p-3 hover:bg-white hover:text-plot hover:[--muted-foreground:var(--color-plot)] hover:[--border:var(--color-plot)]",
+                isActive &&
+                  "bg-white text-plot [--muted-foreground:var(--color-plot)] [--border:var(--color-plot)]",
                 "flex items-center gap-5",
               )}
             >
@@ -67,12 +71,15 @@ export default function PodcastEpisodes({ episodes, locale }: PodcastEpisodesPro
                 <div className="flex flex-col gap-0.5 text-muted-foreground text-xs uppercase">
                   {ep.itunes.episodeType === "trailer" ? (
                     <span className="flex items-center gap-0.5">
-                      <MicIcon size={13} />{copy.podcastSeasonLabel}{ep.itunes.season} Trailer
+                      <MicIcon size={13} />
+                      {copy.podcastSeasonLabel}
+                      {ep.itunes.season} Trailer
                     </span>
                   ) : (
                     <span className="flex items-center gap-0.5">
-                      <MicIcon size={13} />{copy.podcastSeasonLabel}{ep.itunes.season} E
-                      {ep.itunes.episode}
+                      <MicIcon size={13} />
+                      {copy.podcastSeasonLabel}
+                      {ep.itunes.season} E{ep.itunes.episode}
                     </span>
                   )}
                   <span className="flex items-center gap-1 uppercase">

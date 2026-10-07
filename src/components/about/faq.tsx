@@ -10,7 +10,10 @@ interface FaqProps {
   items: FaqItem[];
 }
 
-export default function AboutFaq({ items, locale }: FaqProps & { locale: Locale }) {
+export default function AboutFaq({
+  items,
+  locale,
+}: FaqProps & { locale: Locale }) {
   const copy = getCopy(locale);
   const accordionItems = items.map((item) => ({
     label: item.label,
@@ -21,7 +24,7 @@ export default function AboutFaq({ items, locale }: FaqProps & { locale: Locale 
     <GridContainer className="mt-4">
       <GridTwo>
         <ScrollReveal className="col-span-full">
-          <h2 className="font-bold uppercase text-muted-foreground group-data-[variant=light]:text-electric">
+          <h2 className="font-bold uppercase text-muted-foreground group-data-[variant=light]:text-plot">
             {copy.studioFaqs}
           </h2>
         </ScrollReveal>

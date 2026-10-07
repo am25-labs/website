@@ -22,7 +22,7 @@ export default function ContentFaq({
   return (
     <GridTwo className="mt-4 md:mt-0">
       <ScrollReveal className="col-span-full">
-        <h2 className="font-bold uppercase text-muted-foreground group-data-[variant=light]:text-electric">
+        <h2 className="font-bold uppercase text-muted-foreground group-data-[variant=light]:text-plot">
           {copy.studioFaqs}
         </h2>
       </ScrollReveal>

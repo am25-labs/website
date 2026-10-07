@@ -53,21 +53,21 @@ components:
 
 ## Overview
 
-The public AM25 website is an editorial and portfolio surface: typographic, high-contrast, sparse, and unapologetically direct. It uses an electric blue default canvas with oversized uppercase Martian Mono, generous empty space, and white for external-link and icon emphasis. The work, images, and words carry the visual texture; the interface stays flat and exact.
+The public AM25 website is an editorial and portfolio surface: typographic, high-contrast, sparse, and unapologetically direct. It uses an plot blue default canvas with oversized uppercase Martian Mono, generous empty space, and white for external-link and icon emphasis. The work, images, and words carry the visual texture; the interface stays flat and exact.
 
 ## Colors
 
-The default theme is electric blue with white text, logos, icons, borders, and separators. The default and light variants are applied at the page-layout level: light becomes a white canvas with electric blue text, logos, icons, borders, and separators. Preserve those semantic variants rather than introducing page-local colors. Electric blue (`#0047D7`, `electric`) is the shared brand signal and the light theme ink on white. Supporting UI follows the page palette; states use icons and subtle surface changes.
+The default theme is plot blue with white text, logos, icons, borders, and separators. The default and light variants are applied at the page-layout level: light becomes a white canvas with plot blue text, logos, icons, borders, and separators. Preserve those semantic variants rather than introducing page-local colors. plot blue (`#0047D7`, `plot`) is the shared brand signal and the light theme ink on white. Supporting UI follows the page palette; states use icons and subtle surface changes.
 
-| Role | Token | Use |
-| --- | --- | --- |
-| Default canvas | `background` | Electric blue marketing and editorial pages |
-| Default ink | `foreground` | Primary text and imagery framing |
-| Electric blue | `electric` | Light theme content and structure, external-link/icon emphasis |
-| Quiet surface | `muted` | Secondary control state and restrained contrast |
-| Supporting text | `muted-foreground` | Descriptions and metadata |
-| Structure | `border` | Minimal form, card, and control separation |
-| Danger | `destructive` | Form errors and destructive feedback only |
+| Role            | Token              | Use                                                            |
+| --------------- | ------------------ | -------------------------------------------------------------- |
+| Default canvas  | `background`       | plot blue marketing and editorial pages                        |
+| Default ink     | `foreground`       | Primary text and imagery framing                               |
+| plot blue       | `plot`             | Light theme content and structure, external-link/icon emphasis |
+| Quiet surface   | `muted`            | Secondary control state and restrained contrast                |
+| Supporting text | `muted-foreground` | Descriptions and metadata                                      |
+| Structure       | `border`           | Minimal form, card, and control separation                     |
+| Danger          | `destructive`      | Form errors and destructive feedback only                      |
 
 ## Typography
 
@@ -87,10 +87,10 @@ Keep interface geometry square (`0px`) whenever feature code controls it. Existi
 
 ## Components
 
-Use the existing radix-vega shadcn components, header, mobile menu, grid helpers, hero, work cards, content blocks, and contact components. The header is fixed, electric blue by default, and flips to white with the light page variant. Navigation items are uppercase and underlined on hover; external links include the existing arrow treatment. Buttons and controls should be compact, flat, and subordinate to page content. Content cards, galleries, and CMS-rendered blocks need clear structure without shadow or decorative chrome.
+Use the existing radix-vega shadcn components, header, mobile menu, grid helpers, hero, work cards, content blocks, and contact components. The header is fixed, plot blue by default, and flips to white with the light page variant. Navigation items are uppercase and underlined on hover; external links include the existing arrow treatment. Buttons and controls should be compact, flat, and subordinate to page content. Content cards, galleries, and CMS-rendered blocks need clear structure without shadow or decorative chrome.
 
 ## Do's and Don'ts
 
 Do make the typography, work, and editorial content the dominant experience. Do use default and light variants deliberately and consistently through the established layout wrappers. Do keep copy concise, high-contrast, and plainspoken.
 
-Do not add gradients, shadows, glass, rounded feature UI, generic SaaS hero cards, or secondary brand colors. Do not make electric blue a random CTA fill on an electric blue page when it is not part of the existing component. Do not dilute the headline scale with several competing display styles.
+Do not add gradients, shadows, glass, rounded feature UI, generic SaaS hero cards, or secondary brand colors. Do not make plot blue a random CTA fill on an plot blue page when it is not part of the existing component. Do not dilute the headline scale with several competing display styles.

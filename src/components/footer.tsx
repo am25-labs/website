@@ -65,7 +65,7 @@ export default async function Footer({ locale }: { locale: Locale }) {
               />
               <span
                 aria-hidden="true"
-                className="absolute inset-0 hidden bg-electric [mask:url('/am25-logo.svg')_center/contain_no-repeat] group-data-[variant=light]:block"
+                className="absolute inset-0 hidden bg-plot [mask:url('/am25-logo.svg')_center/contain_no-repeat] group-data-[variant=light]:block"
               />
             </Link>
           </ScrollReveal>
