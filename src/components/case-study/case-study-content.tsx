@@ -82,7 +82,7 @@ export default function CaseStudyContent({
             key={section.id}
           >
             <section id={section.id} className="scroll-mt-24">
-              <h3 className="mb-4 text-base md:text-lg font-bold uppercase text-neutral-500 group-data-[variant=default]:text-white">
+              <h3 className="mb-4 text-base md:text-lg font-bold uppercase text-foreground">
                 {section.label}
               </h3>
               <div className="case-study-content">
