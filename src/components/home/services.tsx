@@ -12,7 +12,7 @@ interface ServicesProps {
 export default function Services({ services, locale }: ServicesProps) {
   const copy = getCopy(locale);
   return (
-    <GridContainer className="py-12 bg-white text-electric">
+    <GridContainer className="mx-4 py-12 bg-white text-electric">
       <ScrollReveal className="col-span-full">
         <h2 className="text-4xl font-bold uppercase md:text-center md:text-5xl">
           {copy.whatWeDo}
