@@ -55,7 +55,7 @@ export default async function Footer({ locale }: { locale: Locale }) {
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-            <Link href={withLocale(locale, "/")} className="relative block">
+            <Link href={withLocale(locale, "/")} className="relative block w-fit">
               <img
                 src="/am25-logo.svg"
                 alt="AM25 Logo"
