@@ -4,6 +4,8 @@ import usePodcastPlayer from "@/hooks/podcast/use-podcast-player";
 import { useCurrentEpisode } from "@/hooks/podcast/use-episode-provider";
 import useMediaSession from "@/hooks/podcast/use-media-session";
 import { usePodcastAnalytics } from "@/hooks/podcast/use-podcast-analytics";
+import { Progress } from "@/components/ui/progress";
+import { getCopy, type Locale } from "@/lib/i18n";
 import clsx from "clsx";
 import {
   MicIcon,
@@ -14,7 +16,8 @@ import {
   ShareIcon,
 } from "lucide-react";
 
-export default function PodcastPlayer() {
+export default function PodcastPlayer({ locale }: { locale: Locale }) {
+  const copy = getCopy(locale);
   const { currentEpisode: episode } = useCurrentEpisode();
 
   const {
@@ -63,7 +66,7 @@ export default function PodcastPlayer() {
             <img
               src={episode?.itunes.image}
               alt={episode?.title}
-              className={clsx("object-cover")}
+              className={clsx("border object-cover")}
             />
           </div>
 
@@ -92,11 +95,11 @@ export default function PodcastPlayer() {
           >
             {episode?.itunes.episodeType === "trailer" ? (
               <span className={clsx("flex items-center gap-0.5")}>
-                <MicIcon size={16} />T{episode?.itunes.season} Trailer
+                <MicIcon size={16} />{copy.podcastSeasonLabel}{episode?.itunes.season} Trailer
               </span>
             ) : (
               <span className={clsx("flex items-center gap-0.5")}>
-                <MicIcon size={16} />T{episode?.itunes.season} E
+                <MicIcon size={16} />{copy.podcastSeasonLabel}{episode?.itunes.season} E
                 {episode?.itunes.episode}
               </span>
             )}
@@ -105,17 +108,12 @@ export default function PodcastPlayer() {
 
         <div>
           <div className={clsx("md:px-15")}>
-            <div
-              className={clsx(
-                "w-full h-1.5 bg-muted rounded-full cursor-pointer relative",
-              )}
+            <Progress
+              value={progressPercentage}
+              aria-label="Playback progress"
+              className="h-1 cursor-pointer bg-white/25 [&_[data-slot=progress-indicator]]:bg-white group-data-[variant=light]:bg-electric/20 group-data-[variant=light]:[&_[data-slot=progress-indicator]]:bg-electric"
               onClick={handleProgressClick}
-            >
-              <div
-                className={clsx("h-full bg-am-y rounded-full")}
-                style={{ width: `${progressPercentage}%` }}
-              />
-            </div>
+            />
 
             <div
               className={clsx("flex justify-between text-xs mt-2 mb-5 px-1")}

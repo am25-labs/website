@@ -17,15 +17,11 @@ interface AlertWrapProps extends Omit<
 }
 
 const variantStyles = {
-  default:
-    "bg-card text-white [&_[data-slot=alert-description]]:text-white [&>svg]:text-current",
-  info: "bg-[#0c1b3a] text-blue-500 [&_[data-slot=alert-description]]:text-blue-500 [&>svg]:text-current",
-  success:
-    "bg-[#082019] text-emerald-500 [&_[data-slot=alert-description]]:text-emerald-500 [&>svg]:text-current",
-  warning:
-    "bg-[#3b2d08] text-amber-400 [&_[data-slot=alert-description]]:text-amber-400 [&>svg]:text-current",
-  destructive:
-    "bg-[#370815] text-rose-600 [&_[data-slot=alert-description]]:text-rose-600 [&>svg]:text-current",
+  default: "bg-transparent text-foreground",
+  info: "bg-transparent text-foreground",
+  success: "bg-transparent text-alert-success",
+  warning: "bg-transparent text-alert-warning",
+  destructive: "bg-transparent text-alert-destructive",
 };
 
 const variantIcons = {
@@ -69,7 +65,7 @@ export function AlertWrap({
       {children && (
         <div
           data-slot="alert-description"
-          className="col-start-2 grid justify-items-start gap-1 text-sm text-muted-foreground [&_p]:leading-relaxed"
+          className="col-start-2 grid justify-items-start gap-1 text-sm text-current [&_p]:leading-relaxed"
         >
           {children}
         </div>

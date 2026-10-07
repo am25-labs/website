@@ -1,7 +1,7 @@
 import ContentRenderer from "@/components/content-renderer";
 import AboutFaq from "@/components/about/faq";
 import GenericContent from "@/components/generic-content";
-import { AlertWrap } from "@/components/ui/custom/alert-wrap";
+import { AlertWrap } from "@/components/custom/alert-wrap";
 import { getPageMetadata } from "@/lib/metadata";
 import { getAbout } from "@/lib/plank/fetch";
 import type { Metadata } from "next";
@@ -40,7 +40,7 @@ export default async function AboutPage({ params }: Props) {
         <img
           src={entry.profile.url}
           alt={entry.profile.alt ?? title}
-          className="h-auto w-full object-cover mb-8"
+          className="h-auto w-full border object-cover mb-8"
         />
 
         <ContentRenderer content={entry.description} />

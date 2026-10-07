@@ -5,7 +5,7 @@ import { useCurrentEpisode } from "@/hooks/podcast/use-episode-provider";
 import clsx from "clsx";
 import { MicIcon, CalendarIcon } from "lucide-react";
 import type { PodcastEpisode } from "@/types/domain/podcast";
-import { dateLocale, type Locale } from "@/lib/i18n";
+import { dateLocale, getCopy, type Locale } from "@/lib/i18n";
 import { formatDate } from "@/lib/utils";
 
 interface PodcastEpisodesProps {
@@ -14,6 +14,7 @@ interface PodcastEpisodesProps {
 }
 
 export default function PodcastEpisodes({ episodes, locale }: PodcastEpisodesProps) {
+  const copy = getCopy(locale);
   const { currentEpisode, setCurrentEpisode } = useCurrentEpisode();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -40,8 +41,8 @@ export default function PodcastEpisodes({ episodes, locale }: PodcastEpisodesPro
               key={ep.guid}
               onClick={() => handleEpisodeClick(ep)}
               className={clsx(
-                "cursor-pointer p-3",
-                isActive ? "bg-accent" : "hover:bg-muted",
+                "cursor-pointer p-3 hover:bg-white hover:text-electric hover:[--muted-foreground:var(--color-electric)] hover:[--border:var(--color-electric)]",
+                isActive && "bg-white text-electric [--muted-foreground:var(--color-electric)] [--border:var(--color-electric)]",
                 "flex items-center gap-5",
               )}
             >
@@ -49,7 +50,7 @@ export default function PodcastEpisodes({ episodes, locale }: PodcastEpisodesPro
                 <img
                   src={ep.itunes.image}
                   alt={ep.title}
-                  className="w-full h-full object-cover block"
+                  className="w-full h-full border object-cover block"
                 />
               </div>
 
@@ -66,11 +67,11 @@ export default function PodcastEpisodes({ episodes, locale }: PodcastEpisodesPro
                 <div className="flex flex-col gap-0.5 text-muted-foreground text-xs uppercase">
                   {ep.itunes.episodeType === "trailer" ? (
                     <span className="flex items-center gap-0.5">
-                      <MicIcon size={13} />T{ep.itunes.season} Trailer
+                      <MicIcon size={13} />{copy.podcastSeasonLabel}{ep.itunes.season} Trailer
                     </span>
                   ) : (
                     <span className="flex items-center gap-0.5">
-                      <MicIcon size={13} />T{ep.itunes.season} E
+                      <MicIcon size={13} />{copy.podcastSeasonLabel}{ep.itunes.season} E
                       {ep.itunes.episode}
                     </span>
                   )}

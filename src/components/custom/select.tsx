@@ -32,10 +32,10 @@ export default function SelectWrap({ name, placeholder, options }: Props) {
     <>
       <input ref={hiddenRef} type="hidden" name={name} value={value} />
       <Select value={value} onValueChange={setValue}>
-        <SelectTrigger className="w-full rounded-none group-data-[variant=yellow]:bg-input/10 group-data-[variant=yellow]:text-black group-data-[variant=yellow]:data-placeholder:text-black group-data-[variant=light]:bg-input/10 group-data-[variant=light]:text-black">
+        <SelectTrigger className="w-full rounded-none group-data-[variant=light]:data-placeholder:text-electric group-data-[variant=light]:bg-input/10 group-data-[variant=light]:text-electric">
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
-        <SelectContent className="group-data-[variant=yellow]:[--popover:oklch(0.145_0_0)] group-data-[variant=yellow]:[--popover-foreground:oklch(0.985_0_0)] group-data-[variant=yellow]:[--accent:oklch(0.269_0_0)] group-data-[variant=yellow]:[--accent-foreground:oklch(0.985_0_0)] group-data-[variant=light]:[--popover:oklch(0.145_0_0)] group-data-[variant=light]:[--popover-foreground:oklch(0.985_0_0)] group-data-[variant=light]:[--accent:oklch(0.269_0_0)] group-data-[variant=light]:[--accent-foreground:oklch(0.985_0_0)]">
+        <SelectContent className="group-data-[variant=light]:[--popover:#ffffff] group-data-[variant=light]:[--popover-foreground:var(--color-electric)] group-data-[variant=light]:[--accent:var(--color-electric)] group-data-[variant=light]:[--accent-foreground:#ffffff]">
           {options.map((opt) => (
             <SelectItem key={opt} value={opt}>
               {opt}

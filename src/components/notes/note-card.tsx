@@ -35,7 +35,7 @@ export default function NoteCard({
       title={title}
       className="group/card"
     >
-      <Card className="gap-0 overflow-hidden bg-black p-0 text-white">
+      <Card className="gap-0 overflow-hidden bg-electric p-0 text-white">
         {SHOW_COVER && cover ? (
           <>
             <div className="aspect-[5/4] overflow-hidden">

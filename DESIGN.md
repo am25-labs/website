@@ -5,9 +5,9 @@ description: "Public AM25 marketing, work, notes, contact, and Content Hub landi
 colors:
   primary: "oklch(0.985 0 0)"
   primary-foreground: "oklch(0.205 0 0)"
-  background: "#000000"
-  foreground: "oklch(0.985 0 0)"
-  accent: "#ffff00"
+  background: "#0047D7"
+  foreground: "#ffffff"
+  accent: "#0047D7"
   muted: "oklch(0.269 0 0)"
   muted-foreground: "oklch(0.708 0 0)"
   border: "oklch(0.269 0 0)"
@@ -53,17 +53,17 @@ components:
 
 ## Overview
 
-The public AM25 website is an editorial and portfolio surface: typographic, high-contrast, sparse, and unapologetically direct. It uses a black default canvas with oversized uppercase Martian Mono, generous empty space, and vivid AM25 yellow as a deliberate mode rather than a decorative accent. The work, images, and words carry the visual texture; the interface stays flat and exact.
+The public AM25 website is an editorial and portfolio surface: typographic, high-contrast, sparse, and unapologetically direct. It uses an electric blue default canvas with oversized uppercase Martian Mono, generous empty space, and white for external-link and icon emphasis. The work, images, and words carry the visual texture; the interface stays flat and exact.
 
 ## Colors
 
-The default theme is black with near-white text. It also has intentional yellow and light variants, applied at the page-layout level: yellow becomes the canvas with black content; light becomes a white canvas with near-black content. Preserve those semantic variants rather than introducing page-local colors. AM25 yellow (`#ffff00`) is the shared brand signal and the default icon accent on black. Supporting UI uses the neutral gray scale; destructive states stay muted dark red.
+The default theme is electric blue with white text, logos, icons, borders, and separators. The default and light variants are applied at the page-layout level: light becomes a white canvas with electric blue text, logos, icons, borders, and separators. Preserve those semantic variants rather than introducing page-local colors. Electric blue (`#0047D7`, `electric`) is the shared brand signal and the light theme ink on white. Supporting UI follows the page palette; states use icons and subtle surface changes.
 
 | Role | Token | Use |
 | --- | --- | --- |
-| Default canvas | `background` | Black marketing and editorial pages |
+| Default canvas | `background` | Electric blue marketing and editorial pages |
 | Default ink | `foreground` | Primary text and imagery framing |
-| AM25 yellow | `accent` | Yellow page variant, external-link/icon emphasis |
+| Electric blue | `electric` | Light theme content and structure, external-link/icon emphasis |
 | Quiet surface | `muted` | Secondary control state and restrained contrast |
 | Supporting text | `muted-foreground` | Descriptions and metadata |
 | Structure | `border` | Minimal form, card, and control separation |
@@ -87,10 +87,10 @@ Keep interface geometry square (`0px`) whenever feature code controls it. Existi
 
 ## Components
 
-Use the existing radix-vega shadcn components, header, mobile menu, grid helpers, hero, work cards, content blocks, and contact components. The header is fixed, black by default, and flips to yellow or white with its page variant. Navigation items are uppercase and underlined on hover; external links include the existing arrow treatment. Buttons and controls should be compact, flat, and subordinate to page content. Content cards, galleries, and CMS-rendered blocks need clear structure without shadow or decorative chrome.
+Use the existing radix-vega shadcn components, header, mobile menu, grid helpers, hero, work cards, content blocks, and contact components. The header is fixed, electric blue by default, and flips to white with the light page variant. Navigation items are uppercase and underlined on hover; external links include the existing arrow treatment. Buttons and controls should be compact, flat, and subordinate to page content. Content cards, galleries, and CMS-rendered blocks need clear structure without shadow or decorative chrome.
 
 ## Do's and Don'ts
 
-Do make the typography, work, and editorial content the dominant experience. Do use black, yellow, and light variants deliberately and consistently through the established layout wrappers. Do keep copy concise, high-contrast, and plainspoken.
+Do make the typography, work, and editorial content the dominant experience. Do use default and light variants deliberately and consistently through the established layout wrappers. Do keep copy concise, high-contrast, and plainspoken.
 
-Do not add gradients, shadows, glass, rounded feature UI, generic SaaS hero cards, or secondary brand colors. Do not make yellow a random CTA fill on a black page when it is not part of the existing component or page variant. Do not dilute the headline scale with several competing display styles.
+Do not add gradients, shadows, glass, rounded feature UI, generic SaaS hero cards, or secondary brand colors. Do not make electric blue a random CTA fill on an electric blue page when it is not part of the existing component. Do not dilute the headline scale with several competing display styles.

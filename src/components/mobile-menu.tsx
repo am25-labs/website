@@ -43,7 +43,7 @@ export default function MobileMenu({
     <div ref={containerRef} className="relative">
       <button
         onClick={() => setOpen((current) => !current)}
-        className="inline-flex size-9 items-center justify-center rounded-md hover:bg-accent"
+        className="inline-flex size-9 items-center justify-center rounded-md hover:bg-accent hover:text-accent-foreground"
         aria-expanded={open}
         aria-label="Main navigation (mobile)"
       >
@@ -74,7 +74,7 @@ export default function MobileMenu({
                   {isExternal ? (
                     <ArrowUpRightIcon
                       size={20}
-                      className="shrink-0 text-am-y"
+                      className="shrink-0 text-current"
                     />
                   ) : null}
                 </Link>
@@ -93,7 +93,7 @@ export default function MobileMenu({
                   href={item.href}
                   target={item.target}
                   rel={item.target === "_blank" ? "noopener" : undefined}
-                  className="flex items-center p-2 hover:bg-accent"
+                  className="flex items-center p-2 hover:bg-accent hover:text-accent-foreground"
                 >
                   <BrandIcon icon={item.icon} size={item.size} />
                 </a>

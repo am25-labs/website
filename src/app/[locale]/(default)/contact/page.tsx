@@ -6,7 +6,7 @@ import GridTwo from "@/components/grids/grid-two";
 import ScrollReveal from "@/components/scroll-reveal";
 import ContactForm from "@/components/contact/contact-form";
 import ContactLinks from "@/components/contact/contact-links";
-import { AlertWrap } from "@/components/ui/custom/alert-wrap";
+import { AlertWrap } from "@/components/custom/alert-wrap";
 import Link from "next/link";
 import { getCopy, getRouteLocale, withLocale } from "@/lib/i18n";
 

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRightIcon, SendIcon } from "lucide-react";
 import TurnstileWrap from "@/components/contact/turnstile";
-import { AlertWrap } from "@/components/ui/custom/alert-wrap";
+import { AlertWrap } from "@/components/custom/alert-wrap";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -189,7 +189,7 @@ export default function ContactForm({ mode, locale }: ContactFormProps) {
   return (
     <form onSubmit={handleSubmit}>
       <ScrollReveal>
-        <Card className="gap-6 overflow-hidden rounded-2xl border-foreground/10 bg-card py-6 text-sm text-card-foreground shadow-none ring-0 group-data-[variant=yellow]:bg-am-y group-data-[variant=yellow]:text-black">
+        <Card className="gap-6 overflow-hidden rounded-2xl border-foreground/10 group-data-[variant=default]:border-white bg-card py-6 text-sm text-card-foreground shadow-none ring-0 group-data-[variant=light]:bg-white group-data-[variant=light]:text-electric">
         <div className="px-6">
           <FieldSet>
             <div className="flex flex-col gap-2">
@@ -206,7 +206,7 @@ export default function ContactForm({ mode, locale }: ContactFormProps) {
                 <Input
                   name="name"
                   placeholder={text.fullName}
-                  className="rounded-none group-data-[variant=yellow]:bg-input/10 group-data-[variant=yellow]:text-black group-data-[variant=yellow]:placeholder:text-black"
+                  className="rounded-none group-data-[variant=default]:bg-electric group-data-[variant=light]:bg-input/10 group-data-[variant=light]:text-electric group-data-[variant=light]:placeholder:text-electric"
                   autoComplete="name"
                   value={form.name}
                   onChange={(event) => updateField("name", event.target.value)}
@@ -219,7 +219,7 @@ export default function ContactForm({ mode, locale }: ContactFormProps) {
                     name="email"
                     type="email"
                     placeholder="Email"
-                    className="rounded-none group-data-[variant=yellow]:bg-input/10 group-data-[variant=yellow]:text-black group-data-[variant=yellow]:placeholder:text-black"
+                    className="rounded-none group-data-[variant=default]:bg-electric group-data-[variant=light]:bg-input/10 group-data-[variant=light]:text-electric group-data-[variant=light]:placeholder:text-electric"
                     autoComplete="email"
                     value={form.email}
                     onChange={(event) => updateField("email", event.target.value)}
@@ -231,10 +231,10 @@ export default function ContactForm({ mode, locale }: ContactFormProps) {
                     value={form.language}
                     onValueChange={(value) => updateField("language", value)}
                   >
-                    <SelectTrigger className="w-full rounded-none group-data-[variant=yellow]:bg-input/10 group-data-[variant=yellow]:text-black group-data-[variant=yellow]:data-placeholder:text-black">
+                    <SelectTrigger className="w-full rounded-none group-data-[variant=default]:bg-electric group-data-[variant=default]:hover:bg-electric group-data-[variant=light]:bg-input/10 group-data-[variant=light]:text-electric group-data-[variant=light]:data-placeholder:text-electric">
                     <SelectValue placeholder={text.language} />
                     </SelectTrigger>
-                    <SelectContent className="group-data-[variant=yellow]:[--popover:oklch(0.145_0_0)] group-data-[variant=yellow]:[--popover-foreground:oklch(0.985_0_0)] group-data-[variant=yellow]:[--accent:oklch(0.269_0_0)] group-data-[variant=yellow]:[--accent-foreground:oklch(0.985_0_0)]">
+                    <SelectContent className="group-data-[variant=light]:[--popover:#ffffff] group-data-[variant=light]:[--popover-foreground:var(--color-electric)] group-data-[variant=light]:[--accent:var(--color-electric)] group-data-[variant=light]:[--accent-foreground:#ffffff]">
                       {LANGUAGE_OPTIONS.map((option) => (
                         <SelectItem key={option} value={option}>
                           {option}
@@ -263,10 +263,10 @@ export default function ContactForm({ mode, locale }: ContactFormProps) {
                     updateField("subjectOrService", value)
                   }
                 >
-                  <SelectTrigger className="w-full rounded-none group-data-[variant=yellow]:bg-input/10 group-data-[variant=yellow]:text-black group-data-[variant=yellow]:data-placeholder:text-black">
+                  <SelectTrigger className="w-full rounded-none group-data-[variant=default]:bg-electric group-data-[variant=default]:hover:bg-electric group-data-[variant=light]:bg-input/10 group-data-[variant=light]:text-electric group-data-[variant=light]:data-placeholder:text-electric">
                     <SelectValue placeholder={placeholder} />
                   </SelectTrigger>
-                  <SelectContent className="group-data-[variant=yellow]:[--popover:oklch(0.145_0_0)] group-data-[variant=yellow]:[--popover-foreground:oklch(0.985_0_0)] group-data-[variant=yellow]:[--accent:oklch(0.269_0_0)] group-data-[variant=yellow]:[--accent-foreground:oklch(0.985_0_0)]">
+                  <SelectContent className="group-data-[variant=light]:[--popover:#ffffff] group-data-[variant=light]:[--popover-foreground:var(--color-electric)] group-data-[variant=light]:[--accent:var(--color-electric)] group-data-[variant=light]:[--accent-foreground:#ffffff]">
                     {options.map((option) => (
                       <SelectItem key={option} value={option}>
                         {option}
@@ -280,7 +280,7 @@ export default function ContactForm({ mode, locale }: ContactFormProps) {
                 <Textarea
                   name="message"
                   placeholder={text.message}
-                  className="rounded-none group-data-[variant=yellow]:bg-input/10 group-data-[variant=yellow]:text-black group-data-[variant=yellow]:placeholder:text-black"
+                  className="rounded-none group-data-[variant=default]:bg-electric group-data-[variant=light]:bg-input/10 group-data-[variant=light]:text-electric group-data-[variant=light]:placeholder:text-electric"
                   value={form.message}
                   onChange={(event) => updateField("message", event.target.value)}
                 />
@@ -290,12 +290,13 @@ export default function ContactForm({ mode, locale }: ContactFormProps) {
             <FieldGroup>
               <Field orientation="horizontal">
                 <Checkbox
+                  className="[--primary:var(--foreground)] [--primary-foreground:var(--background)]"
                   checked={form.acceptedPrivacy}
                   onCheckedChange={(checked) =>
                     updateField("acceptedPrivacy", checked === true)
                   }
                 />
-                <FieldLabel className="flex-wrap gap-1.5 text-xs group-data-[variant=yellow]:text-black">
+                <FieldLabel className="flex-wrap gap-1.5 text-xs group-data-[variant=light]:text-electric">
                   {text.privacy}
                   <Link
                     href={withLocale(locale, "/privacy")}
@@ -312,6 +313,7 @@ export default function ContactForm({ mode, locale }: ContactFormProps) {
 
             <FieldGroup>
               <TurnstileWrap
+                theme="light"
                 onVerify={(token) => setCaptchaToken(token)}
                 onExpire={() => setCaptchaToken("")}
               />
@@ -331,7 +333,7 @@ export default function ContactForm({ mode, locale }: ContactFormProps) {
           <Button
             type="submit"
             size="lg"
-            className="font-bold uppercase"
+            className="border border-white! bg-white! text-electric! font-bold uppercase hover:border-white! hover:bg-electric! hover:text-white!"
             disabled={isSubmitting}
           >
             <SendIcon />
@@ -341,7 +343,7 @@ export default function ContactForm({ mode, locale }: ContactFormProps) {
             type="button"
             variant="outline"
             size="lg"
-            className="font-bold uppercase"
+            className="border border-electric! bg-electric! text-white! font-bold uppercase hover:border-white! hover:bg-electric! hover:text-white!"
             onClick={resetForm}
             disabled={isSubmitting}
           >

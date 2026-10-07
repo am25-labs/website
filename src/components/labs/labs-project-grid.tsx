@@ -56,12 +56,12 @@ function ProjectDialog({ project, locale }: { project: LabProject; locale: Local
     <Dialog>
       <DialogTrigger asChild>
         <button type="button" className="group/tile w-full cursor-pointer text-left">
-          <Card className="aspect-square justify-center rounded-none bg-card py-0 group-data-[variant=yellow]:bg-am-y group-data-[variant=light]:bg-white group-data-[variant=yellow]:ring-black group-data-[variant=light]:ring-black">
+          <Card className="aspect-square justify-center rounded-none bg-card py-0 group-data-[variant=light]:bg-white group-data-[variant=light]:ring-electric">
             {project.icon ? (
               <img
                 src={project.icon.url}
                 alt={project.icon.alt ?? project.title}
-                className="h-full w-full object-contain p-8 group-data-[variant=yellow]:brightness-0 group-data-[variant=light]:brightness-0"
+                className="h-full w-full object-contain p-8 group-data-[variant=light]:brightness-0"
               />
             ) : (
               <span className="p-4 text-center text-2xl font-bold uppercase">
@@ -69,7 +69,7 @@ function ProjectDialog({ project, locale }: { project: LabProject; locale: Local
               </span>
             )}
           </Card>
-          <span className="mt-2 block text-center text-xs text-muted-foreground group-hover/tile:underline group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black">
+          <span className="mt-2 block text-center text-xs text-muted-foreground group-hover/tile:underline group-data-[variant=light]:text-electric">
             {project.title}
           </span>
         </button>
@@ -83,7 +83,7 @@ function ProjectDialog({ project, locale }: { project: LabProject; locale: Local
                 <img
                   src={project.icon.url}
                   alt=""
-                  className="size-6 group-data-[variant=yellow]:brightness-0 group-data-[variant=light]:brightness-0"
+                  className="size-6 group-data-[variant=light]:brightness-0"
                 />
               </div>
             ) : null}

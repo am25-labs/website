@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import GridContainer from "@/components/grids/grid-container";
+import GridFour from "@/components/grids/grid-four";
 import GridSix from "@/components/grids/grid-six";
 import GridTwo from "@/components/grids/grid-two";
 import LabsProjectGrid from "@/components/labs/labs-project-grid";
 import ScrollReveal from "@/components/scroll-reveal";
-import { AccordionWrap } from "@/components/ui/custom/accordion";
+import { AccordionWrap } from "@/components/custom/accordion";
 import { getCopy, getRouteLocale } from "@/lib/i18n";
 import { getPageMetadata } from "@/lib/metadata";
 import { getLabProjects, getLabs } from "@/lib/plank/fetch";
@@ -34,7 +35,7 @@ export default async function LabsPage({ params }: Props) {
             <h1 className="text-6xl font-bold uppercase md:text-9xl">
               AM25 {copy.labs}
             </h1>
-            <p className="mt-4 text-3xl text-neutral-400 md:text-4xl">
+            <p className="mt-4 text-3xl text-neutral-400 group-data-[variant=default]:text-white md:text-4xl">
               {labs.quote}
             </p>
           </ScrollReveal>
@@ -45,7 +46,7 @@ export default async function LabsPage({ params }: Props) {
         <GridContainer className="pb-24">
           <GridTwo>
             <ScrollReveal className="col-span-full">
-              <h2 className="text-sm font-bold uppercase text-muted-foreground group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black">
+              <h2 className="text-sm font-bold uppercase text-muted-foreground group-data-[variant=light]:text-electric">
                 {copy.labsProjects}
               </h2>
             </ScrollReveal>
@@ -63,17 +64,17 @@ export default async function LabsPage({ params }: Props) {
         <GridContainer className="pb-16">
           <GridTwo>
             <ScrollReveal className="col-span-full">
-              <h2 className="text-sm font-bold uppercase text-muted-foreground group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black">
+              <h2 className="text-sm font-bold uppercase text-muted-foreground group-data-[variant=light]:text-electric">
                 {copy.labsFaq}
               </h2>
             </ScrollReveal>
           </GridTwo>
 
-          <GridSix>
+          <GridFour>
             <ScrollReveal className="col-span-full" delay={0.15}>
               <AccordionWrap items={labs.faq} />
             </ScrollReveal>
-          </GridSix>
+          </GridFour>
         </GridContainer>
       ) : null}
     </>

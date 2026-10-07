@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRightIcon, SendIcon } from "lucide-react";
 import TurnstileWrap from "@/components/contact/turnstile";
-import { AlertWrap } from "@/components/ui/custom/alert-wrap";
+import { AlertWrap } from "@/components/custom/alert-wrap";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -228,12 +228,13 @@ export default function AccessDialog({ className, locale }: Props) {
             <FieldGroup>
               <Field orientation="horizontal">
                 <Checkbox
+                  className="[--primary:var(--foreground)] [--primary-foreground:var(--background)]"
                   checked={form.acceptedPrivacy}
                   onCheckedChange={(checked) =>
                     updateField("acceptedPrivacy", checked === true)
                   }
                 />
-                <FieldLabel className="flex-wrap gap-1.5 text-xs group-data-[variant=yellow]:text-black">
+                <FieldLabel className="flex-wrap gap-1.5 text-xs group-data-[variant=light]:text-electric">
                   {text.privacy}
                   <Link
                     href={withLocale(locale, "/privacy")}

@@ -12,7 +12,7 @@ interface ServicesProps {
 export default function Services({ services, locale }: ServicesProps) {
   const copy = getCopy(locale);
   return (
-    <GridContainer className="py-12 bg-primary-foreground">
+    <GridContainer className="py-12 bg-white text-electric">
       <ScrollReveal className="col-span-full">
         <h2 className="text-4xl font-bold uppercase md:text-center md:text-5xl">
           {copy.whatWeDo}
@@ -22,7 +22,7 @@ export default function Services({ services, locale }: ServicesProps) {
           {services.map((service, index) => (
             <li
               key={service.label}
-              className="text-2xl text-muted-foreground md:text-3xl"
+              className="text-2xl md:text-3xl"
             >
               <ScrollReveal
                 delay={index * 0.12}

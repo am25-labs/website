@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { ChevronDownIcon } from "lucide-react";
 import GridContainer from "@/components/grids/grid-container";
 import ScrollReveal from "@/components/scroll-reveal";
+import { Separator } from "@/components/ui/separator";
 import {
   Collapsible,
   CollapsibleContent,
@@ -57,7 +58,7 @@ export default function ContentFilter<T>({
       ) : null}
 
       <ScrollReveal>
-        <Collapsible open={open} onOpenChange={setOpen} className="border-b md:hidden">
+        <Collapsible open={open} onOpenChange={setOpen} className="md:hidden">
         <CollapsibleTrigger className="flex w-full items-center justify-between px-5 py-3">
           <span className="text-sm font-bold uppercase">{activeLabel}</span>
           <ChevronDownIcon className={clsx("size-4", open && "rotate-180")} />
@@ -91,7 +92,7 @@ export default function ContentFilter<T>({
       </ScrollReveal>
 
       <GridContainer className="my-0 hidden md:block">
-        <ScrollReveal className="col-span-full border-b">
+        <ScrollReveal className="col-span-full">
           <div className="mx-auto flex w-full flex-wrap items-center gap-6 py-4">
             <button
               onClick={() => setActive(null)}
@@ -121,6 +122,8 @@ export default function ContentFilter<T>({
           </div>
         </ScrollReveal>
       </GridContainer>
+
+      <Separator />
 
       {children(filteredItems)}
     </>

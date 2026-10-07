@@ -18,6 +18,18 @@ export default function NoteDetail({ note, locale }: NoteDetailProps) {
 
   return (
     <div className="mb-8 grid grid-cols-2 gap-4 px-4 md:grid-cols-8">
+      <ScrollReveal className="col-span-full mb-8">
+        <div className="relative aspect-square md:aspect-video">
+          {note.cover ? (
+            <img
+              src={note.cover.url}
+              alt={note.cover.alt ?? note.title}
+              className="h-full w-full border object-cover"
+            />
+          ) : null}
+        </div>
+      </ScrollReveal>
+
       <section className="col-span-2 mb-8">
         <ScrollReveal className="grid grid-cols-2 gap-4" direction="down">
           <div className="col-span-full">
@@ -59,16 +71,6 @@ export default function NoteDetail({ note, locale }: NoteDetailProps) {
       </section>
 
       <section className="col-span-2 md:col-span-4">
-        <div className="relative mb-8 aspect-square md:aspect-video">
-          {note.cover ? (
-            <img
-              src={note.cover.url}
-              alt={note.cover.alt ?? note.title}
-              className="h-full w-full border object-cover"
-            />
-          ) : null}
-        </div>
-
         <ScrollReveal
           className="grid grid-cols-2 gap-4 md:grid-cols-4"
           delay={0.15}

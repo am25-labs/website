@@ -5,7 +5,6 @@
 
 @theme inline {
   /* AM */
-  --color-am-y: #ffff00;
   --font-martian: var(--font-martian);
 
   /* Shadcn */

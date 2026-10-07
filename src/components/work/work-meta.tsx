@@ -78,7 +78,7 @@ export default function WorkMeta({
               {items.map((item) => (
                 <TableRow
                   key={item.label}
-                  className="group-data-[variant=yellow]:hover:bg-muted/10 group-data-[variant=light]:hover:bg-muted/10"
+                  className="group-data-[variant=light]:hover:bg-muted/10"
                 >
                   <TableCell className="py-4 font-bold uppercase">
                     {item.label}

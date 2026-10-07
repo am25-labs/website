@@ -96,7 +96,7 @@ export default function ContentPricing({ locale }: { locale: Locale }) {
       <div className="col-span-full grid grid-cols-1 divide-y border border-border md:grid-cols-3 md:divide-x md:divide-y-0">
         {tiers[locale].map((tier, index) => (
           <ScrollReveal className="h-full" delay={index * 0.1} key={tier.name}>
-            <Card className="h-full min-h-80 gap-0 rounded-none border-0 bg-background py-0 shadow-none">
+            <Card className="h-full min-h-80 gap-0 rounded-none border-0 bg-electric py-0 shadow-none">
               <div className="flex h-full flex-col px-6 py-8">
                 <span className="text-lg font-bold uppercase">{tier.name}</span>
 

@@ -33,11 +33,11 @@ export default function WorkCard({
       </p>
 
       <div className="mt-1 flex flex-col gap-1">
-        <span className="text-xs text-muted-foreground group-data-[variant=yellow]:text-black">
+        <span className="text-xs text-muted-foreground group-data-[variant=light]:text-electric">
           {category}
         </span>
         {publishedAt ? (
-          <span className="text-xs text-muted-foreground group-data-[variant=yellow]:text-black">
+          <span className="text-xs text-muted-foreground group-data-[variant=light]:text-electric">
             {formatDate(publishedAt)}
           </span>
         ) : null}

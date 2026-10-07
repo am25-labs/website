@@ -13,14 +13,18 @@ export default async function Header({ locale }: { locale: Locale }) {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 mx-auto flex w-full max-w-8xl items-center justify-between bg-black p-4 group-data-[variant=yellow]:bg-am-y group-data-[variant=light]:bg-white">
-        <Link href={withLocale(locale, "/")}>
+      <header className="fixed inset-x-0 top-0 z-50 mx-auto flex w-full max-w-8xl items-center justify-between bg-electric p-4 group-data-[variant=light]:bg-white">
+        <Link href={withLocale(locale, "/")} className="relative block">
           <img
             src="/am25-logo.svg"
             alt="AM25 Logo"
             width="128"
             title="AM25"
-            className="group-data-[variant=yellow]:brightness-0 group-data-[variant=light]:brightness-0"
+            className="group-data-[variant=light]:opacity-0"
+          />
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 hidden bg-electric [mask:url('/am25-logo.svg')_center/contain_no-repeat] group-data-[variant=light]:block"
           />
         </Link>
 
@@ -44,7 +48,7 @@ export default async function Header({ locale }: { locale: Locale }) {
                     {isExternal ? (
                       <ArrowUpRightIcon
                         size={20}
-                        className="shrink-0 text-am-y group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black"
+                        className="shrink-0 text-white group-data-[variant=light]:text-electric"
                       />
                     ) : null}
                   </Link>

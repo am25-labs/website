@@ -2,7 +2,7 @@ import GridContainer from "@/components/grids/grid-container";
 import GridFour from "@/components/grids/grid-four";
 import GridTwo from "@/components/grids/grid-two";
 import ScrollReveal from "@/components/scroll-reveal";
-import { AccordionWrap } from "@/components/ui/custom/accordion";
+import { AccordionWrap } from "@/components/custom/accordion";
 import type { FaqItem } from "@/types/domain";
 import { getCopy, type Locale } from "@/lib/i18n";
 
@@ -21,7 +21,7 @@ export default function AboutFaq({ items, locale }: FaqProps & { locale: Locale 
     <GridContainer className="mt-4">
       <GridTwo>
         <ScrollReveal className="col-span-full">
-          <h2 className="font-bold uppercase text-muted-foreground group-data-[variant=yellow]:text-black">
+          <h2 className="font-bold uppercase text-muted-foreground group-data-[variant=light]:text-electric">
             {copy.studioFaqs}
           </h2>
         </ScrollReveal>

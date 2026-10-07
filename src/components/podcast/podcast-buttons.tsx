@@ -14,13 +14,6 @@ const icons: Record<PodcastPlatform, React.ReactNode> = {
   youtube: <SiYoutubemusic size={20} />,
 }
 
-const bgColors: Record<PodcastPlatform, string> = {
-  spotify: "hover:bg-[#1ed760] hover:text-black",
-  apple: "hover:bg-[#b150e2] hover:text-black",
-  amazon: "hover:bg-[#25d1da] hover:text-black",
-  youtube: "hover:bg-[#ff0000] hover:text-black",
-}
-
 interface PodcastButtonsProps {
   platform: PodcastPlatform
   url: string | undefined
@@ -35,9 +28,7 @@ export default function PodcastButtons({ platform, url, label }: PodcastButtonsP
       rel="noopener noreferrer"
       className={clsx(
         "inline-flex items-center justify-center gap-2 p-3 rounded-full",
-        "bg-muted text-sm font-bold uppercase w-full",
-        bgColors[platform],
-        ""
+        "w-full border border-white bg-electric text-white text-sm font-bold uppercase hover:border-white hover:bg-white hover:text-electric"
       )}
     >
       {icons[platform]}

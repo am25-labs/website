@@ -55,13 +55,17 @@ export default async function Footer({ locale }: { locale: Locale }) {
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-            <Link href={withLocale(locale, "/")}>
+            <Link href={withLocale(locale, "/")} className="relative block">
               <img
                 src="/am25-logo.svg"
                 alt="AM25 Logo"
                 width="160"
                 title="AM25"
-                className="group-data-[variant=yellow]:brightness-0 group-data-[variant=light]:brightness-0"
+                className="group-data-[variant=light]:opacity-0"
+              />
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 hidden bg-electric [mask:url('/am25-logo.svg')_center/contain_no-repeat] group-data-[variant=light]:block"
               />
             </Link>
           </ScrollReveal>

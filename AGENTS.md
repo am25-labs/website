@@ -47,7 +47,7 @@
 - Do not add arbitrary rounded corners to feature code. Let shadcn components use their default radius unless a local pattern intentionally overrides it.
 - Accept rounded shapes only when semantically circular or already established, such as avatars, status dots, badges, spinners, and tooltip markers.
 - Use lucide-react icons in buttons and controls when an icon exists.
-- Prefer existing UI components in `src/components/ui` and existing wrappers under `src/components/ui/custom`.
+- Keep only Shadcn components in `src/components/ui`. Keep custom wrappers and reusable custom UI components in `src/components/custom`, and reuse them when appropriate.
 
 ## Tailwind CSS
 

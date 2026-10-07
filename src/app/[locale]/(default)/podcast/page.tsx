@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { fetchPodcast } from "@/lib/fetch-podcast";
 import { getPodcastLinks } from "@/lib/plank/fetch";
 import { getPageMetadata } from "@/lib/metadata";
-import { getRouteLocale, withLocale } from "@/lib/i18n";
+import { getCopy, getRouteLocale, withLocale } from "@/lib/i18n";
 import { EpisodeProvider } from "@/hooks/podcast/use-episode-provider";
 import PodcastPlayer from "@/components/podcast/podcast-player";
 import PodcastEpisodes from "@/components/podcast/podcast-episodes";
@@ -12,6 +12,7 @@ import GridContainer from "@/components/grids/grid-container";
 import GridSix from "@/components/grids/grid-six";
 import GridTwo from "@/components/grids/grid-two";
 import ScrollReveal from "@/components/scroll-reveal";
+import { Separator } from "@/components/ui/separator";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -22,6 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PodcastPage({ params }: Props) {
   const locale = await getRouteLocale(params);
+  const copy = getCopy(locale);
   const [episodes, links] = await Promise.all([fetchPodcast(), getPodcastLinks()]);
 
   return (
@@ -31,7 +33,7 @@ export default async function PodcastPage({ params }: Props) {
           <GridContainer className="mt-0 md:pt-2 mb-0">
             <GridSix>
               <ScrollReveal className="col-span-full" direction="left">
-                <PodcastPlayer />
+                <PodcastPlayer locale={locale} />
               </ScrollReveal>
             </GridSix>
             <GridTwo>
@@ -43,10 +45,10 @@ export default async function PodcastPage({ params }: Props) {
           </GridContainer>
         </EpisodeProvider>
       </Suspense>
+      <Separator className="mb-8" />
       <GridContainer className="mt-0">
         <ScrollReveal className="col-span-full" delay={0.25}>
-          <div className="border-t mb-8" />
-          <h3 className="text-center font-bold mb-4">Also available in:</h3>
+          <h3 className="text-center font-bold mb-4">{copy.podcastAvailableIn}</h3>
           <div className="flex flex-col md:flex-row items-center justify-center max-w-5xl mx-auto gap-2 md:gap-5">
             {links.filter((link) => link.url).map((link) => (
               <PodcastButtons key={link.platform} {...link} />

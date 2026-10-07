@@ -19,7 +19,7 @@ export default function LocaleSwitch({ locale }: Props) {
   return (
     <Link
       href={href}
-      className="text-sm uppercase border p-2 hover:bg-accent"
+      className="text-sm uppercase border p-2 hover:bg-foreground hover:text-background"
       aria-label={locale === "en" ? "Cambiar a español" : "Switch to English"}
     >
       {next.toUpperCase()}
