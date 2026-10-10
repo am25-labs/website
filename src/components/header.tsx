@@ -13,74 +13,76 @@ export default async function Header({ locale }: { locale: Locale }) {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 mx-auto flex w-full max-w-8xl items-center justify-between bg-plot p-4 group-data-[variant=light]:bg-white">
-        <Link href={withLocale(locale, "/")} className="relative block">
-          <img
-            src="/am25-logo.svg"
-            alt="AM25 Logo"
-            width="128"
-            title="AM25"
-            className="group-data-[variant=light]:opacity-0"
-          />
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 hidden bg-plot [mask:url('/am25-logo.svg')_center/contain_no-repeat] group-data-[variant=light]:block"
-          />
-        </Link>
+      <header className="fixed inset-x-0 top-0 z-50 bg-plot group-data-[variant=light]:bg-white">
+        <div className="mx-auto flex w-full max-w-8xl items-center justify-between p-4">
+          <Link href={withLocale(locale, "/")} className="relative block">
+            <img
+              src="/am25-logo.svg"
+              alt="AM25 Logo"
+              width="128"
+              title="AM25"
+              className="group-data-[variant=light]:opacity-0"
+            />
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 hidden bg-plot [mask:url('/am25-logo.svg')_center/contain_no-repeat] group-data-[variant=light]:block"
+            />
+          </Link>
 
-        <nav
-          aria-label="Main and social navigation (desktop)"
-          className="hidden md:block"
-        >
-          <ul className="flex items-center gap-8">
-            {mainNav.map((item) => {
-              const isExternal = item.href.startsWith("https");
+          <nav
+            aria-label="Main and social navigation (desktop)"
+            className="hidden md:block"
+          >
+            <ul className="flex items-center gap-8">
+              {mainNav.map((item) => {
+                const isExternal = item.href.startsWith("https");
 
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={withLocale(locale, item.href)}
-                    target={isExternal ? "_blank" : undefined}
-                    rel={isExternal ? "noopener" : undefined}
-                    className="flex items-center text-xl uppercase hover:underline"
-                  >
-                    {item.label}
-                    {isExternal ? (
-                      <ArrowUpRightIcon
-                        size={20}
-                        className="shrink-0 text-white group-data-[variant=light]:text-plot"
-                      />
-                    ) : null}
-                  </Link>
-                </li>
-              );
-            })}
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={withLocale(locale, item.href)}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener" : undefined}
+                      className="flex items-center text-xl uppercase hover:underline"
+                    >
+                      {item.label}
+                      {isExternal ? (
+                        <ArrowUpRightIcon
+                          size={20}
+                          className="shrink-0 text-white group-data-[variant=light]:text-plot"
+                        />
+                      ) : null}
+                    </Link>
+                  </li>
+                );
+              })}
 
-            {headerSocialItems.map((item) => {
-              return (
-                <li key={item.href} className="hover:scale-110">
-                  <a
-                    href={item.href}
-                    target={item.target}
-                    rel={item.target === "_blank" ? "noopener" : undefined}
-                  >
-                    <BrandIcon icon={item.icon} size={item.size} />
-                  </a>
-                </li>
-              );
-            })}
-            <li>
-              <LocaleSwitch locale={locale} />
-            </li>
-          </ul>
-        </nav>
+              {headerSocialItems.map((item) => {
+                return (
+                  <li key={item.href} className="hover:scale-110">
+                    <a
+                      href={item.href}
+                      target={item.target}
+                      rel={item.target === "_blank" ? "noopener" : undefined}
+                    >
+                      <BrandIcon icon={item.icon} size={item.size} />
+                    </a>
+                  </li>
+                );
+              })}
+              <li>
+                <LocaleSwitch locale={locale} />
+              </li>
+            </ul>
+          </nav>
 
-        <div className="md:hidden">
-          <MobileMenu
-            items={mainNav}
-            socialItems={headerSocialItems}
-            locale={locale}
-          />
+          <div className="md:hidden">
+            <MobileMenu
+              items={mainNav}
+              socialItems={headerSocialItems}
+              locale={locale}
+            />
+          </div>
         </div>
       </header>
 
