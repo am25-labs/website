@@ -1,9 +1,6 @@
-import Link from "next/link";
-import { ChevronLeftIcon } from "lucide-react";
+import ContentNavigation from "@/components/content-navigation";
 import ContentRenderer from "@/components/content-renderer";
 import ScrollReveal from "@/components/scroll-reveal";
-import { BannerPoweredBy } from "@/components/powered-by";
-import { Separator } from "@/components/ui/separator";
 import { formatDate } from "@/lib/utils";
 import { dateLocale, getCopy, withLocale, type Locale } from "@/lib/i18n";
 import type { Note } from "@/types/domain";
@@ -17,7 +14,7 @@ export default function NoteDetail({ note, locale }: NoteDetailProps) {
   const copy = getCopy(locale);
 
   return (
-    <div className="mb-8 grid grid-cols-2 gap-4 px-4 md:grid-cols-8">
+    <div className="mb-4 grid grid-cols-2 gap-4 px-4 md:grid-cols-8">
       <ScrollReveal className="col-span-full mb-8">
         <div className="relative aspect-square md:aspect-video">
           {note.cover ? (
@@ -78,28 +75,16 @@ export default function NoteDetail({ note, locale }: NoteDetailProps) {
         >
           <div className="col-span-full">
             <ContentRenderer content={note.content} revealBlocks />
-
-            <div className="flex flex-col items-center py-16">
-              <Separator />
-              <Link
-                href={withLocale(locale, "/notes")}
-                className="mt-8 flex items-center gap-2 text-center font-bold uppercase hover:underline"
-              >
-                <ChevronLeftIcon size={21} />
-                {copy.backToNotes}
-              </Link>
-            </div>
-
-            <BannerPoweredBy
-              logoSrc="/plank-logo-w.svg"
-              logoAlt="Plank CMS"
-              label={copy.publishedViaPlank}
-              link="https://plank-cms.com"
-              mode="dark"
-            />
           </div>
         </ScrollReveal>
       </section>
+      <ScrollReveal className="col-span-full">
+        <ContentNavigation
+          href={withLocale(locale, "/notes")}
+          label={copy.backToNotes}
+          plankLabel={copy.publishedViaPlank}
+        />
+      </ScrollReveal>
     </div>
   );
 }

@@ -1,5 +1,7 @@
 import type { CSSProperties } from "react";
 
+export const bannerLayoutClasses = "flex h-full min-w-0 flex-col items-center justify-center gap-4 px-6 py-8";
+
 interface BannerProps {
   logoSrc: string;
   logoAlt?: string;
@@ -19,7 +21,7 @@ export function BannerPoweredBy({
 
   return (
     <div
-      className={`flex flex-col items-center justify-center gap-4 px-6 py-8 group-data-[variant=default]:bg-white group-data-[variant=light]:bg-plot ${
+      className={`${bannerLayoutClasses} group-data-[variant=default]:bg-white group-data-[variant=light]:bg-plot ${
         isDark ? "bg-neutral-950" : "bg-neutral-100"
       }`}
     >
