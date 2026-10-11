@@ -21,7 +21,7 @@ export default function WorkBackLink({
         <ContentNavigation
           href={withLocale(locale, isNotesDestination ? "/notes" : "/work")}
           label={isNotesDestination ? copy.backToNotes : copy.backToWorks}
-          plankLabel={copy.poweredByPlank}
+          plankLabel={isNotesDestination ? copy.publishedViaPlank : copy.poweredByPlank}
         />
       </ScrollReveal>
     </GridContainer>

@@ -16,7 +16,7 @@ export default function NoteDetail({ note, locale }: NoteDetailProps) {
   return (
     <div className="mb-4 grid grid-cols-2 gap-4 px-4 md:grid-cols-8">
       <ScrollReveal className="col-span-full mb-8">
-        <div className="relative aspect-square md:aspect-video">
+        <div className="relative aspect-[4/1] md:aspect-[16/2]">
           {note.cover ? (
             <img
               src={note.cover.url}

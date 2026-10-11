@@ -18,7 +18,7 @@ export default function CaseStudyHeader({
   return (
     <GridContainer>
       <ScrollReveal className="col-span-full">
-        <div className="relative aspect-square md:aspect-video">
+        <div className="relative aspect-[4/1] md:aspect-[16/2]">
           {cover ? (
             <Image
               src={cover.url}
