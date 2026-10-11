@@ -64,6 +64,7 @@ export default function NotesFilter({
             >
               <NoteCard
                 cover={entry.cover}
+                showCover
                 title={entry.title}
                 href={entry.href}
                 category={entry.categories

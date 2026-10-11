@@ -39,6 +39,7 @@ export interface WorkCardProps {
 
 export interface NoteCardProps {
   cover?: string | null;
+  showCover?: boolean;
   title: string;
   href: string;
   category: string;

@@ -8,10 +8,9 @@ import type { NoteCardProps } from "@/types/domain";
 import { formatDate } from "@/lib/utils";
 import { dateLocale, type Locale } from "@/lib/i18n";
 
-const SHOW_COVER = false;
-
 export default function NoteCard({
   cover,
+  showCover = false,
   title,
   href,
   category,
@@ -36,7 +35,7 @@ export default function NoteCard({
       className="group/card"
     >
       <Card className="gap-0 overflow-hidden bg-plot p-0 text-white">
-        {SHOW_COVER && cover ? (
+        {showCover && cover ? (
           <>
             <div className="aspect-[5/4] overflow-hidden">
               <img
