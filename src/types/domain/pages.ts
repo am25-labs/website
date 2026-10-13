@@ -22,6 +22,23 @@ export interface About {
 }
 
 // Legales
+export interface LegalLink {
+  title: string;
+  slug: string;
+}
+
+export interface LegalService {
+  title: string;
+  privacy: string;
+  terms: string;
+}
+
+export interface Legal {
+  general: LegalLink[];
+  services: LegalService[];
+  additional: LegalLink[];
+}
+
 export interface LegalPage {
   content: RichContent;
   date?: string;

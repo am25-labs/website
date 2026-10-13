@@ -22,6 +22,7 @@ const nextConfig: NextConfig = {
       },
       { source: "/content", destination: "/es/content", permanent: true },
       { source: "/podcast", destination: "/es/podcast", permanent: true },
+      { source: "/legal", destination: "/es/legal", permanent: true },
       { source: "/privacy", destination: "/es/privacy", permanent: true },
       { source: "/terms", destination: "/es/terms", permanent: true },
       { source: "/copyright", destination: "/es/copyright", permanent: true },

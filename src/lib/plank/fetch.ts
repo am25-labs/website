@@ -8,6 +8,7 @@ import type {
   LabProject,
   Home,
   About,
+  Legal,
   LegalPage,
   ContentHub,
   Footer,
@@ -259,6 +260,13 @@ export async function getAbout({ locale }: LocaleOptions = {}): Promise<About> {
 }
 
 // ST: Legals
+export async function getLegal({ locale }: LocaleOptions = {}): Promise<Legal> {
+  const activeLocale = locale ?? "es";
+  return plank
+    .single<Legal>("legal")
+    .find({ locale: activeLocale, fallback: "en" }, CACHE_GENERAL_OPTIONS);
+}
+
 export async function getPrivacy({ locale }: LocaleOptions = {}) {
   const activeLocale = locale ?? "es";
   return plank
