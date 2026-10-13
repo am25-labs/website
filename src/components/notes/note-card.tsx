@@ -32,12 +32,12 @@ export default function NoteCard({
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener" : undefined}
       title={title}
-      className="group/card"
+      className="group/card block h-full"
     >
-      <Card className="gap-0 overflow-hidden bg-plot p-0 text-white">
+      <Card className="h-full gap-0 overflow-hidden bg-plot p-0 text-white">
         {showCover && cover ? (
           <>
-            <div className="aspect-[5/4] overflow-hidden">
+            <div className="aspect-[5/4] shrink-0 overflow-hidden">
               <img
                 src={cover}
                 alt={title}
@@ -48,7 +48,7 @@ export default function NoteCard({
           </>
         ) : null}
 
-        <div className="flex h-full flex-col justify-between p-6">
+        <div className="flex flex-1 flex-col justify-between p-6">
           <div>
             <div className="mb-4 flex items-center justify-between gap-4">
               <span className="text-xs text-muted-foreground">{category}</span>
