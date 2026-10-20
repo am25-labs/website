@@ -112,7 +112,6 @@ export interface LabProject {
   slug: string;
   icon: PlankMedia | null;
   featured: boolean;
-  quote: string | null;
   description: RichContent;
   details: LabItem[];
   meta: LabItem[];

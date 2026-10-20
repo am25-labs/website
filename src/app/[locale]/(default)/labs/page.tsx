@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import GridContainer from "@/components/grids/grid-container";
 import GridFour from "@/components/grids/grid-four";
 import GridSix from "@/components/grids/grid-six";
@@ -59,7 +60,9 @@ export default async function LabsPage({ params }: Props) {
 
           <GridSix>
             <div className="col-span-full">
-              <LabsProjectGrid projects={projects} locale={locale} />
+              <Suspense fallback={null}>
+                <LabsProjectGrid projects={projects} locale={locale} />
+              </Suspense>
             </div>
           </GridSix>
         </GridContainer>

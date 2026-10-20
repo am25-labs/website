@@ -1,5 +1,6 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import {
   BookOpenIcon,
   CalendarIcon,
@@ -15,13 +16,13 @@ import { Card } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { Separator } from "@/components/ui/separator";
 import { getCopy, type Locale } from "@/lib/i18n";
+import { cn } from "@/lib/utils";
 import type { LabProject } from "@/types/domain";
 
 interface LabsProjectGridProps {
@@ -47,14 +48,18 @@ const metaIconMap: Record<string, LucideIcon> = {
 function ProjectDialog({
   project,
   locale,
+  open,
+  onOpenChange,
 }: {
   project: LabProject;
   locale: Locale;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
 }) {
   const copy = getCopy(locale);
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
         <button
           type="button"
@@ -79,75 +84,99 @@ function ProjectDialog({
         </button>
       </DialogTrigger>
 
-      <DialogContent className="max-h-[calc(100dvh-2rem)] overflow-y-auto sm:max-w-4xl">
-        <DialogHeader>
-          <div className="flex items-center gap-4 pr-8">
+      <DialogContent
+        aria-describedby={undefined}
+        className="flex max-h-[calc(100dvh-2rem)] flex-col gap-0 overflow-hidden p-0 sm:max-w-5xl"
+      >
+        <DialogHeader className="shrink-0 p-6 md:p-8 pr-12 md:pr-12 text-left">
+          <div className="flex items-center gap-4">
             {project.icon ? (
-              <div className="aspect-square border p-2">
+              <div className="flex size-10 shrink-0 items-center justify-center">
                 <img
                   src={project.icon.url}
                   alt=""
-                  className="size-6 group-data-[variant=light]:brightness-0"
+                  className="size-full object-contain group-data-[variant=light]:brightness-0"
                 />
               </div>
             ) : null}
-            <DialogTitle className="text-2xl font-bold uppercase">
+            <DialogTitle className="min-w-0 text-2xl font-bold uppercase wrap-anywhere">
               {project.title}
             </DialogTitle>
           </div>
-          {project.quote ? (
-            <DialogDescription>{project.quote}</DialogDescription>
-          ) : null}
         </DialogHeader>
 
-        <div className="space-y-8">
-          <ContentRenderer content={project.description} />
+        <Separator />
 
-          {project.details.length > 0 ? (
-            <Table>
-              <TableBody>
-                {project.details.map((detail) => (
-                  <TableRow key={detail.label}>
-                    <TableCell className="w-1/3 align-top font-bold whitespace-normal">
-                      {detail.label}
-                    </TableCell>
-                    <TableCell className="whitespace-normal">
-                      <ContentRenderer content={detail.content} />
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          ) : null}
+        <div className="min-h-0 overflow-y-auto overscroll-contain">
+          <div
+            className={cn(
+              "grid min-h-full grid-cols-1",
+              project.meta.length > 0 && "md:grid-cols-[minmax(0,1fr)_16rem]",
+            )}
+          >
+            <div className="flex min-w-0 flex-col wrap-anywhere">
+              <div className="flex flex-col gap-8 p-6 md:p-8">
+                <ContentRenderer content={project.description} />
 
-          {project.meta.length > 0 ? (
-            <Card className="gap-0 rounded-none py-4">
-              <ul className="space-y-4 px-6">
-                {project.meta.map((item) => {
-                  const Icon = metaIconMap[item.label.toLowerCase()];
+                {project.details.length > 0 ? (
+                  <>
+                    <div className="-mx-6 md:-mx-8">
+                      <Separator />
+                    </div>
+                    <dl className="flex flex-col gap-6">
+                      {project.details.map((detail) => (
+                        <div
+                          className="grid grid-cols-1 sm:grid-cols-[8rem_minmax(0,1fr)] gap-2 sm:gap-6"
+                          key={detail.label}
+                        >
+                          <dt className="text-xs font-bold uppercase text-muted-foreground">
+                            {detail.label}
+                          </dt>
+                          <dd className="min-w-0">
+                            <ContentRenderer content={detail.content} />
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </>
+                ) : null}
+              </div>
 
-                  return (
-                    <li className="flex items-start gap-2" key={item.label}>
-                      {Icon ? (
-                        <Icon className="mt-1 size-4 shrink-0 text-muted-foreground" />
-                      ) : null}
-                      <div>
-                        <span className="sr-only">{item.label}</span>
-                        <ContentRenderer content={item.content} />
+              {project.get_started ? (
+                <section className="mt-auto flex flex-col">
+                  <Separator />
+                  <div className="flex flex-col gap-4 p-6 md:p-8">
+                    <h2 className="font-bold uppercase">{copy.getStarted}</h2>
+                    <ContentRenderer content={project.get_started} />
+                  </div>
+                </section>
+              ) : null}
+            </div>
+
+            {project.meta.length > 0 ? (
+              <aside className="min-w-0 border-t md:border-t-0 md:border-l bg-muted/30 p-6">
+                <dl className="flex flex-col gap-6 wrap-anywhere">
+                  {project.meta.map((item) => {
+                    const Icon = metaIconMap[item.label.toLowerCase()];
+
+                    return (
+                      <div className="flex flex-col gap-2" key={item.label}>
+                        <dt className="flex items-center gap-2 text-xs font-bold uppercase text-muted-foreground">
+                          {Icon ? (
+                            <Icon className="size-4 shrink-0" aria-hidden="true" />
+                          ) : null}
+                          {item.label}
+                        </dt>
+                        <dd className="min-w-0 text-sm">
+                          <ContentRenderer content={item.content} />
+                        </dd>
                       </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            </Card>
-          ) : null}
-
-          {project.get_started ? (
-            <section className="border-t pt-6">
-              <h2 className="mb-4 font-bold uppercase">{copy.getStarted}</h2>
-              <ContentRenderer content={project.get_started} />
-            </section>
-          ) : null}
+                    );
+                  })}
+                </dl>
+              </aside>
+            ) : null}
+          </div>
         </div>
       </DialogContent>
     </Dialog>
@@ -158,6 +187,21 @@ export default function LabsProjectGrid({
   projects,
   locale,
 }: LabsProjectGridProps) {
+  const searchParams = useSearchParams();
+  const activeSlug = searchParams.get("project");
+
+  function handleOpenChange(slug: string, open: boolean) {
+    const url = new URL(window.location.href);
+
+    if (open) {
+      url.searchParams.set("project", slug);
+    } else {
+      url.searchParams.delete("project");
+    }
+
+    window.history.replaceState(null, "", url);
+  }
+
   return (
     <div className="grid grid-cols-2 gap-4 md:grid-cols-6">
       {projects.map((project, index) => (
@@ -167,7 +211,12 @@ export default function LabsProjectGrid({
           direction={index % 2 === 0 ? "left" : "right"}
           key={project.id}
         >
-          <ProjectDialog project={project} locale={locale} />
+          <ProjectDialog
+            project={project}
+            locale={locale}
+            open={activeSlug === project.slug}
+            onOpenChange={(open) => handleOpenChange(project.slug, open)}
+          />
         </ScrollReveal>
       ))}
     </div>
