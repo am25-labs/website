@@ -67,13 +67,13 @@ export default function NoteDetail({ note, locale }: NoteDetailProps) {
         </ScrollReveal>
       </section>
 
-      <section className="col-span-2 md:col-span-4">
+      <section className="col-span-2 md:col-span-6">
         <ScrollReveal
-          className="grid grid-cols-2 gap-4 md:grid-cols-4"
+          className="grid grid-cols-2 gap-4 md:grid-cols-6"
           delay={0.15}
           viewportAmount={0.01}
         >
-          <div className="col-span-full">
+          <div className="article-content col-span-full">
             <ContentRenderer content={note.content} revealBlocks />
           </div>
         </ScrollReveal>

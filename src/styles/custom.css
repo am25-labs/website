@@ -1,6 +1,7 @@
 /* Layout width */
 @theme {
   --color-plot: #0000f2;
+  --color-plot-soft: color-mix(in srgb, var(--color-plot) 20%, white);
   --color-alert-success: #3dff8a;
   --color-alert-warning: #ffe600;
   --color-alert-destructive: #ff5c75;
@@ -50,6 +51,15 @@ body {
 /* Plank CMS customs */
 .plank-renderer a {
   text-decoration: none;
+}
+
+@media (min-width: 48rem) {
+  .article-content > h3,
+  .article-content
+    .plank-renderer
+    > :not(img, figure):not(:has(> img, > figure)) {
+    max-width: calc((100% - 1rem) * 2 / 3);
+  }
 }
 
 .case-study-content .plank-renderer figure > img {

@@ -14,7 +14,7 @@ export default function ContentNavigation({ href, label, plankLabel }: ContentNa
     <div className="pt-4">
       <Separator className="relative left-1/2 mb-4 data-[orientation=horizontal]:w-screen -translate-x-1/2" />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Link href={href} className={`${bannerLayoutClasses} text-center hover:ring-1 hover:ring-current`}>
+        <Link href={href} className={`${bannerLayoutClasses} text-center transition-colors hover:bg-white/20 group-data-[variant=light]:hover:bg-plot-soft`}>
           <span className="text-sm font-bold uppercase tracking-widest">{label}</span>
           <ChevronLeftIcon className="size-10" aria-hidden="true" />
         </Link>

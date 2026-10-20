@@ -81,7 +81,7 @@ export default function CaseStudyContent({
             delay={index * 0.1}
             key={section.id}
           >
-            <section id={section.id} className="scroll-mt-24">
+            <section id={section.id} className="article-content scroll-mt-24">
               <h3 className="mb-4 text-base md:text-lg font-bold uppercase text-foreground">
                 {section.label}
               </h3>
