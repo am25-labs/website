@@ -1,6 +1,9 @@
 {
   "name": "alemartir",
   "version": "1.0.0",
+  "engines": {
+    "node": "22.23.4"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
