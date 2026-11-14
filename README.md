@@ -1,5 +1,24 @@
 # AM25 Website
 
+## Email
+
+Contact forms send plain-text emails through the official Postmark SDK in
+`src/lib/mailer.ts`. Configure these server-side variables locally and in the
+deployment environment:
+
+| Variable | Purpose |
+| --- | --- |
+| `POSTMARK_SERVER_TOKEN` | Required Postmark Server API Token, not an Account API Token or SMTP Token |
+| `POSTMARK_FROM` | Required verified sender email address; keep the previous `SMTP_FROM` address |
+| `POSTMARK_TRANSACTIONAL_STREAM` | Optional transactional Message Stream ID; defaults to `outbound` |
+
+The mailer no longer reads `SMTP_*` variables and works with SMTP disabled in
+Postmark. Recipients, subjects, message contents, and Turnstile verification remain
+unchanged.
+
+Run `node --test tests/mailer.test.mjs` to verify the transport with a mocked
+Postmark client, without sending emails.
+
 ## Podcast
 
 `/podcast` redirects to `/es/podcast`, preserving the query string. The player is
